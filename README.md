@@ -8,7 +8,7 @@ CANT is designed to run on a Kinetis FRDM-KL43z development board. This board wa
 
 First thing you'll want to do on the FRDM-KL43z dev board is load the DAPLink OpenSDA application. This allows you to connect to the dev board and flash it using OpenOCD and gdb. You can download the DAPLink application [here](https://www.nxp.com/products/microcontrollers-and-processors/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/developer-resources/ides-for-kinetis-mcus/opensda-serial-and-debug-adapter:OPENSDA?&tid=vanOpenSDA#FRDM-KL43Z). Current rev is 0242. Flash the new OpenSDA application following the directions in the [Quick Start Guide](https://www.nxp.com/docs/en/user-guide/FRDM-KL43Z_QSG.pdf) to enter OpenSDA Bootloader mode and drag and drop the DAPLink application into the bootloader drive that shows up on your computer.
 
-### Flashing the default application
+### Flashing pre-built CANT
 
 Connect to the dev board using OpenOCD. From the top of the CANT repository, type:
 
@@ -29,3 +29,6 @@ target remote localhost:3333
 load
 ```
 
+## Developing with CANT
+
+Use the [MCUxpresso Config Tool builder](https://mcuxpresso.nxp.com/en/welcome) to build an SDK. Click on SDK Builder. Go to Boards -> Kinetis -> FRDM-KL43Z and click "Select Configuration". That will take you to a page where your download will start.
