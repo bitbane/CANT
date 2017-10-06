@@ -6,6 +6,7 @@
 #include "serial.h"
 #include "menu.h"
 #include "timer.h"
+#include "can.h"
 
 char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "Set ARBIDS",
@@ -41,11 +42,11 @@ void process_menu()
     {
         command[command_len] = '\0';
         printf("Command: %s\r\n", command);
-        display_menu();
 
         handle_command();
 
         command_len = 0;
+        display_menu();
     }
 
     /* Prevent overflow */
@@ -57,7 +58,6 @@ static void handle_command()
 {
     char *endptr;
     long int command_num = strtol(command, &endptr, 0);
-    timer_stopInterval();
 
     switch(command_num)
     {
@@ -85,7 +85,7 @@ static void handle_command()
  */
 static void setArbids(void)
 {
-    printf("Unimplemented");
+    printf("Unimplemented\r\n");
 }
 
 /**
@@ -93,7 +93,7 @@ static void setArbids(void)
  */
 static void showArbids(void)
 {
-    printf("Unimplemented");
+    printf("Unimplemented\r\n");
 }
 
 /**
@@ -101,7 +101,25 @@ static void showArbids(void)
  */
 static void setBaudrate(void)
 {
-    printf("Unimplemented");
+    uint8_t read_len = 0;
+    uint8_t command_len = 0;
+    long int baud;
+
+    printf("Enter baudrate in BPS\r\n");
+    while(command_len == 0 || command[command_len - 1] != '\r')
+    {
+        read_len = read(0, &command[command_len], RXBUFFERSIZE - command_len);
+        command_len += read_len;
+
+        /* Prevent overflow */
+        if(command_len >= RXBUFFERSIZE)
+            command_len = 0;
+    }
+
+    baud = strtol(command, NULL, 0);
+    setCanBaudrate(baud);
+    printf("Baud rate: %ld BPS\r\n", baud);
+    can_sync();
 }
 
 /**
@@ -109,6 +127,6 @@ static void setBaudrate(void)
  */
 static void chooseAttack(void)
 {
-    printf("Unimplemented");
+    printf("Unimplemented\r\n");
 }
 

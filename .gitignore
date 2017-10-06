@@ -1,2 +1,3 @@
 build/*
 build/STM32F4xx_StdPeriph_Driver/*
+.ycm_extra_conf.py

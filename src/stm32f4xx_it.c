@@ -171,7 +171,8 @@ void UART4_IRQHandler(void)
     if(USART_GetITStatus(UART4, USART_IT_RXNE) != RESET)
     {
         /* Read one byte from the receive data register */
-        Rx_Buffer[Rx_Counter++] = (USART_ReceiveData(UART4) & 0x7F);
+        Rx_Buffer[Rx_Counter] = (USART_ReceiveData(UART4) & 0x7F);
+        USART_SendData(UART4, (uint8_t) Rx_Buffer[Rx_Counter++]); /* Echo back */
 
         if(Rx_Counter == RXBUFFERSIZE)
         {

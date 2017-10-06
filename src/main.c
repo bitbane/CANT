@@ -10,6 +10,7 @@
 #include "serial.h"
 #include "menu.h"
 #include "timer.h"
+#include "can.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -33,6 +34,7 @@ int main(void)
     serial_init();
     timer_init(); /* LED Flashing */
     timer_startInterval(NULL, 1000); /* LED Flashing */
+    can_init();
     display_menu();
 
     /* Begin superloop */
@@ -54,7 +56,7 @@ void initGPIO(void)
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
     GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
 
     /* Configure PD1 in output pushpull mode */
@@ -65,6 +67,14 @@ void initGPIO(void)
     GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
     GPIO_Init(GPIOD, &GPIO_InitStructure);
     GPIOD->ODR |= GPIO_Pin_1;
+
+    /* Configure PD4 in output pushpull mode. This will be used for random timing-related bit-banging */
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
 }
 
 #ifdef  USE_FULL_ASSERT
