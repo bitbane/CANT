@@ -41,6 +41,7 @@ int main(void)
     while(1)
     {
         process_menu();
+        can_poll();
     }
 }
 

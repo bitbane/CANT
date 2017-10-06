@@ -22,6 +22,7 @@ static volatile uint16_t msg_byte = 0;
 static volatile uint8_t message[8];
 static volatile uint8_t extended_arbid = 0;
 static volatile uint8_t msg_len = 0;
+static volatile uint8_t frame_done = 0;
 
 static volatile uint8_t synchronized = 0;
 
@@ -70,6 +71,17 @@ void can_init()
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
     EXTI_Init(&EXTI_InitStructure);
     EXTI->IMR &= ~EXTI_Line0; // Disable EXTI interrupt
+}
+
+/* Checks to see if we've received a message and prints it out */
+void can_poll()
+{
+    if(frame_done)
+    {
+        frame_done = 0;
+        printf("Arbid: %lx\r\n", arbid);
+        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+    }
 }
 
 /* Synchronize to the CAN bus. Start sampling at 4x baud rate and make sure we see an end of frame */
@@ -202,8 +214,7 @@ static void sample_callback(void)
     {
         can_timer_stop();
         // Enable the external interrupt on the RX pin
-        printf("Arbid: %lx\r\n", arbid);
-        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+        frame_done = 1;
 
         // Enable the external interrupt on the RX pin
         EXTI->PR |= EXTI_Line0; // Clear any pending interrupt
