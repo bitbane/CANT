@@ -1,34 +1,22 @@
 The CANT project is designed to allow people to screw around with CAN easily at layers 1/2. All of the stuff that is normally handled by a CAN controller that is baked into sillicon is up for grabs.
 
-CANT is designed to run on a Kinetis FRDM-KL43z development board. This board was chosen due to the FlexIO peripheral which is used to drive the CAN tansceiver. 
+CANT is designed to run on a STM32F4-Discovery development board. This board was chosen due to the ARM Cortex-M4s popularity and because I was already familiar with it.
 
-## Getting started with the Kinetis FRDM-KL43z development board
+## Getting started with the STM32F4-Discovery development board
 
-[User's guide](https://www.nxp.com/docs/en/user-guide/FRDMKL43ZUG.pdf)
+The STM32F4-Discovery board has an STLink V2 debugger built in, available via the Mini-USB port. STLink V2 does not provide a serial port for communication, so currently you will need to connect a TTL serial adapter (e.g, FTDI232, CP2102) to pins PA0 (TX) and PA1 (RX) to communicate with the CANT software. Baud rate is 115200 kbps, 8N1. The USB OTG port can be programmed to provide a serial console and we will be switching to that when time permits to eliminate the extra piece of hardware.
 
-First thing you'll want to do on the FRDM-KL43z dev board is load the DAPLink OpenSDA application. This allows you to connect to the dev board and flash it using OpenOCD and gdb. You can download the DAPLink application [here](https://www.nxp.com/products/microcontrollers-and-processors/arm-based-processors-and-mcus/kinetis-cortex-m-mcus/developer-resources/ides-for-kinetis-mcus/opensda-serial-and-debug-adapter:OPENSDA?&tid=vanOpenSDA#FRDM-KL43Z). Current rev is 0242. Flash the new OpenSDA application following the directions in the [Quick Start Guide](https://www.nxp.com/docs/en/user-guide/FRDM-KL43Z_QSG.pdf) to enter OpenSDA Bootloader mode and drag and drop the DAPLink application into the bootloader drive that shows up on your computer.
+For CAN communication, PD0 is CAN RX and PD1 is CAN TX. Conveniently the CAN peripheral can also be multiplexed to these pins, so switching from normal CAN operation to CANT operation would be possible without rewiring. This is currently not implemented. I'm using the [TI SN65HVD232](http://www.ti.com/product/sn65hvd232?qgpn=sn65hvd232) 3.3V CAN transceiver, but any 3.3V CAN Transceiver should work. Some transceivers may require some additional programming or wiring, so check that if you go with something else.
 
 ### Flashing pre-built CANT
 
-Connect to the dev board using OpenOCD. From the top of the CANT repository, type:
+You will need openocd installed to flash the prebuilt CANT. Connect a Mini-USB cable to the discovery board and type:
 
 ```
-openocd -f frdm-kl46z.cfg
-```
-
-Open a new terminal window and change directory to the firmware/ folder, then type
-
-```
-arm-none-eabi-gdb CANT.elf
-```
-
-Once gdb has loaded, connect to the remote target and load the application as follows:
-
-```
-target remote localhost:3333
-load
+make flash_prebuilt
 ```
 
 ## Developing with CANT
 
-Use the [MCUxpresso Config Tool builder](https://mcuxpresso.nxp.com/en/welcome) to build an SDK. Click on SDK Builder. Go to Boards -> Kinetis -> FRDM-KL43Z and click "Select Configuration". That will take you to a page where your download will start.
+To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
+
