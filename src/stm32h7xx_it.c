@@ -53,6 +53,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern UART_HandleTypeDef huart3;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -157,6 +158,15 @@ void SysTick_Handler(void)
 {
   HAL_IncTick();
 	
+}
+
+/**
+ * @brief This function handles the USART3 IRQ Handler 
+ */
+void USART3_IRQHandler(void)
+{
+    BSP_LED_On(LED2);
+    HAL_UART_IRQHandler(&huart3);
 }
   
 

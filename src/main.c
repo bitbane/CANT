@@ -37,6 +37,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "gpio.h"
+#include "usart.h"
 
 /** @addtogroup STM32H7xx_HAL_Examples
   * @{
@@ -89,7 +91,10 @@ int main(void)
 
 
   /* Add your application code here */
-  
+  MX_GPIO_Init();
+  MX_USART3_UART_Init();
+  HAL_UART_Receive_IT(&huart3, rx_buffer, 1);
+
   BSP_LED_Init(LED1);
   BSP_LED_Init(LED2);
   BSP_LED_Init(LED3);
@@ -97,16 +102,23 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
+    /*
     BSP_LED_Off(LED3);
     BSP_LED_On(LED1);
-    HAL_Delay(100);
+    HAL_Delay(333);
     BSP_LED_Off(LED1);
     BSP_LED_On(LED2);
-    HAL_Delay(100);
+    HAL_Delay(333);
     BSP_LED_Off(LED2);
     BSP_LED_On(LED3);
-    HAL_Delay(100);
-    
+    */
+    if(usart3_ready)
+    {
+        BSP_LED_On(LED1);
+        HAL_UART_Transmit(&huart3, rx_buffer, 1, 5);
+        usart3_ready = 0;
+        HAL_UART_Receive_IT(&huart3, rx_buffer, 1);
+    }
   }
 }
 
