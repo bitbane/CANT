@@ -160,15 +160,7 @@ void SysTick_Handler(void)
 	
 }
 
-/**
- * @brief This function handles the USART3 IRQ Handler 
- */
-void USART3_IRQHandler(void)
-{
-    BSP_LED_On(LED2);
-    HAL_UART_IRQHandler(&huart3);
-}
-  
+ 
 
 /******************************************************************************/
 /*                 STM32H7xx Peripherals Interrupt Handlers                   */

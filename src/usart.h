@@ -57,17 +57,17 @@ extern UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN Private defines */
 #define RX_BUFFER_SIZE 20
-#define TX_BUFFER_SIZE 20
+#define TX_BUFFER_SIZE 40
 extern uint8_t rx_buffer[RX_BUFFER_SIZE];
-extern uint8_t tx_buffer[RX_BUFFER_SIZE];
-extern volatile uint8_t usart3_ready;
+extern uint8_t rx_counter;
+extern uint8_t tx_buffer[TX_BUFFER_SIZE];
 
 /* USER CODE END Private defines */
 
 void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-void serial_send(uint8_t c);
+int __io_putchar(int ch);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

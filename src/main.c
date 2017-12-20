@@ -39,6 +39,8 @@
 #include "main.h"
 #include "gpio.h"
 #include "usart.h"
+#include "can.h"
+#include "menu.h"
 
 /** @addtogroup STM32H7xx_HAL_Examples
   * @{
@@ -93,7 +95,8 @@ int main(void)
   /* Add your application code here */
   MX_GPIO_Init();
   MX_USART3_UART_Init();
-  HAL_UART_Receive_IT(&huart3, rx_buffer, 1);
+  can_init();
+  display_menu();
 
   BSP_LED_Init(LED1);
   BSP_LED_Init(LED2);
@@ -102,23 +105,9 @@ int main(void)
   /* Infinite loop */
   while (1)
   {
-    /*
-    BSP_LED_Off(LED3);
-    BSP_LED_On(LED1);
-    HAL_Delay(333);
-    BSP_LED_Off(LED1);
-    BSP_LED_On(LED2);
-    HAL_Delay(333);
-    BSP_LED_Off(LED2);
-    BSP_LED_On(LED3);
-    */
-    if(usart3_ready)
-    {
-        BSP_LED_On(LED1);
-        HAL_UART_Transmit(&huart3, rx_buffer, 1, 5);
-        usart3_ready = 0;
-        HAL_UART_Receive_IT(&huart3, rx_buffer, 1);
-    }
+    BSP_LED_Toggle(LED1);
+    process_menu();
+    can_poll();
   }
 }
 
@@ -210,14 +199,11 @@ static void SystemClock_Config(void)
           To do this please uncomment the following code 
 */
  
-  /*  
   __HAL_RCC_CSI_ENABLE() ;
   
   __HAL_RCC_SYSCFG_CLK_ENABLE() ;
   
   HAL_EnableCompensationCell();
-  */ 
-	
 }
 
 /**

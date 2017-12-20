@@ -12,8 +12,8 @@ SRCS=src
 
 PERIPH_ODIR=STM32H7xx_Nucleo_144
 
-_OBJS=startup_stm32h743xx.o main.o system_stm32h7xx.o stm32h7xx_it.o usart.o gpio.o
-_PERIPH_OBJS=stm32h7xx_hal_cortex.o stm32h7xx_hal.o stm32h7xx_hal_rcc.o stm32h7xx_hal_rcc_ex.o stm32h7xx_nucleo_144.o stm32h7xx_hal_gpio.o stm32h7xx_hal_uart_ex.o stm32h7xx_hal_uart.o stm32h7xx_hal_dma.o
+_OBJS=startup_stm32h743xx.o main.o system_stm32h7xx.o stm32h7xx_it.o usart.o gpio.o can.o bsp.o menu.o
+_PERIPH_OBJS=stm32h7xx_hal_cortex.o stm32h7xx_hal.o stm32h7xx_hal_rcc.o stm32h7xx_hal_rcc_ex.o stm32h7xx_nucleo_144.o stm32h7xx_hal_gpio.o stm32h7xx_hal_uart_ex.o stm32h7xx_hal_uart.o stm32h7xx_hal_dma.o stm32h7xx_hal_tim.o stm32h7xx_hal_tim_ex.o
 
 PERIPH_OBJS = $(patsubst %,$(PERIPH_ODIR)/%,$(_PERIPH_OBJS))
 _OBJS += $(PERIPH_OBJS)

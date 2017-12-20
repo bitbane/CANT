@@ -38,13 +38,14 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+#include <string.h>
 #include "usart.h"
 
 #include "gpio.h"
 
 /* USER CODE BEGIN 0 */
-volatile uint8_t usart3_ready = 0;
 uint8_t rx_buffer[RX_BUFFER_SIZE];
+uint8_t rx_counter = 0;
 uint8_t tx_buffer[TX_BUFFER_SIZE];
 
 /* USER CODE END 0 */
@@ -101,6 +102,9 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     /* USART3 interrupt Init */
     HAL_NVIC_SetPriority(USART3_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(USART3_IRQn);
+    
+    /* Enable the RX interrupt */
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
   /* USER CODE BEGIN USART3_MspInit 1 */
 
   /* USER CODE END USART3_MspInit 1 */
@@ -132,18 +136,32 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
   }
 } 
 
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle)
+/* USER CODE BEGIN 1 */
+int __io_putchar(int ch)
 {
-    usart3_ready = 1;
+    /* e.g. write a character to the USART */
+    HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, 5);
+
+    return ch;
 }
 
-/* USER CODE BEGIN 1 */
-void serial_send(uint8_t c)
+/**
+ * @brief This function handles the USART3 IRQ Handler 
+ */
+void USART3_IRQHandler(void)
 {
-    /* Loop for as long as the uart is busy */
-    tx_buffer[0] = c;
-    //HAL_UART_Transmit(&huart3, tx_buffer, 1, 5);
-    HAL_UART_Transmit_IT(&huart3, tx_buffer, 1);
+    if((USART3->ISR & USART_ISR_RXNE) != RESET)
+    {
+        /* Read one byte from the receive data register */
+        rx_buffer[rx_counter] = USART3->RDR & 0x1FF;
+        __io_putchar(rx_buffer[rx_counter++]); /* Echo back */
+
+        if(rx_counter == RX_BUFFER_SIZE)
+        {
+            /* Disable the UART 4 Receive interrupt */
+            CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+        }
+    }
 }
 
 /* USER CODE END 1 */
