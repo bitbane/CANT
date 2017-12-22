@@ -42,9 +42,9 @@ void can_init()
 
     /* Set up the TIM4 peripheral */
     TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
-    TIM_InitStructure.Prescaler = 49; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 250 ns. Note: The prescale value used is the register value + 1 */
+    TIM_InitStructure.Prescaler = 99; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
     TIM_InitStructure.CounterMode = TIM_COUNTERMODE_UP;
-    TIM_InitStructure.Period = 8; /* Start with 2 microseconds, which equates to 500 KBPS */
+    TIM_InitStructure.Period = 4; /* Start with 2 microseconds, which equates to 500 KBPS */
     TIM_Base_SetConfig(TIM4, &TIM_InitStructure);
     timer4_callback_handler = NULL;
 
@@ -63,7 +63,7 @@ void can_poll()
     }
 }
 
-/* Synchronize to the CAN bus. Start sampling at 4x baud rate and make sure we see an end of frame */
+/* Synchronize to the CAN bus. Start sampling at 2x baud rate and make sure we see an end of frame */
 void can_sync()
 {
     TIM4->ARR = can_ticks_per_cycle >> 1;
@@ -89,7 +89,7 @@ void can_sync()
 static void sync_callback(void)
 {
     /* Check to see if we are getting a 1 */
-    if((GPIOD->IDR & 0x1) > 0)
+    if((GPIOB->IDR & GPIO_PIN_12) > 0)
         same_bits_count++;
     else
         same_bits_count = 0;
@@ -115,7 +115,7 @@ static void sync_callback(void)
  */
 static void sample_callback(void)
 {
-    volatile uint8_t bit_read = GPIOD->IDR & 0x01;
+    volatile uint8_t bit_read = (GPIOD->IDR & GPIO_PIN_12) >> 12;
 
 
     /* Check to see if this is a stuff bit */
