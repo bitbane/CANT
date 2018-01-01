@@ -38,7 +38,7 @@ void can_init()
     __HAL_RCC_TIM4_CLK_ENABLE();
 
     /* Set up the TIM4 interrupt */
-    HAL_NVIC_SetPriority(TIM4_IRQn, 1, 1);
+    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TIM4_IRQn);
 
     /* Set up the TIM4 peripheral */
@@ -50,7 +50,7 @@ void can_init()
     timer4_callback_handler = NULL;
 
     /* Set up the EXTI interrupt */
-    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 1, 1);
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
 }
 
 /* Checks to see if we've received a message and prints it out */
@@ -59,8 +59,8 @@ void can_poll()
     if(frame_done)
     {
         frame_done = 0;
-//        printf("Arbid: %lx\r\n", arbid);
-//        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+        printf("Arbid: %lx\r\n", arbid);
+        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
     }
 }
 
@@ -77,7 +77,7 @@ void can_sync()
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-//    printf("Synchronizing CAN bus...\r\n");
+    printf("Synchronizing CAN bus...\r\n");
     while(!synchronized);
 
     // Enable the external interrupt on the RX pin
@@ -85,7 +85,7 @@ void can_sync()
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-//    printf("Done\r\n");
+    printf("Done\r\n");
 }
 
 /* Interrupt callback for synchronizing to the CAN bus */

@@ -83,6 +83,7 @@ int main(void)
 
   HAL_Init();
   BSP_LED_Init(LED1);
+  BSP_LED_Init(LED2);
 
   /* Configure the system clock to 400 MHz */
   SystemClock_Config();
@@ -90,16 +91,14 @@ int main(void)
 
   /* Add your application code here */
   MX_GPIO_Init();
-//  MX_USART3_UART_Init();
+  MX_USART3_UART_Init();
   can_init();
-//  display_menu();
-    setCanBaudrate(500000);
-    can_sync();
+  display_menu();
 
   /* Infinite loop */
   while (1)
   {
-//    process_menu();
+    process_menu();
     can_poll();
   }
 }
