@@ -81,12 +81,8 @@ int main(void)
   /* Enable the CPU Cache */
   CPU_CACHE_Enable();
 
-  /* STM32H7xx HAL library initialization:
-       - Configure the Systick to generate an interrupt each 1 msec
-       - Set NVIC Group Priority to 4
-       - Low Level Initialization
-     */
   HAL_Init();
+  BSP_LED_Init(LED1);
 
   /* Configure the system clock to 400 MHz */
   SystemClock_Config();
@@ -94,19 +90,16 @@ int main(void)
 
   /* Add your application code here */
   MX_GPIO_Init();
-  MX_USART3_UART_Init();
+//  MX_USART3_UART_Init();
   can_init();
-  display_menu();
-
-  BSP_LED_Init(LED1);
-  BSP_LED_Init(LED2);
-  BSP_LED_Init(LED3);
+//  display_menu();
+    setCanBaudrate(500000);
+    can_sync();
 
   /* Infinite loop */
   while (1)
   {
-    BSP_LED_Toggle(LED1);
-    process_menu();
+//    process_menu();
     can_poll();
   }
 }
@@ -204,6 +197,7 @@ static void SystemClock_Config(void)
   __HAL_RCC_SYSCFG_CLK_ENABLE() ;
   
   HAL_EnableCompensationCell();
+
 }
 
 /**

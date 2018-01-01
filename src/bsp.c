@@ -84,7 +84,8 @@ int _read(int file, char *ptr, int len)
     if(rx_counter > len)
     {
         bytes_read = len;
-        memcpy(ptr, rx_buffer, len);
+        for(int i = 0; i < len; i++)
+            ptr[i] = rx_buffer[i];
 
         for(int i = len; i < rx_counter; i++)
         {
@@ -97,7 +98,8 @@ int _read(int file, char *ptr, int len)
     else
     {
         bytes_read = rx_counter;
-        memcpy(ptr, rx_buffer, rx_counter);
+        for(int i = 0; i < rx_counter; i++)
+            ptr[i] = rx_buffer[i];
         rx_counter = 0;
     }
 

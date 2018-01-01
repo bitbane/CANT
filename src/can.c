@@ -27,6 +27,7 @@ static volatile uint8_t msg_len = 0;
 static volatile uint8_t frame_done = 0;
 
 static volatile uint8_t synchronized = 0;
+static volatile uint8_t process_gpio_interrupt = 0;
 
 const uint32_t TIMER_PERIOD_NS = 500;
 
@@ -37,7 +38,7 @@ void can_init()
     __HAL_RCC_TIM4_CLK_ENABLE();
 
     /* Set up the TIM4 interrupt */
-    HAL_NVIC_SetPriority(TIM4_IRQn, 1, 2);
+    HAL_NVIC_SetPriority(TIM4_IRQn, 1, 1);
     HAL_NVIC_EnableIRQ(TIM4_IRQn);
 
     /* Set up the TIM4 peripheral */
@@ -49,7 +50,7 @@ void can_init()
     timer4_callback_handler = NULL;
 
     /* Set up the EXTI interrupt */
-    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 2, 2);
+    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 1, 1);
 }
 
 /* Checks to see if we've received a message and prints it out */
@@ -58,8 +59,8 @@ void can_poll()
     if(frame_done)
     {
         frame_done = 0;
-        printf("Arbid: %lx\r\n", arbid);
-        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+//        printf("Arbid: %lx\r\n", arbid);
+//        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
     }
 }
 
@@ -76,13 +77,15 @@ void can_sync()
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-    printf("Synchronizing CAN bus...\r\n");
+//    printf("Synchronizing CAN bus...\r\n");
     while(!synchronized);
 
     // Enable the external interrupt on the RX pin
+    process_gpio_interrupt = 0; // Don't process the immediate interrupt, though
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-    printf("Done\r\n");
+//    printf("Done\r\n");
 }
 
 /* Interrupt callback for synchronizing to the CAN bus */
@@ -115,7 +118,9 @@ static void sync_callback(void)
  */
 static void sample_callback(void)
 {
-    volatile uint8_t bit_read = (GPIOD->IDR & GPIO_PIN_12) >> 12;
+    uint16_t bit_read = 0;
+    if (GPIOB->IDR & GPIO_PIN_12)
+        bit_read = 1;
 
 
     /* Check to see if this is a stuff bit */
@@ -196,6 +201,7 @@ static void sample_callback(void)
         frame_done = 1;
 
         // Enable the external interrupt on the RX pin
+        process_gpio_interrupt = 0; // Don't process the immediate interrupt, though
         __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
         HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
     }
@@ -213,42 +219,51 @@ void can_timer_stop()
 
 void TIM4_IRQHandler(void)
 {
-    GPIOD->ODR |= GPIO_PIN_4;
+GPIOA->ODR |= GPIO_PIN_15;
     TIM4->SR = ~TIM_IT_UPDATE;
     if(timer4_callback_handler != NULL)
     {
         timer4_callback_handler();
     }
-    GPIOD->ODR &= ~GPIO_PIN_4;
+GPIOA->ODR &= ~GPIO_PIN_15;
 }
 
 void EXTI15_10_IRQHandler(void)
 {
-    GPIOD->ODR |= GPIO_PIN_4;
+GPIOA->ODR |= GPIO_PIN_4;
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn); // Disable EXTI interrupt
 
-    /* Start the timer to start sampling the incoming CAN message */
-    TIM4->ARR = can_ticks_per_cycle;
-    TIM4->CNT = 0;
+    if(process_gpio_interrupt == 1)
+    {
+        HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+        process_gpio_interrupt = 0;
+        /* Start the timer to start sampling the incoming CAN message */
+        TIM4->ARR = can_ticks_per_cycle;
+        TIM4->CNT = 0;
     
-    timer4_callback_handler = sample_callback;
-    same_bits_count = 0;
-    bits_read = 1;
-    last_bit = 0;
-    arbid = 0;
-    msg_byte = 0;
-    extended_arbid = 0;
-    msg_len = 0;
+        timer4_callback_handler = sample_callback;
+        same_bits_count = 0;
+        bits_read = 1;
+        last_bit = 0;
+        arbid = 0;
+        msg_byte = 0;
+        extended_arbid = 0;
+        msg_len = 0;
 
-    TIM4->DIER |= TIM_IT_UPDATE;
-    TIM4->CR1 |= TIM_CR1_CEN;
-    GPIOD->ODR &= ~GPIO_PIN_4;
+        TIM4->DIER |= TIM_IT_UPDATE;
+        TIM4->CR1 |= TIM_CR1_CEN;
+    }
+    else
+    {
+        process_gpio_interrupt = 1;
+    }
+GPIOA->ODR &= ~GPIO_PIN_4;
 }
 
 void setCanBaudrate(long int baud)
 {
     can_baud = baud;
     can_ticks_per_cycle = ((1000000000 / can_baud) / TIMER_PERIOD_NS) - 1;
+    process_gpio_interrupt = 0;
 }
 

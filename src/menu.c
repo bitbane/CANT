@@ -96,7 +96,7 @@ static void showArbids(void)
 }
 
 /**
- * Shows the arbids to act on
+ * Sets the CAN baud rate
  */
 static void setBaudrate(void)
 {

@@ -58,9 +58,8 @@ extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN Private defines */
 #define RX_BUFFER_SIZE 20
 #define TX_BUFFER_SIZE 40
-extern uint8_t rx_buffer[RX_BUFFER_SIZE];
-extern uint8_t rx_counter;
-extern uint8_t tx_buffer[TX_BUFFER_SIZE];
+extern volatile uint8_t rx_buffer[RX_BUFFER_SIZE];
+extern volatile uint8_t rx_counter;
 
 /* USER CODE END Private defines */
 
