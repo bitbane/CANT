@@ -9,7 +9,8 @@ void process_menu();
 
 typedef enum
 {
-    MENU_SET_ARBID = 0,
+    MENU_UNUSED = 0, // strtol interprets an empty string as a 0
+    MENU_SET_ARBID,
     MENU_SHOW_ARBID,
     MENU_SET_BAUD,
     MENU_CHOOSE_ATTACK,

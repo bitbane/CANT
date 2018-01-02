@@ -8,7 +8,8 @@
 #include "can.h"
 
 char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
-    "Set ARBIDS",
+    "", // strtol interprets the empty string as a 0
+    "Set ARBID",
     "Show ARBIDS",
     "Set buadrate",
     "Choose Attack",
@@ -24,11 +25,12 @@ static void chooseAttack();
 
 void display_menu()
 {
-    for(int i = 0; i < MENU_NUM_ITEMS; i++)
+    write_string("? - Help\r\n");
+    for(int i = 1; i < MENU_NUM_ITEMS; i++)
     {
         printf("%d - %s\r\n", i, Menu_Commands_Text[i]);
     }
-    printf("\r\n");
+    write_string("\r\nCANT>");
 }
 
 void process_menu()
@@ -40,12 +42,11 @@ void process_menu()
     if((command_len > 0) && (command[command_len-1] == '\r'))
     {
         command[command_len] = '\0';
-        printf("Command: %s\r\n", command);
-
-        handle_command();
-
+        if(command[0] == '?')
+            display_menu();
+        else
+            handle_command();
         command_len = 0;
-        display_menu();
     }
 
     /* Prevent overflow */
@@ -60,6 +61,8 @@ static void handle_command()
 
     switch(command_num)
     {
+        case MENU_UNUSED:
+            break;
         case MENU_SET_ARBID:
             setArbids();
             break;
@@ -73,10 +76,11 @@ static void handle_command()
             chooseAttack();
             break;
         default:
-            printf("No such command\r\n");
+            write_string("No such command\r\n");
             break;
         
     }
+    write_string("CANT>");
 }
 
 /**
@@ -84,7 +88,22 @@ static void handle_command()
  */
 static void setArbids(void)
 {
-    printf("Unimplemented\r\n");
+    uint8_t read_len = 0;
+    uint8_t command_len = 0;
+
+    write_string("Enter arbid: 0x");
+    while(command_len == 0 || command[command_len - 1] != '\r')
+    {
+        read_len = read(0, &command[command_len], RX_BUFFER_SIZE - command_len);
+        command_len += read_len;
+
+        /* Prevent overflow */
+        if(command_len >= RX_BUFFER_SIZE)
+            command_len = 0;
+    }
+
+    attack_arbid = strtol(command, NULL, 16);
+    printf("Attacking 0x%lx\r\n", attack_arbid);
 }
 
 /**
@@ -92,7 +111,7 @@ static void setArbids(void)
  */
 static void showArbids(void)
 {
-    printf("Unimplemented\r\n");
+    printf("Currently attacking 0x%lx\r\n", attack_arbid);
 }
 
 /**
@@ -104,7 +123,7 @@ static void setBaudrate(void)
     uint8_t command_len = 0;
     long int baud;
 
-    printf("Enter baudrate in BPS\r\n");
+    write_string("Enter baudrate in BPS: ");
     while(command_len == 0 || command[command_len - 1] != '\r')
     {
         read_len = read(0, &command[command_len], RX_BUFFER_SIZE - command_len);

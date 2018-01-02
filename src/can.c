@@ -20,6 +20,7 @@ static volatile uint16_t bits_read = 0;
 static volatile uint8_t last_bit = 0;
 static volatile uint8_t same_bits_count = 0;
 static volatile uint32_t arbid;
+volatile uint32_t attack_arbid = 0;
 static volatile uint16_t msg_byte = 0;
 static volatile uint8_t message[8];
 static volatile uint8_t extended_arbid = 0;
@@ -77,7 +78,7 @@ void can_sync()
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-    printf("Synchronizing CAN bus...\r\n");
+    write_string("Synchronizing CAN bus...");
     while(!synchronized);
 
     // Enable the external interrupt on the RX pin
@@ -85,7 +86,7 @@ void can_sync()
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
-    printf("Done\r\n");
+    write_string("Done\r\n");
 }
 
 /* Interrupt callback for synchronizing to the CAN bus */

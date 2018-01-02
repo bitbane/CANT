@@ -67,6 +67,7 @@ void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 int __io_putchar(int ch);
+void write_string(char *s);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

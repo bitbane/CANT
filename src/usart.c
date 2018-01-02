@@ -144,6 +144,13 @@ int __io_putchar(int ch)
     return ch;
 }
 
+void write_string(char *s)
+{
+    int len = strlen(s);
+    for (int i = 0; i < len; i++)
+        __io_putchar(s[i]);
+}
+
 /**
  * @brief This function handles the USART3 IRQ Handler 
  */
@@ -155,6 +162,8 @@ GPIOA->ODR |= GPIO_PIN_5;
         /* Read one byte from the receive data register */
         rx_buffer[rx_counter] = USART3->RDR & 0x1FF;
         __io_putchar(rx_buffer[rx_counter++]); /* Echo back */
+        if(rx_buffer[rx_counter-1] == '\r')
+            __io_putchar('\n');
 
         if(rx_counter == RX_BUFFER_SIZE)
         {
