@@ -151,6 +151,27 @@ void write_string(char *s)
         __io_putchar(s[i]);
 }
 
+void write_int(uint32_t n)
+{
+    uint8_t leading_zeros = 1;
+    write_string("0x");
+    for(int i = 28; i >= 0; i -= 4)
+    {
+        char c = (n >> i) & 0xF;
+        if (c <= 9)
+            c += 0x30;
+        else
+            c += 55;
+
+        // Skip leading zeros
+        if ((c != '0' && leading_zeros == 1) || (i == 0))
+            leading_zeros = 0;
+
+        if(leading_zeros == 0)
+            __io_putchar(c);
+    }
+}
+
 /**
  * @brief This function handles the USART3 IRQ Handler 
  */
