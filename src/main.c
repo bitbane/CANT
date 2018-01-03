@@ -82,6 +82,7 @@ int main(void)
   CPU_CACHE_Enable();
 
   HAL_Init();
+
   BSP_LED_Init(LED1);
   BSP_LED_Init(LED2);
 
