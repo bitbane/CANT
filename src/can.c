@@ -26,6 +26,7 @@ static volatile uint8_t message[8];
 static volatile uint8_t extended_arbid = 0;
 static volatile uint8_t msg_len = 0;
 static volatile uint8_t frame_done = 0;
+static volatile uint32_t frames_seen = 0;
 
 static volatile uint8_t synchronized = 0;
 
@@ -59,8 +60,17 @@ void can_poll()
     if(frame_done)
     {
         frame_done = 0;
-        printf("Arbid: %lx\r\n", arbid);
-        printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+        //printf("Arbid: %lx\r\n", arbid);
+        //printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+        /* After 128 frames, turn the LED on */
+        if ((frames_seen & 0x000000FF) == 128)
+        {
+            BSP_LED_On(LED2);
+        }
+        else if((frames_seen & 0xFF) == 0)
+        {
+            BSP_LED_Off(LED2);
+        }
     }
 }
 
@@ -200,6 +210,7 @@ static void sample_callback(void)
         can_timer_stop();
         // Enable the external interrupt on the RX pin
         frame_done = 1;
+        frames_seen++;
 
         // Enable the external interrupt on the RX pin
         while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
