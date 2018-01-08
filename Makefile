@@ -34,9 +34,11 @@ flash_and_debug: CANT
 	scripts/flash_and_debug.py
 
 $(ODIR)/startup_stm32h743xx.o: $(SRCS)/startup_stm32h743xx.s
+	@mkdir -p $(@D)
 	$(AS) src/startup_stm32h743xx.s -o $@ $(ASFLAGS)
 
 $(ODIR)/%.o: $(SRCS)/%.c
+	@mkdir -p $(@D)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(ODIR)/$(PERIPH_ODIR)/%.o: $(SRCS)/$(PERIPH_ODIR)/src/%.c
