@@ -138,8 +138,11 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 /* USER CODE BEGIN 1 */
 int __io_putchar(int ch)
 {
-    /* e.g. write a character to the USART */
-    HAL_UART_Transmit(&huart3, (uint8_t*)&ch, 1, 5);
+    /* Wait for previous TX to complete */
+    while((USART3->ISR & UART_FLAG_TXE) == 0);
+
+    /* write a character to the USART */
+    USART3->TDR = (uint8_t)(ch & 0xFF);
 
     return ch;
 }

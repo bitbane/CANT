@@ -15,8 +15,6 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "Choose Attack",
 };
 
-char command[RX_BUFFER_SIZE + 1];
-static uint8_t command_len = 0;
 static void handle_command();
 static void setArbids();
 static void showArbids();
@@ -35,29 +33,32 @@ void display_menu()
 
 void process_menu()
 {
-    uint8_t read_len = read(0, &command[command_len], RX_BUFFER_SIZE - command_len);
-    command_len += read_len;
-
     /* Wait to receive entire command */
-    if((command_len > 0) && (command[command_len-1] == '\r'))
+    if((rx_counter > 0) && (rx_buffer[rx_counter - 1] == '\r'))
     {
-        command[command_len] = '\0';
-        if(command[0] == '?')
+        rx_buffer[rx_counter - 1] = '\0';
+        if(rx_buffer[0] == '?')
+        {
+            /* Disable the interrupt, reset the rx_counter */
+            CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+            rx_counter = 0;
+            SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
             display_menu();
+        }
         else
             handle_command();
-        command_len = 0;
     }
-
-    /* Prevent overflow */
-    if(command_len >= RX_BUFFER_SIZE)
-        command_len = 0;
 }
 
 static void handle_command()
 {
     char *endptr;
-    long int command_num = strtol(command, &endptr, 0);
+    long int command_num = strtol((char *)rx_buffer, &endptr, 0);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
 
     switch(command_num)
     {
@@ -88,22 +89,20 @@ static void handle_command()
  */
 static void setArbids(void)
 {
-    uint8_t read_len = 0;
-    uint8_t cmd_len = 0;
-
     write_string("Enter arbid: 0x");
-    while(cmd_len == 0 || command[cmd_len - 1] != '\r')
-    {
-        read_len = read(0, &command[cmd_len], RX_BUFFER_SIZE - cmd_len);
-        cmd_len += read_len;
 
-        /* Prevent overflow */
-        if(cmd_len >= RX_BUFFER_SIZE)
-            cmd_len = 0;
-    }
+    /* Wait for enter key to be pressed */
+    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
+    rx_buffer[rx_counter - 1] = '\0';
 
-    attack_arbid = strtol(command, NULL, 16);
+    /* Get the entered value and convert to integer */
+    attack_arbid = strtol((char*)rx_buffer, NULL, 16);
     printf("Attacking 0x%lx\r\n", attack_arbid);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
 }
 
 /**
@@ -119,22 +118,23 @@ static void showArbids(void)
  */
 static void setBaudrate(void)
 {
-    uint8_t read_len = 0;
-    uint8_t cmd_len = 0;
     long int baud;
 
     write_string("Enter baudrate in BPS: ");
-    while(cmd_len == 0 || command[cmd_len - 1] != '\r')
-    {
-        read_len = read(0, &command[cmd_len], RX_BUFFER_SIZE - cmd_len);
-        cmd_len += read_len;
 
-        /* Prevent overflow */
-        if(cmd_len >= RX_BUFFER_SIZE)
-            cmd_len = 0;
-    }
+    /* Wait for enter key to be pressed */
+    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
+    rx_buffer[rx_counter - 1] = '\0';
 
-    baud = strtol(command, NULL, 0);
+    /* Get the entered value and convert to integer */
+    baud = strtol((char*)rx_buffer, NULL, 0);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+
+    /* Start the CAN sync */
     setCanBaudrate(baud);
     printf("Baud rate: %ld BPS\r\n", baud);
     can_sync();
