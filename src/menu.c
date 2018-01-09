@@ -16,7 +16,7 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
 };
 
 char command[RX_BUFFER_SIZE + 1];
-uint8_t command_len = 0;
+static uint8_t command_len = 0;
 static void handle_command();
 static void setArbids();
 static void showArbids();
@@ -89,17 +89,17 @@ static void handle_command()
 static void setArbids(void)
 {
     uint8_t read_len = 0;
-    uint8_t command_len = 0;
+    uint8_t cmd_len = 0;
 
     write_string("Enter arbid: 0x");
-    while(command_len == 0 || command[command_len - 1] != '\r')
+    while(cmd_len == 0 || command[cmd_len - 1] != '\r')
     {
-        read_len = read(0, &command[command_len], RX_BUFFER_SIZE - command_len);
-        command_len += read_len;
+        read_len = read(0, &command[cmd_len], RX_BUFFER_SIZE - cmd_len);
+        cmd_len += read_len;
 
         /* Prevent overflow */
-        if(command_len >= RX_BUFFER_SIZE)
-            command_len = 0;
+        if(cmd_len >= RX_BUFFER_SIZE)
+            cmd_len = 0;
     }
 
     attack_arbid = strtol(command, NULL, 16);
@@ -120,18 +120,18 @@ static void showArbids(void)
 static void setBaudrate(void)
 {
     uint8_t read_len = 0;
-    uint8_t command_len = 0;
+    uint8_t cmd_len = 0;
     long int baud;
 
     write_string("Enter baudrate in BPS: ");
-    while(command_len == 0 || command[command_len - 1] != '\r')
+    while(cmd_len == 0 || command[cmd_len - 1] != '\r')
     {
-        read_len = read(0, &command[command_len], RX_BUFFER_SIZE - command_len);
-        command_len += read_len;
+        read_len = read(0, &command[cmd_len], RX_BUFFER_SIZE - cmd_len);
+        cmd_len += read_len;
 
         /* Prevent overflow */
-        if(command_len >= RX_BUFFER_SIZE)
-            command_len = 0;
+        if(cmd_len >= RX_BUFFER_SIZE)
+            cmd_len = 0;
     }
 
     baud = strtol(command, NULL, 0);
