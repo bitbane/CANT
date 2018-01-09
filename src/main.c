@@ -85,6 +85,7 @@ int main(void)
 
   BSP_LED_Init(LED1);
   BSP_LED_Init(LED2);
+  BSP_LED_Init(LED3);
 
   /* Configure the system clock to 400 MHz */
   SystemClock_Config();
@@ -95,7 +96,6 @@ int main(void)
   MX_USART3_UART_Init();
   can_init();
   display_menu();
-
   /* Infinite loop */
   while (1)
   {

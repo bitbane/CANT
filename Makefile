@@ -1,5 +1,5 @@
 CC=arm-none-eabi-gcc
-CFLAGS=-Wall -Wextra -std=c99 -fno-common -Ofast -mthumb -mcpu=cortex-m7 -DSTM32H743xx -g
+CFLAGS=-Wall -Wextra -std=c99 -fno-common -Os -mthumb -mcpu=cortex-m7 -DSTM32H743xx -g
 CFLAGS+=-Isrc -Isrc/STM32H7xx_Nucleo_144
 LD=arm-none-eabi-gcc
 LDFLAGS=-TCANT.ld -nostartfiles -Wl,-Map=build/flash.map -mcpu=cortex-m7 -mthumb
@@ -34,9 +34,11 @@ flash_and_debug: CANT
 	scripts/flash_and_debug.py
 
 $(ODIR)/startup_stm32h743xx.o: $(SRCS)/startup_stm32h743xx.s
+	@mkdir -p $(@D)
 	$(AS) src/startup_stm32h743xx.s -o $@ $(ASFLAGS)
 
 $(ODIR)/%.o: $(SRCS)/%.c
+	@mkdir -p $(@D)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(ODIR)/$(PERIPH_ODIR)/%.o: $(SRCS)/$(PERIPH_ODIR)/src/%.c
