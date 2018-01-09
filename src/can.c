@@ -14,6 +14,7 @@ static void sync_callback(void);
 
 static uint32_t can_baud = 500000;
 static uint32_t can_ticks_per_cycle;
+static uint32_t can_initial_delay;
 
 static TIM_Base_InitTypeDef TIM_InitStructure; 
 static volatile uint16_t bits_read = 0;
@@ -30,7 +31,7 @@ static volatile uint32_t frames_seen = 0;
 
 static volatile uint8_t synchronized = 0;
 
-const uint32_t TIMER_PERIOD_NS = 500;
+const uint32_t TIMER_PERIOD_NS = 50;
 
 /* Start initializing the CAN peripheral */
 void can_init()
@@ -44,9 +45,9 @@ void can_init()
 
     /* Set up the TIM4 peripheral */
     TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
-    TIM_InitStructure.Prescaler = 99; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
+    TIM_InitStructure.Prescaler = 9; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
     TIM_InitStructure.CounterMode = TIM_COUNTERMODE_UP;
-    TIM_InitStructure.Period = 4; /* Start with 2 microseconds, which equates to 500 KBPS */
+    TIM_InitStructure.Period = 2000 / TIMER_PERIOD_NS; /* Start with 2 microseconds, which equates to 500 KBPS */
     TIM_Base_SetConfig(TIM4, &TIM_InitStructure);
     timer4_callback_handler = NULL;
 
@@ -235,6 +236,7 @@ void TIM4_IRQHandler(void)
 {
 GPIOA->ODR |= GPIO_PIN_15;
     TIM4->SR = ~TIM_IT_UPDATE;
+    TIM4->ARR = can_ticks_per_cycle;
     if(timer4_callback_handler != NULL)
     {
         timer4_callback_handler();
@@ -249,7 +251,7 @@ GPIOA->ODR |= GPIO_PIN_4;
 
     HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
     /* Start the timer to start sampling the incoming CAN message */
-    TIM4->ARR = can_ticks_per_cycle;
+    TIM4->ARR = can_ticks_per_cycle + can_initial_delay;
     TIM4->CNT = 0;
 
     timer4_callback_handler = sample_callback;
@@ -263,6 +265,8 @@ GPIOA->ODR |= GPIO_PIN_4;
 
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
+
+    /* Set the ARR back to the correct value */
 GPIOA->ODR &= ~GPIO_PIN_4;
 }
 
@@ -270,5 +274,8 @@ void setCanBaudrate(long int baud)
 {
     can_baud = baud;
     can_ticks_per_cycle = ((1000000000 / can_baud) / TIMER_PERIOD_NS) - 1;
+    /* Calculate the 1/2 cycle delay so that the sampling interrupt happens in the middle of the bit.
+     * It takes appx 500ns to set up the initial interrupt, so we have that delay already */
+    can_initial_delay = (can_ticks_per_cycle >> 1) - (500 / TIMER_PERIOD_NS);
 }
 
