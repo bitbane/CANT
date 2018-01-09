@@ -63,11 +63,7 @@ void can_poll()
         //printf("Arbid: %lx\r\n", arbid);
         //printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
         /* After 128 frames, turn the LED on */
-<<<<<<< HEAD
         if ((frames_seen & 0x000000FF) == 128)
-=======
-        if ((frames_seen & 0x000000FF) == 80)
->>>>>>> 286348d097f341177ac8cf38a544b65b0705d0b1
         {
             BSP_LED_On(LED2);
         }
