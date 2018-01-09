@@ -15,6 +15,7 @@ static void sync_callback(void);
 static uint32_t can_baud = 500000;
 static uint32_t can_ticks_per_cycle;
 static uint32_t can_initial_delay;
+static uint32_t can_edge_interrupt_delay;
 
 static TIM_Base_InitTypeDef TIM_InitStructure; 
 static volatile uint16_t bits_read = 0;
@@ -36,12 +37,15 @@ const uint32_t TIMER_PERIOD_NS = 50;
 /* Start initializing the CAN peripheral */
 void can_init()
 {
-    /* Enable TIM4 clock */
+    /* Enable TIM4 and TIM3 clock */
     __HAL_RCC_TIM4_CLK_ENABLE();
+    __HAL_RCC_TIM3_CLK_ENABLE();
 
-    /* Set up the TIM4 interrupt */
+    /* Set up the TIM4 and TIM3 interrupt */
     HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(TIM4_IRQn);
+    HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(TIM3_IRQn);
 
     /* Set up the TIM4 peripheral */
     TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
@@ -50,6 +54,13 @@ void can_init()
     TIM_InitStructure.Period = 2000 / TIMER_PERIOD_NS; /* Start with 2 microseconds, which equates to 500 KBPS */
     TIM_Base_SetConfig(TIM4, &TIM_InitStructure);
     timer4_callback_handler = NULL;
+
+    /* Set up the TIM3 peripheral */
+    TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+    TIM_InitStructure.Prescaler = 9; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
+    TIM_InitStructure.CounterMode = TIM_COUNTERMODE_UP;
+    TIM_InitStructure.Period = 2000 / TIMER_PERIOD_NS; /* Start with 2 microseconds, which equates to 500 KBPS */
+    TIM_Base_SetConfig(TIM3, &TIM_InitStructure);
 
     /* Set up the EXTI interrupt */
     HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
@@ -227,9 +238,19 @@ void can_timer_stop()
     /* Disable the overflow interrupt and timer */
     TIM4->DIER &= ~TIM_IT_UPDATE;
     TIM4->CR1 &= ~TIM_CR1_CEN;
+    TIM3->DIER &= ~TIM_IT_UPDATE;
+    TIM3->CR1 &= ~TIM_CR1_CEN;
 
     /* Disable the callback */
     timer4_callback_handler = NULL;
+}
+
+void TIM3_IRQHandler(void)
+{
+GPIOA->ODR |= GPIO_PIN_5;
+    TIM3->SR = ~TIM_IT_UPDATE;
+    TIM3->ARR = can_ticks_per_cycle;
+GPIOA->ODR &= ~GPIO_PIN_5;
 }
 
 void TIM4_IRQHandler(void)
@@ -266,6 +287,12 @@ GPIOA->ODR |= GPIO_PIN_4;
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
+    /* Start the timer that fires on each CAN edge */
+    TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
+    TIM3->CNT = 0;
+    TIM3->DIER |= TIM_IT_UPDATE;
+    TIM3->CR1 |= TIM_CR1_CEN;
+
     /* Set the ARR back to the correct value */
 GPIOA->ODR &= ~GPIO_PIN_4;
 }
@@ -274,8 +301,13 @@ void setCanBaudrate(long int baud)
 {
     can_baud = baud;
     can_ticks_per_cycle = ((1000000000 / can_baud) / TIMER_PERIOD_NS) - 1;
+
     /* Calculate the 1/2 cycle delay so that the sampling interrupt happens in the middle of the bit.
      * It takes appx 500ns to set up the initial interrupt, so we have that delay already */
     can_initial_delay = (can_ticks_per_cycle >> 1) - (500 / TIMER_PERIOD_NS);
+
+    /* Edge timer interrupt correction calculation. This compensates for the time the EXTI interrupt takes to fire
+     * for timer 3 that interrupts on each CAN edge, which is about 450 ns */
+    can_edge_interrupt_delay = 450 / TIMER_PERIOD_NS;
 }
 

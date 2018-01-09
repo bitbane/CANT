@@ -180,7 +180,6 @@ void write_int(uint32_t n)
  */
 void USART3_IRQHandler(void)
 {
-GPIOA->ODR |= GPIO_PIN_5;
     if((USART3->ISR & USART_ISR_RXNE) != RESET)
     {
         /* Read one byte from the receive data register */
@@ -195,7 +194,6 @@ GPIOA->ODR |= GPIO_PIN_5;
             CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
         }
     }
-GPIOA->ODR &= ~GPIO_PIN_5;
 }
 
 /* USER CODE END 1 */
