@@ -12,5 +12,9 @@ void can_sync(void);
 void can_timer_stop();
 void setCanBaudrate(long int baud);
 
+/* Attacks */
+void remove_attack();
+void install_arbid_killer();
+
 #endif /* TIMER_H */
 

