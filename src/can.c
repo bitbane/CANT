@@ -42,7 +42,7 @@ const uint32_t TIMER_PERIOD_NS = 50;
 /*
  * CAN CRC functions
  */ 
-inline uint16_t crc_next_bit(uint16_t crc_rg, uint8_t bit)
+uint16_t crc_next_bit(uint16_t crc_rg, uint8_t bit)
 {
     uint8_t crcnxt = bit ^ ((crc_rg >> 14) & 0x1);
     crc_rg <<= 1;
@@ -279,8 +279,8 @@ static void sample_callback(void)
         // Enable the external interrupt on the RX pin
         while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
             __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-        while(NVIC_GetPendingIRQ(EXTI15_10_IRQn) == 1)
-            NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
+        while((NVIC->ISPR[EXTI15_10_IRQn >> 5u] & (1UL << (EXTI15_10_IRQn & 0x1FUL))) != 0UL)
+            NVIC->ICPR[EXTI15_10_IRQn >> 5u] = (1UL << (EXTI15_10_IRQn & 0x1FUL));
         HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
     }
 }
