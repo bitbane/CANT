@@ -39,9 +39,11 @@ static volatile uint8_t tx_bit_count = 0;
 
 const uint32_t TIMER_PERIOD_NS = 50;
 
-/*
- * CAN CRC functions
- */ 
+/**************************************
+ * CAN bitstream creation functions
+ **************************************/ 
+
+/* Calculates the CRC based on the next bit in the message */
 uint16_t crc_next_bit(uint16_t crc_rg, uint8_t bit)
 {
     uint8_t crcnxt = bit ^ ((crc_rg >> 14) & 0x1);
@@ -52,23 +54,150 @@ uint16_t crc_next_bit(uint16_t crc_rg, uint8_t bit)
     return crc_rg;
 }
 
-uint16_t can_crc(uint32_t arbid, uint8_t cntrl, uint8_t size, uint8_t data[])
+/* Calculate the CRC of a CAN message 
+ * arbid is the 11 or 29 bit arbitration id
+ * extended_arbid is 0 for an 11 bit id, non-zero for a 29-bit id
+ * cntrl is the 3 control bits, RTR, IDE and r0
+ * size is the number of data bytes
+ * data[] is an array of the data bytes to send
+ */
+uint16_t can_crc(uint32_t arbid, uint8_t extended_arbid, uint8_t cntrl, uint8_t size, uint8_t data[])
 {
     uint16_t crc_rg = 0;
 
-    for(int i = 11; i >= 0; i--)
-        crc_rg = crc_next_bit(crc_rg, ((arbid >> i) & 0x1));
-    for(int i = 2; i >= 0; i--)
-        crc_rg = crc_next_bit(crc_rg, ((cntrl >> i) & 0x1));
-    for(int i = 3; i >= 0; i--)
-        crc_rg = crc_next_bit(crc_rg, ((size >> i) & 0x1));
-    for(int i = 0; i < size; i++)
-        for(int j = 7; j >= 0; j--)
-            crc_rg = crc_next_bit(crc_rg, ((data[i] >> j) & 0x1));
+    if(extended_arbid == 0)
+    {
+        for(int i = 11; i >= 0; i--)
+            crc_rg = crc_next_bit(crc_rg, ((arbid >> i) & 0x1));
+        for(int i = 2; i >= 0; i--)
+            crc_rg = crc_next_bit(crc_rg, ((cntrl >> i) & 0x1));
+        for(int i = 3; i >= 0; i--)
+            crc_rg = crc_next_bit(crc_rg, ((size >> i) & 0x1));
+        for(int i = 0; i < size; i++)
+            for(int j = 7; j >= 0; j--)
+                crc_rg = crc_next_bit(crc_rg, ((data[i] >> j) & 0x1));
+    }
+    else
+    {
+        printf("Extended Arbitration ID not yet supported");
+    }
 
     return crc_rg & 0x7FFF;
 }
 
+
+/* Create a CAN bitstream based on the supplied information, place the resulting bitstream
+ * in the supplied buffer. Caller ensures buffer is large enough. The resulting bitstream is
+ * not bit stuffed
+ *
+ * arbid is the 11 or 29 bit arbitration id
+ * extended_arbid is 0 for an 11 bit id, non-zero for a 29-bit id
+ * cntrl is the 3 control bits, RTR, IDE and r0
+ * size is the number of data bytes
+ * data[] is an array of the data bytes to send
+ * crc is the CRC to use, if calculate_crc is 0. If calculate_crc is non-zero the CRC will be calculated
+ * out is the output buffer that the bitstream is placed into
+ */
+void create_can_bitstream(uint32_t arbid, uint8_t extended_arbid, uint8_t cntrl, uint8_t size, uint8_t data[], uint16_t crc, uint8_t calculate_crc, uint8_t *out)
+{
+    if(extended_arbid == 0)
+    {
+        /* Place the arbid */
+        out[0] = arbid >> 4; // Take the upper 7 bits of the 11-bit arbid, the first bit is the stop bit
+        out[1] = (arbid << 4) | ((cntrl & 0x7) << 1) | ((size >> 3) & 0x1); // Take the last 4 bits of the arbid, the 3 control bits, and the first bit of size
+        out[2] = (size << 5); // Take the rest of size
+
+        /* Place the data */
+        for(int i = 0; i < size; i++)
+        {
+            out[i+2] |= data[i] >> 3;
+            out[i+3] = data[i] << 5;
+        }
+
+        /* Calculate the CRC if requested */
+        if(calculate_crc > 0)
+            crc = can_crc(arbid, extended_arbid, cntrl, size, data);
+
+        /* Place the CRC */
+        out[2+size] |= (crc >> 10); // Grab upper 5 bits of CRC
+        out[3+size] = (crc >> 2) & 0xFF; // Grab the next 8 bits of the CRC
+        out[4+size] = (crc << 6); // And the last 2 bits of the CRC
+        out[4+size] |= 0b00111000; // CRC delimiter, ack frame, and ack delimiter
+    }
+    else
+    {
+        printf("Extended Arbitration ID not yet supported");
+    }
+}
+
+/* Performs bit stuffing on the supplied data. Remember that the CRC delimiter, ACK slot, and ACK delimiter are not bit
+ * stuffed so consider that when giving this function data to stuff. Also recall that giving this function partial data
+ * will result in improper bit stuffing since we won't know what the previous bits are. Also, ensure that *out is large enough,
+ * since bit stuffing could theoretically increase data size by up to 25%
+ *
+ * return value is the number of bits in *out
+ *
+ * This is also simple, but probably not very efficient. Use it to pre-calculate, probably don't want to call it from an interrupt
+ */
+uint32_t stuff_data(uint8_t * in, uint8_t *out, uint8_t num_bits)
+{
+    /* Track byte and bit positions */
+    uint8_t num_bytes = num_bits >> 3;
+    uint8_t extra_bits = num_bits - (num_bytes * 8);
+    uint8_t out_byte = 0;
+    uint8_t out_bit = 7;
+    
+    uint8_t last_bit = 2; // Ensure that the first bit does not match the last_bit, regardless if it's a 0 or 1
+    uint8_t consecutive_bit_count = 0;
+    out[0] = 0; // Zero the first output byte
+
+    for(int i = 0; i <= num_bytes; i++)
+    {
+        for(int j = 7; j >= 0; j--)
+        {
+            /* We may not be processing the entirety of the last byte */
+            if((i == num_bytes) && (j == (7 - extra_bits)))
+                break;
+
+            uint8_t bit = (in[i] >> j) & 0x1; // Get the next bit
+
+            if(bit == last_bit)
+                consecutive_bit_count++;
+            else
+                consecutive_bit_count = 1;
+            last_bit = bit;
+
+
+            // Place the bit in the output bitstream
+            out[out_byte] |= bit << out_bit;
+            out_bit--;
+            if(out_bit == 255)
+            {
+                out_byte++;
+                out_bit = 7;
+                out[out_byte] = 0;
+            }
+
+            // Do I need a stuff bit?
+            if(consecutive_bit_count == 5)
+            {
+                out[out_byte] |= (bit ^ 0x1) << out_bit;
+                out_bit--;
+                if(out_bit == 255)
+                {
+                    out_byte++;
+                    out_bit = 7;
+                    out[out_byte] = 0;
+                }
+                consecutive_bit_count = 1; // The stuff bit counts toward stuff bit counting
+                last_bit = (bit ^ 0x1);
+            }
+
+        }
+    }
+
+    return (out_byte * 8) + (7 - out_bit);
+}
 
 /* Start initializing the CAN peripheral 
  * 
