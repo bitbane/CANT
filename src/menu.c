@@ -18,6 +18,7 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
 char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
     "",
     "Bus Killer - constantly transmit arbid 0",
+    "Data Replacer - replace the data sent with the configured arbid with the supplied data"
 };
 
 static void handle_command();
@@ -28,7 +29,7 @@ static void chooseAttack();
 
 void display_menu()
 {
-    write_string("? - Help\r\n");
+    write_string("\r\n? - Help\r\n");
     for(int i = 1; i < MENU_NUM_ITEMS; i++)
     {
         printf("%d - %s\r\n", i, Menu_Commands_Text[i]);
@@ -95,19 +96,8 @@ static void handle_command()
 static void setArbids(void)
 {
     write_string("Enter arbid: 0x");
-
-    /* Wait for enter key to be pressed */
-    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
-    rx_buffer[rx_counter - 1] = '\0';
-
-    /* Get the entered value and convert to integer */
-    attack_arbid = strtol((char*)rx_buffer, NULL, 16);
+    attack_arbid = read_hex();
     printf("Attacking 0x%lx\r\n", attack_arbid);
-
-    /* Disable the interrupt, reset the rx_counter */
-    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
-    rx_counter = 0;
-    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
 }
 
 /**
@@ -126,18 +116,7 @@ static void setBaudrate(void)
     long int baud;
 
     write_string("Enter baudrate in BPS: ");
-
-    /* Wait for enter key to be pressed */
-    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
-    rx_buffer[rx_counter - 1] = '\0';
-
-    /* Get the entered value and convert to integer */
-    baud = strtol((char*)rx_buffer, NULL, 0);
-
-    /* Disable the interrupt, reset the rx_counter */
-    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
-    rx_counter = 0;
-    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    baud = read_int();
 
     /* Start the CAN sync */
     setCanBaudrate(baud);
@@ -158,17 +137,7 @@ static void chooseAttack(void)
     }
     write_string("\r\nCANT ATTACK>");
 
-    /* Wait to receive entire command */
-    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
-
-    rx_buffer[rx_counter - 1] = '\0';
-
-    command_num = strtol((char *)rx_buffer, NULL, 0);
-
-    /* Disable the interrupt, reset the rx_counter */
-    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
-    rx_counter = 0;
-    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    command_num = read_int();
 
     switch(command_num)
     {
@@ -176,7 +145,11 @@ static void chooseAttack(void)
             break;
         case ATTACK_BUS_KILLER:
             install_arbid_killer();
-            printf("Installing bus killer\r\n");
+            write_string("Installing bus killer\r\n");
+            break;
+        case ATTACK_DATA_REPLACER:
+            install_data_replacer();
+            write_string("Installing data replacer\r\n");
             break;
         default:
             write_string("No such Attack\r\n");

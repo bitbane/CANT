@@ -39,6 +39,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include <string.h>
+#include <stdlib.h>
 #include "usart.h"
 
 #include "gpio.h"
@@ -157,7 +158,6 @@ void write_string(char *s)
 void write_int(uint32_t n)
 {
     uint8_t leading_zeros = 1;
-    write_string("0x");
     for(int i = 28; i >= 0; i -= 4)
     {
         char c = (n >> i) & 0xF;
@@ -173,6 +173,46 @@ void write_int(uint32_t n)
         if(leading_zeros == 0)
             __io_putchar(c);
     }
+}
+
+/* Blocks until user enters a value, then returns that value */
+long read_int()
+{
+    long value;
+
+    /* Wait for enter key to be pressed */
+    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
+    rx_buffer[rx_counter - 1] = '\0';
+
+    /* Get the entered value and convert to integer */
+    value = strtol((char*)rx_buffer, NULL, 0);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+
+    return value;
+}
+
+/* Blocks until user enters a value, then returns that value */
+long read_hex()
+{
+    long value;
+
+    /* Wait for enter key to be pressed */
+    while((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'));
+    rx_buffer[rx_counter - 1] = '\0';
+
+    /* Get the entered value and convert to integer */
+    value = strtol((char*)rx_buffer, NULL, 16);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+
+    return value;
 }
 
 /**

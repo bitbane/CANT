@@ -69,6 +69,8 @@ void MX_USART3_UART_Init(void);
 int __io_putchar(int ch);
 void write_string(char *s);
 void write_int(uint32_t n);
+long read_int();
+long read_hex();
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
