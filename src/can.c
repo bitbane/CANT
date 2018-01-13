@@ -242,9 +242,16 @@ void can_poll()
     if(frame_done)
     {
         frame_done = 0;
-        //printf("Arbid: %lx\r\n", arbid);
-        //printf("Msg: %x %x %x %x %x %x %x %x\r\n", message[0], message[1], message[2], message[3], message[4], message[5], message[6], message[7]);
-        //printf("CRC: %lx\r\n", can_rx_crc);
+#ifdef DEBUG_PRINT
+        printf("Arbid: %lx\r\n", arbid);
+        write_string("Msg: ");
+        for(int i = 0; i < msg_len; i++)
+        {
+            write_int(message[i]);
+            write_string(" ");
+        }
+        printf("\r\nCRC: %lx\r\n", can_rx_crc);
+#endif
         /* After 128 frames, turn the LED on */
         if ((frames_seen & 0x000000FF) == 128)
         {
@@ -319,7 +326,12 @@ static void sample_callback(void)
 
     /* Check to see if this is a stuff bit */
     if (same_bits_count >= 5) /* This is a stuff bit */
-        same_bits_count = 0;
+    {
+        // But don't forget that stuff bits count for the 5 same levels in a row
+        same_bits_count = 1;
+        last_bit = bit_read;
+    }
+        
     else /* Not a stuff bit */
     {
         bits_read++;
@@ -364,6 +376,12 @@ static void sample_callback(void)
             {
                 can_rx_crc <<= 1;
                 can_rx_crc |= bit_read;
+
+                if(bits_read == (34 + (8 * msg_len))) // Last bit of the CRC
+                {
+                    /* There is no bit stuffing for the CRC delimiter, ACK slot, or ACK delimiter */
+                    same_bits_count = 0;
+                }
             }
         }
         else if (bits_read > 14)
@@ -392,11 +410,15 @@ static void sample_callback(void)
             {
                 can_rx_crc <<= 1;
                 can_rx_crc |= bit_read;
+                if(bits_read == (54 + (8 * msg_len))) // Last bit of the CRC
+                {
+                    /* There is no bit stuffing for the CRC delimiter, ACK slot, or ACK delimiter */
+                    same_bits_count = 0;
+                }
             }
         }
     }
-    /* Currently skipping the last 18 bits of CRC and ACKS */
-
+    /* Currently skipping the last 3 bits of CRC Delimiter and ACK slots */
     if((extended_arbid == 0 && bits_read >= (20 + 18 + (8 * msg_len))) ||
        (extended_arbid == 1 && bits_read >= (40 + 18 + (8 * msg_len))))
     {
