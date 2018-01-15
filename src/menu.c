@@ -18,7 +18,8 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
 char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
     "",
     "Bus Killer - constantly transmit arbid 0",
-    "Data Replacer - replace the data sent with the configured arbid with the supplied data"
+    "Data Replacer - replace the data sent with the configured arbid with the supplied data",
+    "Overload Inserter - Send specified number of overload frames after each message"
 };
 
 static void handle_command();
@@ -150,6 +151,10 @@ static void chooseAttack(void)
         case ATTACK_DATA_REPLACER:
             install_data_replacer();
             write_string("Installing data replacer\r\n");
+            break;
+        case ATTACK_OVERLOAD_FRAMES:
+            install_overload_frame();
+            write_string("Installing the overload attack\r\n");
             break;
         default:
             write_string("No such Attack\r\n");

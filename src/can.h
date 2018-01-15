@@ -16,6 +16,7 @@ void setCanBaudrate(long int baud);
 void remove_attack();
 void install_arbid_killer();
 void install_data_replacer();
+void install_overload_frame();
 
 #endif /* TIMER_H */
 

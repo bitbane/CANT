@@ -22,6 +22,7 @@ typedef enum
     ATTACK_UNUSED = 0, // strtol interprets an empty string as a 0
     ATTACK_BUS_KILLER,
     ATTACK_DATA_REPLACER,
+    ATTACK_OVERLOAD_FRAMES,
     ATTACK_NUM_ITEMS,
 } Attack_Commands_T;
 

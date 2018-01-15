@@ -11,6 +11,7 @@
 
 void (*timer4_callback_handler)(void) = NULL;
 void (*timer3_callback_handler)(void) = NULL;
+void (*end_of_frame_callback)(void) = NULL;
 static void sync_callback(void);
 static void arbid_killer(void);
 
@@ -41,6 +42,11 @@ static uint8_t data_replacer_len = 0;
 static uint8_t data_replacer_len_bits = 0;
 static uint8_t data_replacer_data[8];
 static uint16_t data_replacer_crc;
+
+static uint32_t overload_frame_count = 0;
+static volatile uint32_t overload_frames_sent = 0;
+static volatile uint32_t overload_frame_bit_counter = 0;
+static volatile uint32_t overload_frame_first_recessive_bit = 0;
 
 const uint32_t TIMER_PERIOD_NS = 50;
 
@@ -328,7 +334,6 @@ static void sample_callback(void)
     if (GPIOB->IDR & GPIO_PIN_12)
         bit_read = 1;
 
-
     /* Check to see if this is a stuff bit */
     if (same_bits_count >= 5) /* This is a stuff bit */
     {
@@ -424,8 +429,8 @@ static void sample_callback(void)
         }
     }
     /* Currently skipping the last 3 bits of CRC Delimiter and ACK slots */
-    if((extended_arbid == 0 && bits_read >= (20 + 18 + (8 * msg_len))) ||
-       (extended_arbid == 1 && bits_read >= (40 + 18 + (8 * msg_len))))
+    if((extended_arbid == 0 && bits_read >= (20 + 17 + (8 * msg_len))) ||
+       (extended_arbid == 1 && bits_read >= (40 + 17 + (8 * msg_len))))
     {
         can_timer_stop();
         // Enable the external interrupt on the RX pin
@@ -438,6 +443,9 @@ static void sample_callback(void)
         while((NVIC->ISPR[EXTI15_10_IRQn >> 5u] & (1UL << (EXTI15_10_IRQn & 0x1FUL))) != 0UL)
             NVIC->ICPR[EXTI15_10_IRQn >> 5u] = (1UL << (EXTI15_10_IRQn & 0x1FUL));
         HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+        if(end_of_frame_callback != NULL)
+            end_of_frame_callback();
     }
 }
 
@@ -446,8 +454,6 @@ void can_timer_stop()
     /* Disable the overflow interrupt and timer */
     TIM4->DIER &= ~TIM_IT_UPDATE;
     TIM4->CR1 &= ~TIM_CR1_CEN;
-    TIM3->DIER &= ~TIM_IT_UPDATE;
-    TIM3->CR1 &= ~TIM_CR1_CEN;
 
     /* Disable the callback */
     timer4_callback_handler = NULL;
@@ -500,7 +506,10 @@ GPIOA->ODR |= GPIO_PIN_4;
     TIM4->CR1 |= TIM_CR1_CEN;
 
     /* Start the timer that fires on each CAN edge */
+    TIM3->CR1 &= ~TIM_CR1_CEN;
     TIM3->SR = ~TIM_IT_UPDATE;
+    TIM3->DIER &= ~TIM_IT_UPDATE;
+    NVIC_ClearPendingIRQ(TIM3_IRQn);
     TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
     TIM3->CNT = 0;
     TIM3->DIER |= TIM_IT_UPDATE;
@@ -675,4 +684,63 @@ void install_data_replacer()
     timer3_callback_handler = data_replacer;
 }
 
+void overload_frame()
+{
+    overload_frame_bit_counter++;
+
+    /* Wait for the end of frame bits, then send six dominant bits */
+    if (overload_frame_bit_counter > 7 && overload_frame_bit_counter < 14)
+    {
+        GPIOB->ODR &= ~GPIO_PIN_13;
+    }
+    /* Wait for the first recessive bit we see */
+    else if (overload_frame_bit_counter >= 14 && overload_frame_first_recessive_bit == 0)
+    {
+        GPIOB->ODR |= GPIO_PIN_13; // Transmit a recessive ourselves
+        if (GPIOB->IDR & GPIO_PIN_12)
+            overload_frame_first_recessive_bit = overload_frame_bit_counter;
+    }
+    /* Wait for 8 recessive bits to be transmitted */
+    else if ((overload_frame_first_recessive_bit > 0) && 
+             (overload_frame_bit_counter >= overload_frame_first_recessive_bit + 6))
+    {
+        /* Reset if we are sending more frames */
+        overload_frames_sent++;
+        if(overload_frames_sent < overload_frame_count)
+        {
+            overload_frame_bit_counter = 7; // We won't see the 7 EOF bits again 
+            overload_frame_first_recessive_bit = 0;
+        }
+        /* Uninstall ourselves if we are done */
+        else
+        {
+            // Enable the external interrupt on the RX pin
+            while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
+                __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
+            while((NVIC->ISPR[EXTI15_10_IRQn >> 5u] & (1UL << (EXTI15_10_IRQn & 0x1FUL))) != 0UL)
+                NVIC->ICPR[EXTI15_10_IRQn >> 5u] = (1UL << (EXTI15_10_IRQn & 0x1FUL));
+            HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+            timer3_callback_handler = NULL;
+        }
+    }
+}
+
+void overload_frame_eof()
+{
+    // Disable the external interrupt on the RX pin
+    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+
+    overload_frame_bit_counter = 0;
+    overload_frames_sent = 0;
+    overload_frame_first_recessive_bit = 0;
+    timer3_callback_handler = overload_frame;
+}
+
+void install_overload_frame()
+{
+    end_of_frame_callback = overload_frame_eof;
+    write_string("Number of overload frames: ");
+    overload_frame_count = read_int();
+}
 
