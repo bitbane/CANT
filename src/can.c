@@ -335,11 +335,18 @@ static void sample_callback(void)
         bit_read = 1;
 
     /* Check to see if this is a stuff bit */
-    if (same_bits_count >= 5) /* This is a stuff bit */
+    if (same_bits_count >= 5) /* This is a stuff bit or an error frame */
     {
-        // But don't forget that stuff bits count for the 5 same levels in a row
-        same_bits_count = 1;
-        last_bit = bit_read;
+        if(bit_read == last_bit) // If we're reading the same bit a 6th time, this is an error frame
+        {
+            bits_read = 255; // This will effectively end the processing for this message and we will start over with the next one
+        }
+        else // Different bit level is for a stuff bit
+        {
+            // But don't forget that stuff bits count for the 5 same levels in a row
+            same_bits_count = 1;
+            last_bit = bit_read;
+        }
     }
         
     else /* Not a stuff bit */
@@ -436,7 +443,10 @@ static void sample_callback(void)
         // Enable the external interrupt on the RX pin
         frame_done = 1;
         frames_seen++;
-
+        same_bits_count = 1;
+        bits_read = 1;
+        last_bit = 0;
+ 
         // Enable the external interrupt on the RX pin
         while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
             __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
@@ -461,12 +471,10 @@ void can_timer_stop()
 
 void TIM3_IRQHandler(void)
 {
-GPIOA->ODR |= GPIO_PIN_5;
     TIM3->SR = ~TIM_IT_UPDATE;
     TIM3->ARR = can_ticks_per_cycle;
     if(timer3_callback_handler != NULL)
         timer3_callback_handler();
-GPIOA->ODR &= ~GPIO_PIN_5;
 }
 
 void TIM4_IRQHandler(void)
@@ -492,9 +500,6 @@ GPIOA->ODR |= GPIO_PIN_4;
     TIM4->CNT = 0;
 
     timer4_callback_handler = sample_callback;
-    same_bits_count = 1;
-    bits_read = 1;
-    last_bit = 0;
     arbid = 0;
     can_rx_crc = 0;
     msg_byte = 0;
@@ -622,7 +627,9 @@ static void data_replacer()
         /* Let the current transmitter send the RTR, IDE and reserved bits, then take over at the DLC */
         else if(bits_read >= 15 && bits_read <= 18)
         {
+GPIOA->ODR |= GPIO_PIN_5;
             bit = (data_replacer_len >> (18 - bits_read)) & 0x1;
+GPIOA->ODR &= ~GPIO_PIN_5;
         }
         /* Send the data */
         else if((bits_read >= 19) && (bits_read < (19 + data_replacer_len_bits)))
