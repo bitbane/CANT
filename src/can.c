@@ -696,12 +696,12 @@ void overload_frame()
     overload_frame_bit_counter++;
 
     /* Wait for the end of frame bits, then send six dominant bits */
-    if (overload_frame_bit_counter > 7 && overload_frame_bit_counter < 14)
+    if (overload_frame_bit_counter > 8 && overload_frame_bit_counter < 15)
     {
         GPIOB->ODR &= ~GPIO_PIN_13;
     }
     /* Wait for the first recessive bit we see */
-    else if (overload_frame_bit_counter >= 14 && overload_frame_first_recessive_bit == 0)
+    else if (overload_frame_bit_counter >= 15 && overload_frame_first_recessive_bit == 0)
     {
         GPIOB->ODR |= GPIO_PIN_13; // Transmit a recessive ourselves
         if (GPIOB->IDR & GPIO_PIN_12)
@@ -746,8 +746,8 @@ void overload_frame_eof()
 
 void install_overload_frame()
 {
-    end_of_frame_callback = overload_frame_eof;
     write_string("Number of overload frames: ");
     overload_frame_count = read_int();
+    end_of_frame_callback = overload_frame_eof;
 }
 
