@@ -8,7 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
-#include "serial.h"
+#include "usart.h"
 
 extern unsigned int _heap_bottom;
 extern unsigned int _heap_top;
@@ -78,31 +78,33 @@ int _read(int file, char *ptr, int len)
 {
     int bytes_read = 0;
     /* Disable the UART interrupt */
-    USART_ITConfig(UART4, USART_IT_RXNE, DISABLE);
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
     
     /* Handle the case where we are reading fewer bytes than we have received */
-    if(Rx_Counter > len)
+    if(rx_counter > len)
     {
         bytes_read = len;
-        memcpy(ptr, Rx_Buffer, len);
+        for(int i = 0; i < len; i++)
+            ptr[i] = rx_buffer[i];
 
-        for(int i = len; i < Rx_Counter; i++)
+        for(int i = len; i < rx_counter; i++)
         {
-            Rx_Buffer[i - len] = Rx_Buffer[i];
+            rx_buffer[i - len] = rx_buffer[i];
         }
 
-        Rx_Counter -= len;
+        rx_counter -= len;
     }
     /* We are reading all of the bytes in the Rx_Buffer */
     else
     {
-        bytes_read = Rx_Counter;
-        memcpy(ptr, Rx_Buffer, Rx_Counter);
-        Rx_Counter = 0;
+        bytes_read = rx_counter;
+        for(int i = 0; i < rx_counter; i++)
+            ptr[i] = rx_buffer[i];
+        rx_counter = 0;
     }
 
     /* Enable the UART interrupt */
-    USART_ITConfig(UART4, USART_IT_RXNE, ENABLE);
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
     (void)&file;
     return bytes_read;
 }

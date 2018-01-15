@@ -1,22 +1,27 @@
-#include "stm32f4xx.h"
+#include "stm32h7xx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
-#include "serial.h"
+#include "usart.h"
 #include "menu.h"
-#include "timer.h"
 #include "can.h"
 
 char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
-    "Set ARBIDS",
+    "", // strtol interprets the empty string as a 0
+    "Set ARBID",
     "Show ARBIDS",
     "Set buadrate",
     "Choose Attack",
 };
 
-char command[RXBUFFERSIZE + 1];
-uint8_t command_len = 0;
+char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
+    "",
+    "Bus Killer - constantly transmit arbid 0",
+    "Data Replacer - replace the data sent with the configured arbid with the supplied data",
+    "Overload Inserter - Send specified number of overload frames after each message"
+};
+
 static void handle_command();
 static void setArbids();
 static void showArbids();
@@ -25,42 +30,47 @@ static void chooseAttack();
 
 void display_menu()
 {
-    for(int i = 0; i < MENU_NUM_ITEMS; i++)
+    write_string("\r\n? - Help\r\n");
+    for(int i = 1; i < MENU_NUM_ITEMS; i++)
     {
         printf("%d - %s\r\n", i, Menu_Commands_Text[i]);
     }
-    printf("\r\n");
+    write_string("\r\nCANT>");
 }
 
 void process_menu()
 {
-    uint8_t read_len = read(0, &command[command_len], RXBUFFERSIZE - command_len);
-    command_len += read_len;
-
     /* Wait to receive entire command */
-    if((command_len > 0) && (command[command_len-1] == '\r'))
+    if((rx_counter > 0) && (rx_buffer[rx_counter - 1] == '\r'))
     {
-        command[command_len] = '\0';
-        printf("Command: %s\r\n", command);
-
-        handle_command();
-
-        command_len = 0;
-        display_menu();
+        rx_buffer[rx_counter - 1] = '\0';
+        if(rx_buffer[0] == '?')
+        {
+            /* Disable the interrupt, reset the rx_counter */
+            CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+            rx_counter = 0;
+            SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
+            display_menu();
+        }
+        else
+            handle_command();
     }
-
-    /* Prevent overflow */
-    if(command_len >= RXBUFFERSIZE)
-        command_len = 0;
 }
 
 static void handle_command()
 {
     char *endptr;
-    long int command_num = strtol(command, &endptr, 0);
+    long int command_num = strtol((char *)rx_buffer, &endptr, 0);
+
+    /* Disable the interrupt, reset the rx_counter */
+    CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
+    rx_counter = 0;
+    SET_BIT(USART3->CR1, USART_CR1_RXNEIE);
 
     switch(command_num)
     {
+        case MENU_UNUSED:
+            break;
         case MENU_SET_ARBID:
             setArbids();
             break;
@@ -74,10 +84,11 @@ static void handle_command()
             chooseAttack();
             break;
         default:
-            printf("No such command\r\n");
+            write_string("No such command\r\n");
             break;
         
     }
+    write_string("CANT>");
 }
 
 /**
@@ -85,7 +96,9 @@ static void handle_command()
  */
 static void setArbids(void)
 {
-    printf("Unimplemented\r\n");
+    write_string("Enter arbid: 0x");
+    attack_arbid = read_hex();
+    printf("Attacking 0x%lx\r\n", attack_arbid);
 }
 
 /**
@@ -93,30 +106,20 @@ static void setArbids(void)
  */
 static void showArbids(void)
 {
-    printf("Unimplemented\r\n");
+    printf("Currently attacking 0x%lx\r\n", attack_arbid);
 }
 
 /**
- * Shows the arbids to act on
+ * Sets the CAN baud rate
  */
 static void setBaudrate(void)
 {
-    uint8_t read_len = 0;
-    uint8_t command_len = 0;
     long int baud;
 
-    printf("Enter baudrate in BPS\r\n");
-    while(command_len == 0 || command[command_len - 1] != '\r')
-    {
-        read_len = read(0, &command[command_len], RXBUFFERSIZE - command_len);
-        command_len += read_len;
+    write_string("Enter baudrate in BPS: ");
+    baud = read_int();
 
-        /* Prevent overflow */
-        if(command_len >= RXBUFFERSIZE)
-            command_len = 0;
-    }
-
-    baud = strtol(command, NULL, 0);
+    /* Start the CAN sync */
     setCanBaudrate(baud);
     printf("Baud rate: %ld BPS\r\n", baud);
     can_sync();
@@ -127,6 +130,36 @@ static void setBaudrate(void)
  */
 static void chooseAttack(void)
 {
-    printf("Unimplemented\r\n");
+    long int command_num;
+    remove_attack();
+    for(int i = 1; i < ATTACK_NUM_ITEMS; i++)
+    {
+        printf("%d - %s\r\n", i, Attack_Commands_Text[i]);
+    }
+    write_string("\r\nCANT ATTACK>");
+
+    command_num = read_int();
+
+    switch(command_num)
+    {
+        case ATTACK_UNUSED:
+            break;
+        case ATTACK_BUS_KILLER:
+            install_arbid_killer();
+            write_string("Installing bus killer\r\n");
+            break;
+        case ATTACK_DATA_REPLACER:
+            install_data_replacer();
+            write_string("Installing data replacer\r\n");
+            break;
+        case ATTACK_OVERLOAD_FRAMES:
+            install_overload_frame();
+            write_string("Installing the overload attack\r\n");
+            break;
+        default:
+            write_string("No such Attack\r\n");
+            break;
+    }
 }
+
 

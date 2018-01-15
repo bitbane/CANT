@@ -29,7 +29,7 @@ def signal_handler(signal, frame):
 # spawns. The child inherits the current state of signal 
 # handlers.
 signal.signal(signal.SIGINT, signal.SIG_IGN)
-openocd = subprocess.Popen(["openocd", "-f", "board/stm32f4discovery.cfg"])
+openocd = subprocess.Popen(["openocd", "-f", "board/st_nucleo_h743zi.cfg"])
 time.sleep(2) # Wait for this to start up
 
 # Set up a custom signal handler so that SIGINT doesn't kill
