@@ -46,6 +46,12 @@ Presumably support will be added in the next release of openocd. In order to fla
 make flash_prebuilt
 ```
 
+### LEDs
+The green LED (LED1) flashes at a rate of 1hz. The blue LED (LED2) changes state for every 128 CAN frames
+that CANT has received. This is handy for ensuring that the CAN bus isn't dead and that CANT is properly
+configured.
+
+
 ## Developing with CANT
 
 To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
