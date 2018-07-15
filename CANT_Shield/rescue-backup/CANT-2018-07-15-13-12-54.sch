@@ -1,6 +1,40 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:CANT-rescue
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:KICAD-OPEN-LIBS
 LIBS:CANT-cache
-EELAYER 26 0
+EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
@@ -15,7 +49,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L CANT-rescue:Conn_02x10_Odd_Even CN7
+L Conn_02x10_Odd_Even CN7
 U 1 1 5A7C7299
 P 7000 2600
 F 0 "CN7" H 7050 3100 50  0000 C CNN
@@ -26,7 +60,7 @@ F 3 "" H 7000 2600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:Conn_02x08_Odd_Even-RESCUE-CANT CN8
+L Conn_02x08_Odd_Even-RESCUE-CANT CN8
 U 1 1 5A7C7372
 P 1550 2850
 F 0 "CN8" H 1600 3250 50  0000 C CNN
@@ -37,7 +71,7 @@ F 3 "" H 1550 2850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:SN65HVD232 U1
+L SN65HVD232 U1
 U 1 1 5A7C753C
 P 3350 2550
 F 0 "U1" H 3250 2950 50  0000 R CNN
@@ -49,7 +83,7 @@ F 3 "" H 3250 2950 50  0001 C CNN
 $EndComp
 NoConn ~ 1350 2550
 $Comp
-L CANT-rescue:VCC #PWR01
+L VCC #PWR01
 U 1 1 5A7C7FEA
 P 3350 1650
 F 0 "#PWR01" H 3350 1500 50  0001 C CNN
@@ -60,7 +94,7 @@ F 3 "" H 3350 1650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR02
+L GND #PWR02
 U 1 1 5A7C812E
 P 3350 3200
 F 0 "#PWR02" H 3350 2950 50  0001 C CNN
@@ -71,7 +105,7 @@ F 3 "" H 3350 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:Jumper JP1
+L Jumper JP1
 U 1 1 5A7C8403
 P 4450 2050
 F 0 "JP1" H 4450 2200 50  0000 C CNN
@@ -82,7 +116,7 @@ F 3 "" H 4450 2050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:R R1
+L R R1
 U 1 1 5A7C872B
 P 4000 1950
 F 0 "R1" V 4080 1950 50  0000 C CNN
@@ -93,7 +127,7 @@ F 3 "" H 4000 1950 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR03
+L GND #PWR03
 U 1 1 5A7C925A
 P 2750 1750
 F 0 "#PWR03" H 2750 1500 50  0001 C CNN
@@ -104,7 +138,7 @@ F 3 "" H 2750 1750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR04
+L GND #PWR04
 U 1 1 5A7C927A
 P 2750 2000
 F 0 "#PWR04" H 2750 1750 50  0001 C CNN
@@ -115,7 +149,7 @@ F 3 "" H 2750 2000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:C_Small C2
+L C_Small C2
 U 1 1 5A7C92BE
 P 3000 1750
 F 0 "C2" H 3010 1820 50  0000 L CNN
@@ -126,7 +160,7 @@ F 3 "" H 3000 1750 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:C_Small C3
+L C_Small C3
 U 1 1 5A7C9304
 P 3000 2000
 F 0 "C3" H 3010 2070 50  0000 L CNN
@@ -137,18 +171,18 @@ F 3 "" H 3000 2000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:SP1002-02 D1
+L SP1002-02 D1
 U 1 1 5A7C9FF9
 P 6300 1550
 F 0 "D1" H 6300 1725 40  0000 C CNN
 F 1 "SP1002-02" H 6300 1375 40  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-353_SC-70-5_Handsoldering" H 6350 1600 60  0001 C CNN
+F 2 "SP1002_02:SP1002-02" H 6350 1600 60  0001 C CNN
 F 3 "" H 6350 1600 60  0000 C CNN
 	1    6300 1550
 	0    1    1    0   
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR05
+L GND #PWR05
 U 1 1 5A7CA378
 P 6300 2000
 F 0 "#PWR05" H 6300 1750 50  0001 C CNN
@@ -159,7 +193,7 @@ F 3 "" H 6300 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR06
+L GND #PWR06
 U 1 1 5A7CA424
 P 5150 2000
 F 0 "#PWR06" H 5150 1750 50  0001 C CNN
@@ -170,7 +204,7 @@ F 3 "" H 5150 2000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:C_Small C4
+L C_Small C4
 U 1 1 5A7CA44A
 P 4950 1500
 F 0 "C4" H 4960 1570 50  0000 L CNN
@@ -181,7 +215,7 @@ F 3 "" H 4950 1500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CANT-rescue:C_Small C5
+L C_Small C5
 U 1 1 5A7CA4B1
 P 5450 1500
 F 0 "C5" H 5460 1570 50  0000 L CNN
@@ -204,7 +238,7 @@ NoConn ~ 1850 2750
 NoConn ~ 1850 2650
 NoConn ~ 1850 2550
 $Comp
-L CANT-rescue:VCC #PWR07
+L VCC #PWR07
 U 1 1 5A7CA83A
 P 1050 2850
 F 0 "#PWR07" H 1050 2700 50  0001 C CNN
@@ -215,7 +249,7 @@ F 3 "" H 1050 2850 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L CANT-rescue:GND #PWR08
+L GND #PWR08
 U 1 1 5A7CA8E4
 P 1050 3100
 F 0 "#PWR08" H 1050 2850 50  0001 C CNN
@@ -238,11 +272,12 @@ NoConn ~ 7300 3000
 NoConn ~ 7300 2900
 NoConn ~ 7300 2800
 NoConn ~ 7300 2700
+NoConn ~ 7300 2600
 NoConn ~ 7300 2300
 NoConn ~ 7300 2200
 NoConn ~ 7300 2400
 $Comp
-L CANT-rescue:GND #PWR09
+L GND #PWR09
 U 1 1 5A7CB275
 P 7500 2500
 F 0 "#PWR09" H 7500 2250 50  0001 C CNN
@@ -261,11 +296,11 @@ CAN_TX
 Text GLabel 2700 2550 0    60   Input ~ 0
 CAN_RX
 Wire Wire Line
-	3350 2950 3350 3150
+	3350 2950 3350 3200
 Wire Wire Line
 	4150 2050 4150 1950
 Wire Wire Line
-	3350 2250 3350 2000
+	3350 2250 3350 1650
 Wire Wire Line
 	3100 1750 3350 1750
 Connection ~ 3350 1750
@@ -284,16 +319,16 @@ Wire Wire Line
 	3800 2550 3750 2550
 Connection ~ 4750 2050
 Wire Wire Line
-	3800 1100 3800 1950
+	3800 1100 3800 2550
 Wire Wire Line
-	4750 1200 4750 2050
+	4750 1200 4750 2650
 Wire Wire Line
-	4750 1200 5450 1200
+	4750 1200 9025 1200
 Wire Wire Line
-	3800 1100 4950 1100
+	3800 1100 9025 1100
 Connection ~ 3800 1950
 Wire Wire Line
-	6250 2000 6300 2000
+	6250 2000 6350 2000
 Connection ~ 6300 2000
 Wire Wire Line
 	4950 1100 4950 1400
@@ -301,7 +336,7 @@ Connection ~ 4950 1100
 Wire Wire Line
 	4950 1600 4950 2000
 Wire Wire Line
-	4950 2000 5150 2000
+	4950 2000 5450 2000
 Wire Wire Line
 	5450 1200 5450 1400
 Connection ~ 5450 1200
@@ -311,9 +346,9 @@ Connection ~ 5150 2000
 Wire Wire Line
 	1050 2850 1350 2850
 Wire Wire Line
-	1050 3150 1100 3150
+	1050 3150 1350 3150
 Wire Wire Line
-	1050 3050 1050 3100
+	1050 3050 1050 3150
 Wire Wire Line
 	1350 3050 1050 3050
 Connection ~ 1050 3100
@@ -324,11 +359,11 @@ Wire Wire Line
 Wire Wire Line
 	6800 2500 6300 2500
 Wire Wire Line
-	2700 2450 2850 2450
+	2700 2450 2950 2450
 Wire Wire Line
 	2950 2550 2700 2550
 $Comp
-L CANT-rescue:C_Small C1
+L C_Small C1
 U 1 1 5A7CBB90
 P 2850 2950
 F 0 "C1" H 2860 3020 50  0000 L CNN
@@ -347,7 +382,7 @@ Wire Wire Line
 	2850 3150 3350 3150
 Connection ~ 3350 3150
 $Comp
-L CANT-rescue:PWR_FLAG #FLG010
+L PWR_FLAG #FLG010
 U 1 1 5A7CC97A
 P 1100 3150
 F 0 "#FLG010" H 1100 3225 50  0001 C CNN
@@ -370,7 +405,7 @@ Wire Wire Line
 	6250 2000 6250 1725
 NoConn ~ 6300 1650
 $Comp
-L CANT-rescue:Screw_Terminal_01x02 J1
+L Screw_Terminal_01x02 J1
 U 1 1 5A7CFC49
 P 9225 1100
 F 0 "J1" H 9225 1200 50  0000 C CNN
@@ -380,57 +415,4 @@ F 3 "" H 9225 1100 50  0001 C CNN
 	1    9225 1100
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3350 1750 3350 1650
-Wire Wire Line
-	3350 2000 3350 1750
-Wire Wire Line
-	4750 2050 4750 2650
-Wire Wire Line
-	3800 1950 3800 2550
-Wire Wire Line
-	6300 2000 6350 2000
-Wire Wire Line
-	4950 1100 6250 1100
-Wire Wire Line
-	5450 1200 6350 1200
-Wire Wire Line
-	5150 2000 5450 2000
-Wire Wire Line
-	1050 3100 1050 3150
-Wire Wire Line
-	2850 2450 2950 2450
-Wire Wire Line
-	3350 3150 3350 3200
-Wire Wire Line
-	1100 3150 1350 3150
-Wire Wire Line
-	6250 1100 7900 1100
-Wire Wire Line
-	6350 1200 8400 1200
-$Comp
-L 74xgxx:74LVC1G66 U2
-U 1 1 5B4BCDF0
-P 8150 1650
-F 0 "U2" H 8150 1966 50  0000 C CNN
-F 1 "74LVC1G66" H 8150 1875 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-353_SC-70-5_Handsoldering" H 8150 1650 50  0001 C CNN
-F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 8150 1650 50  0001 C CNN
-	1    8150 1650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7900 1650 7900 1100
-Connection ~ 7900 1100
-Wire Wire Line
-	7900 1100 9025 1100
-Wire Wire Line
-	8400 1650 8400 1200
-Connection ~ 8400 1200
-Wire Wire Line
-	8400 1200 9025 1200
-Wire Wire Line
-	7900 1800 7900 2600
-Wire Wire Line
-	7900 2600 7300 2600
 $EndSCHEMATC

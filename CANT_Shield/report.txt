@@ -1,0 +1,30 @@
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/sym-lib-table” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/sym-lib-table-2018-07-15-13-12-54”.
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/CANT.sch” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/CANT-2018-07-15-13-12-54.sch”.
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/CANT.pro” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/CANT-2018-07-15-13-12-54.pro”.
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/CANT-cache.lib” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/CANT-cache-2018-07-15-13-12-54.lib”.
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/CANT-rescue.lib” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/CANT-rescue-2018-07-15-13-12-54.lib”.
+Info: Backing up file “/home/thb/projects/CANT/CANT_Shield/CANT-rescue.dcm” to file “/home/thb/projects/CANT/CANT_Shield/rescue-backup/CANT-rescue-2018-07-15-13-12-54.dcm”.
+Info: Adding library “CANT-rescue”, file “${KIPRJMOD}/CANT-rescue.lib” to project symbol library table.
+Symbol “Conn_02x10_Odd_Even” mapped to symbol library “CANT-rescue”.
+Symbol “Conn_02x08_Odd_Even-RESCUE-CANT” mapped to symbol library “CANT-rescue”.
+Symbol “SN65HVD232” mapped to symbol library “CANT-rescue”.
+Symbol “VCC” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “Jumper” mapped to symbol library “CANT-rescue”.
+Symbol “R” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “C_Small” mapped to symbol library “CANT-rescue”.
+Symbol “C_Small” mapped to symbol library “CANT-rescue”.
+Symbol “SP1002-02” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “C_Small” mapped to symbol library “CANT-rescue”.
+Symbol “C_Small” mapped to symbol library “CANT-rescue”.
+Symbol “VCC” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “GND” mapped to symbol library “CANT-rescue”.
+Symbol “C_Small” mapped to symbol library “CANT-rescue”.
+Symbol “PWR_FLAG” mapped to symbol library “CANT-rescue”.
+Symbol “Screw_Terminal_01x02” mapped to symbol library “CANT-rescue”.
+Info: Symbol library table mapping complete!
