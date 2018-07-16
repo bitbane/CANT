@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/thb/projects/CANT/CANT_Shield/CANT.sch</source>
+    <date>Sun 15 Jul 2018 09:32:38 PM EDT</date>
+    <tool>Eeschema 5.0.0</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>CANT Shield</title>
+        <company/>
+        <rev/>
+        <date/>
+        <source>CANT.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="CN7">
+      <value>CN7</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_2x10_Pitch2.54mm</footprint>
+      <libsource lib="CANT-rescue" part="Conn_02x10_Odd_Even" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C7299</tstamp>
+    </comp>
+    <comp ref="CN8">
+      <value>CN8</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_2x08_Pitch2.54mm</footprint>
+      <libsource lib="CANT-rescue" part="Conn_02x08_Odd_Even-RESCUE-CANT" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C7372</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>SN65HVD232</value>
+      <footprint>Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm</footprint>
+      <libsource lib="CANT-rescue" part="SN65HVD232" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C753C</tstamp>
+    </comp>
+    <comp ref="JP1">
+      <value>Jumper</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm</footprint>
+      <libsource lib="CANT-rescue" part="Jumper" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C8403</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>120</value>
+      <footprint>Resistors_SMD:R_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="R" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C872B</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="C_Small" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C92BE</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>10 uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="C_Small" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C9304</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>SP1002-02</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-353_SC-70-5_Handsoldering</footprint>
+      <libsource lib="CANT-rescue" part="SP1002-02" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7C9FF9</tstamp>
+    </comp>
+    <comp ref="C4">
+      <value>100pF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="C_Small" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7CA44A</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>100pF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="C_Small" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7CA4B1</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>100pF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="CANT-rescue" part="C_Small" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7CBB90</tstamp>
+    </comp>
+    <comp ref="J1">
+      <value>Screw_Terminal_01x02</value>
+      <footprint>Connectors_Terminal_Blocks:TerminalBlock_Pheonix_PT-3.5mm_2pol</footprint>
+      <libsource lib="CANT-rescue" part="Screw_Terminal_01x02" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5A7CFC49</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>74LVC1G66</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-353_SC-70-5_Handsoldering</footprint>
+      <datasheet>http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</datasheet>
+      <libsource lib="74xgxx" part="74LVC1G66" description="Single Analog Switch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5B4BCDF0</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="74xgxx" part="74LVC1G66">
+      <aliases>
+        <alias>74AUC1G66</alias>
+      </aliases>
+      <description>Single Analog Switch</description>
+      <docs>http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</docs>
+      <footprints>
+        <fp>SOT*</fp>
+        <fp>SC*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">74LVC1G66</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="input"/>
+        <pin num="2" name="~" type="3state"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="~" type="input"/>
+        <pin num="5" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="C_Small">
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="Conn_02x08_Odd_Even-RESCUE-CANT">
+      <footprints>
+        <fp>Connector*:*2x??x*mm*</fp>
+        <fp>Connector*:*2x???Pitch*</fp>
+        <fp>Pin_Header_Straight_2X*</fp>
+        <fp>Pin_Header_Angled_2X*</fp>
+        <fp>Socket_Strip_Straight_2X*</fp>
+        <fp>Socket_Strip_Angled_2X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x08_Odd_Even-RESCUE-CANT</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="3V3" type="power_out"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
+        <pin num="13" name="Pin_13" type="passive"/>
+        <pin num="14" name="Pin_14" type="passive"/>
+        <pin num="15" name="Pin_15" type="passive"/>
+        <pin num="16" name="Pin_16" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="Conn_02x10_Odd_Even">
+      <footprints>
+        <fp>Connector*:*2x??x*mm*</fp>
+        <fp>Connector*:*2x???Pitch*</fp>
+        <fp>Pin_Header_Straight_2X*</fp>
+        <fp>Pin_Header_Angled_2X*</fp>
+        <fp>Socket_Strip_Straight_2X*</fp>
+        <fp>Socket_Strip_Angled_2X*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_02x10_Odd_Even</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+        <pin num="8" name="Pin_8" type="passive"/>
+        <pin num="9" name="Pin_9" type="passive"/>
+        <pin num="10" name="Pin_10" type="passive"/>
+        <pin num="11" name="Pin_11" type="passive"/>
+        <pin num="12" name="Pin_12" type="passive"/>
+        <pin num="13" name="Pin_13" type="passive"/>
+        <pin num="14" name="Pin_14" type="passive"/>
+        <pin num="15" name="Pin_15" type="passive"/>
+        <pin num="16" name="Pin_16" type="passive"/>
+        <pin num="17" name="Pin_17" type="passive"/>
+        <pin num="18" name="Pin_18" type="passive"/>
+        <pin num="19" name="Pin_19" type="passive"/>
+        <pin num="20" name="Pin_20" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="Jumper">
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">Jumper</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="R">
+      <footprints>
+        <fp>R_*</fp>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="SN65HVD232">
+      <footprints>
+        <fp>SOIC*3.9x4.9mm*Pitch1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN65HVD232</field>
+        <field name="Footprint">Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="D" type="input"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="VCC" type="power_in"/>
+        <pin num="4" name="R" type="output"/>
+        <pin num="5" name="NC" type="NotConnected"/>
+        <pin num="6" name="CANL" type="BiDi"/>
+        <pin num="7" name="CANH" type="BiDi"/>
+        <pin num="8" name="NC" type="NotConnected"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="SP1002-02">
+      <footprints>
+        <fp>D?</fp>
+        <fp>S*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">SP1002-02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+        <pin num="3" name="~" type="passive"/>
+        <pin num="4" name="~" type="passive"/>
+        <pin num="5" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="Screw_Terminal_01x02">
+      <footprints>
+        <fp>Connector*Terminal*Block*:*</fp>
+        <fp>TerminalBlock*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x02</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="74xgxx">
+      <uri>/usr/share/kicad/library/74xgxx.lib</uri>
+    </library>
+    <library logical="CANT-rescue">
+      <uri>/home/thb/projects/CANT/CANT_Shield/CANT-rescue.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="GND">
+      <node ref="C1" pin="2"/>
+      <node ref="D1" pin="5"/>
+      <node ref="D1" pin="4"/>
+      <node ref="U2" pin="3"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="CN8" pin="13"/>
+      <node ref="C4" pin="2"/>
+      <node ref="U1" pin="2"/>
+      <node ref="CN7" pin="8"/>
+      <node ref="CN8" pin="11"/>
+      <node ref="C5" pin="2"/>
+    </net>
+    <net code="2" name="CAN_TX">
+      <node ref="C1" pin="1"/>
+      <node ref="CN7" pin="5"/>
+      <node ref="U1" pin="1"/>
+    </net>
+    <net code="3" name="CAN_RX">
+      <node ref="U1" pin="4"/>
+      <node ref="CN7" pin="7"/>
+    </net>
+    <net code="4" name="Net-(CN7-Pad18)">
+      <node ref="CN7" pin="18"/>
+    </net>
+    <net code="5" name="Net-(CN7-Pad16)">
+      <node ref="CN7" pin="16"/>
+    </net>
+    <net code="6" name="Net-(CN7-Pad14)">
+      <node ref="CN7" pin="14"/>
+    </net>
+    <net code="7" name="Net-(CN7-Pad12)">
+      <node ref="CN7" pin="12"/>
+    </net>
+    <net code="8" name="Net-(CN7-Pad4)">
+      <node ref="CN7" pin="4"/>
+    </net>
+    <net code="9" name="Net-(CN7-Pad2)">
+      <node ref="CN7" pin="2"/>
+    </net>
+    <net code="10" name="Net-(CN7-Pad6)">
+      <node ref="CN7" pin="6"/>
+    </net>
+    <net code="11" name="Net-(JP1-Pad1)">
+      <node ref="JP1" pin="1"/>
+      <node ref="R1" pin="1"/>
+    </net>
+    <net code="12" name="Net-(C4-Pad1)">
+      <node ref="C4" pin="1"/>
+      <node ref="U1" pin="7"/>
+      <node ref="U2" pin="1"/>
+      <node ref="R1" pin="2"/>
+      <node ref="D1" pin="3"/>
+      <node ref="J1" pin="1"/>
+    </net>
+    <net code="13" name="Net-(C5-Pad1)">
+      <node ref="D1" pin="1"/>
+      <node ref="U1" pin="6"/>
+      <node ref="JP1" pin="2"/>
+      <node ref="C5" pin="1"/>
+      <node ref="J1" pin="2"/>
+      <node ref="U2" pin="2"/>
+    </net>
+    <net code="14" name="Net-(CN7-Pad10)">
+      <node ref="CN7" pin="10"/>
+      <node ref="U2" pin="4"/>
+    </net>
+    <net code="15" name="VCC">
+      <node ref="U2" pin="5"/>
+      <node ref="U1" pin="3"/>
+      <node ref="C2" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="CN8" pin="7"/>
+    </net>
+    <net code="16" name="Net-(CN7-Pad20)">
+      <node ref="CN7" pin="20"/>
+    </net>
+    <net code="17" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+    </net>
+    <net code="18" name="Net-(CN8-Pad14)">
+      <node ref="CN8" pin="14"/>
+    </net>
+    <net code="19" name="Net-(CN8-Pad15)">
+      <node ref="CN8" pin="15"/>
+    </net>
+    <net code="20" name="Net-(CN8-Pad16)">
+      <node ref="CN8" pin="16"/>
+    </net>
+    <net code="21" name="Net-(CN8-Pad2)">
+      <node ref="CN8" pin="2"/>
+    </net>
+    <net code="22" name="Net-(CN8-Pad3)">
+      <node ref="CN8" pin="3"/>
+    </net>
+    <net code="23" name="Net-(CN8-Pad4)">
+      <node ref="CN8" pin="4"/>
+    </net>
+    <net code="24" name="Net-(CN8-Pad5)">
+      <node ref="CN8" pin="5"/>
+    </net>
+    <net code="25" name="Net-(CN8-Pad6)">
+      <node ref="CN8" pin="6"/>
+    </net>
+    <net code="26" name="Net-(CN8-Pad8)">
+      <node ref="CN8" pin="8"/>
+    </net>
+    <net code="27" name="Net-(CN8-Pad9)">
+      <node ref="CN8" pin="9"/>
+    </net>
+    <net code="28" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="29" name="Net-(U1-Pad8)">
+      <node ref="U1" pin="8"/>
+    </net>
+    <net code="30" name="Net-(CN8-Pad1)">
+      <node ref="CN8" pin="1"/>
+    </net>
+    <net code="31" name="Net-(CN7-Pad11)">
+      <node ref="CN7" pin="11"/>
+    </net>
+    <net code="32" name="Net-(CN7-Pad13)">
+      <node ref="CN7" pin="13"/>
+    </net>
+    <net code="33" name="Net-(CN7-Pad15)">
+      <node ref="CN7" pin="15"/>
+    </net>
+    <net code="34" name="Net-(CN7-Pad17)">
+      <node ref="CN7" pin="17"/>
+    </net>
+    <net code="35" name="Net-(CN7-Pad19)">
+      <node ref="CN7" pin="19"/>
+    </net>
+    <net code="36" name="Net-(CN7-Pad3)">
+      <node ref="CN7" pin="3"/>
+    </net>
+    <net code="37" name="Net-(CN7-Pad9)">
+      <node ref="CN7" pin="9"/>
+    </net>
+    <net code="38" name="Net-(CN8-Pad10)">
+      <node ref="CN8" pin="10"/>
+    </net>
+    <net code="39" name="Net-(CN8-Pad12)">
+      <node ref="CN8" pin="12"/>
+    </net>
+    <net code="40" name="Net-(CN7-Pad1)">
+      <node ref="CN7" pin="1"/>
+    </net>
+  </nets>
+</export>

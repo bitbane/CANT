@@ -1,0 +1,14 @@
+"Id";"Designator";"Package";"Quantity";"Designation";"Supplier and ref";
+1;"G***,G***";"LOGO";2;"LOGO";;;
+2;"G***,G***,G***,G***,G***";"LOGO";5;"LOGO";;;
+3;"D1";"SOT-353_SC-70-5_Handsoldering";1;"SP1002-02";;;
+4;"U2";"SOT-353_SC-70-5_Handsoldering";1;"74LVC1G66";;;
+5;"C1,C4,C5";"C_0805_HandSoldering";3;"100pF";;;
+6;"C2";"C_0805_HandSoldering";1;"0.1uF";;;
+7;"C3";"C_0805_HandSoldering";1;"10 uF";;;
+8;"CN7";"Pin_Header_Straight_2x10_Pitch2.54mm";1;"CN7";;;
+9;"CN8";"Pin_Header_Straight_2x08_Pitch2.54mm";1;"CN8";;;
+10;"J1";"TerminalBlock_Pheonix_PT-3.5mm_2pol";1;"Screw_Terminal_01x02";;;
+11;"JP1";"Pin_Header_Straight_1x02_Pitch2.54mm";1;"Jumper";;;
+12;"R1";"R_0805_HandSoldering";1;"120";;;
+13;"U1";"SOIC-8_3.9x4.9mm_Pitch1.27mm";1;"SN65HVD232";;;

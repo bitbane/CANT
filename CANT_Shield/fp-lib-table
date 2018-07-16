@@ -1,3 +1,4 @@
 (fp_lib_table
   (lib (name SP1002_02)(type KiCad)(uri "$(KIPRJMOD)/SP1002_02.pretty")(options "")(descr ""))
+  (lib (name Capacitors_SMD)(type KiCad)(uri /usr/share/kicad/footprints/Capacitors_SMD.pretty)(options "")(descr ""))
 )
