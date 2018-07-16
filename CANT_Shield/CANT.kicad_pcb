@@ -4438,7 +4438,7 @@
   (gr_text "120Ω Term." (at 155.956 114.046) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.2)))
   )
-  (gr_text "CANT v. 0.1\nhttps://github.com/bitbane/CANT\nthb@grimm-co.com\n@b1tbane\n" (at 148.59 136.906) (layer F.SilkS)
+  (gr_text "CANT v. 0.1\nhttps://github.com/bitbane/CANT\nthb@grimm-co.com\n@b1tbane\n\nFor Nucleo-H743ZI" (at 148.971 138.43) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
   (gr_line (start 120.65 148.59) (end 120.65 111.76) (angle 90) (layer Edge.Cuts) (width 0.15))
