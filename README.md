@@ -56,3 +56,19 @@ configured.
 
 To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
 
+## Shield
+
+Version 0.1 of the shield was designed with a TI SN65HVD232DRG4 CAN transceiver, which costs about $1.75. Version 0.2 was redesigned for a TJA1051T/3 CAN transceiver which costs a little under a dollar. Version 0.2 also has an additional capacitor C6 for filtering the VIO line on the TJA1051T/3. Besides those changes, v0.1 and v0.2 are identical. Cost for building one is about $3.40 for one, or about $22.75 for 10, plus the cost of the PCB.
+
+| U1 | TJA1051T/3 CAN Transceiver | https://www.arrow.com/en/products/tja1051t3118/nxp-semiconductors |  |
+| U2 | 74LVC1G66 Analog Switch | https://www.arrow.com/en/products/74lvc1g66gw125/nexperia |  |
+| D1 | SP1002-02 Diode TVS Single Bi-Dir | https://www.arrow.com/en/products/sp1002-02jtg/littelfuse |  |
+| R1 | 120 Ohm 0805 Resistor | https://www.arrow.com/en/products/nrc10j121trf/nic-components |  |
+| C1, C4, C5 | 100pF 0805 Ceramic Capacitor | https://www.arrow.com/en/products/vj0805y101kxacw1bc/vishay |  |
+| C2, C6 | 0.1uF 0805 Ceramic Capacitor  |  https://www.arrow.com/en/products/vj0805y104jxxcw1bc/vishay|  |
+| C3 | 10uF 0805 Ceramic Capacitor | https://www.arrow.com/en/products/cl21a106kpfnnnf/samsung-electro-mechanics |  |
+| J1 | 3.5mm Screw Terminal Block | https://www.arrow.com/en/products/ctb30512bk/camdenboss-ltd |  |
+| CN7 | 20 pin 2.54mm pitch pin terminal | https://www.arrow.com/en/products/54102-t08-00/amphenol-fci | It's not clear, but these are sold singly. Buy 19 and they will come in a strip that you can use for CN7, CN8 and JP1 |
+| CN8 | 16 pin 2.54mm pitch pin terminal |  |  |
+| JP1 | 2 pin 2.54mm jumper header for 120Ohm resistor |  | Don't forget a jumper https://www.arrow.com/en/products/aksctgblack/assmann-wsw-components-inc |
+
