@@ -17,7 +17,10 @@ possible without rewiring. This is currently not implemented. I'm using the
 but any 3.3V CAN Transceiver should work. Some transceivers may require some additional 
 programming or wiring, so check that if you go with something else.
 
-Additionally, GPIO pins PA4, PA5 and PA15 are configured as GPIO outputs. I find banging on these
+If you are using the CANT shield, pin PA5 is used to toggle the analog switch that shorts CANH and CANL
+together.
+
+Additionally, GPIO pins PA4 and PA15 are configured as GPIO outputs. I find banging on these
 useful during debugging. These pins, along with the two pins for the CAN peripheral, are all located
 on connector CN7, on the upper-right of the dev board if the RJ-45 connector is pointed towards you.
 STs documentation contains the schematics for this board, but connector CN7 is reproduced here for
