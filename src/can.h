@@ -17,6 +17,8 @@ void remove_attack();
 void install_arbid_killer();
 void install_data_replacer();
 void install_overload_frame();
+void install_bus_short();
+void install_nack_attack();
 
 #endif /* TIMER_H */
 

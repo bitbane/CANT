@@ -71,6 +71,7 @@ void write_string(char *s);
 void write_int(uint32_t n);
 long read_int();
 long read_hex();
+char read_char();
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

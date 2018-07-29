@@ -19,7 +19,9 @@ char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
     "",
     "Bus Killer - constantly transmit arbid 0",
     "Data Replacer - replace the data sent with the configured arbid with the supplied data",
-    "Overload Inserter - Send specified number of overload frames after each message"
+    "Overload Inserter - Send specified number of overload frames after each message",
+    "Bus Short - Short CANH and CANL (aka \"Cyber-Paperclip Mode\")",
+    "NACK Attack - kill the ACK response"
 };
 
 static void handle_command();
@@ -156,6 +158,13 @@ static void chooseAttack(void)
             install_overload_frame();
             write_string("Installing the overload attack\r\n");
             break;
+        case ATTACK_BUS_SHORT:
+            install_bus_short();
+            write_string("Installing the bus short attack\r\n");
+            break;
+        case ATTACK_NACK:
+            install_nack_attack();
+            write_string("Installing the NACK Attack\r\n");
         default:
             write_string("No such Attack\r\n");
             break;
