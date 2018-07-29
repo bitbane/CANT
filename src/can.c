@@ -636,7 +636,6 @@ void install_arbid_killer()
 static void data_replacer()
 {
     uint8_t bit = 1;
-GPIOA->ODR |= GPIO_PIN_15;
     /* We're going to key off the bit-keeping that we're doing in the 
      * sample_callback function in order to see where we are in the message and
      * to track any necessary bit stuffing. These variables are:
@@ -665,7 +664,7 @@ GPIOA->ODR |= GPIO_PIN_15;
         /* Send the data */
         else if((bits_read >= 19) && (bits_read < (19 + data_replacer_len_bits)))
         {
-            bit = data_replacer_data[(bits_read - 19) >> 3] >> (7 - ((bits_read - 19) & 0x7));
+            bit = data_replacer_data[(bits_read - 19) >> 3] >> (7 - ((bits_read - 19) & 0x1));
             bit <<= data_replacer_force_recessive; // Set bit to two if we are forcing the recessive and transmitting a 1
         }
         /* Send the CRC */
@@ -697,7 +696,6 @@ GPIOA->ODR |= GPIO_PIN_15;
             SHORT_OFF;
         }
     }
-GPIOA->ODR &= ~GPIO_PIN_15;
 }
 
 void install_data_replacer()
@@ -809,20 +807,21 @@ void install_overload_frame()
 
 void install_bus_short()
 {
-    GPIOA->ODR |= GPIO_PIN_5;
+    SHORT_ON;
 }
 
 inline static void short_on()
 {
-    GPIOA->ODR |= GPIO_PIN_5;
+    SHORT_ON;
 }
 
 inline static void short_off()
 {
-    GPIOA->ODR &= ~GPIO_PIN_5;
+    SHORT_OFF;
 }
 
 void install_nack_attack()
 {
     nack_attack = 1;
 }
+

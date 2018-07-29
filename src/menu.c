@@ -165,6 +165,7 @@ static void chooseAttack(void)
         case ATTACK_NACK:
             install_nack_attack();
             write_string("Installing the NACK Attack\r\n");
+            break;
         default:
             write_string("No such Attack\r\n");
             break;
