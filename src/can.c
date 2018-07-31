@@ -647,7 +647,7 @@ static void data_replacer()
      */
 
     /* Check to see if we have received an arbitration ID and it matches the one we are attacking */
-    if((bits_read >= 12) && (arbid == attack_arbid))
+    if((bits_read >= 15) && (arbid == attack_arbid))
     {
         /* Check to see if we need to send a stuff bit */
         if(same_bits_count == 5)
@@ -664,7 +664,7 @@ static void data_replacer()
         /* Send the data */
         else if((bits_read >= 19) && (bits_read < (19 + data_replacer_len_bits)))
         {
-            bit = data_replacer_data[(bits_read - 19) >> 3] >> (7 - ((bits_read - 19) & 0x1));
+            bit = (data_replacer_data[(bits_read - 19) >> 3] >> (7 - ((bits_read - 19) & 0x7))) & 0x01;
             bit <<= data_replacer_force_recessive; // Set bit to two if we are forcing the recessive and transmitting a 1
         }
         /* Send the CRC */
