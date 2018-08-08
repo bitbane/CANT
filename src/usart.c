@@ -47,8 +47,6 @@
 /* USER CODE BEGIN 0 */
 volatile uint8_t rx_buffer[RX_BUFFER_SIZE];
 volatile uint8_t rx_counter = 0;
-char default_prompt[] = "CANT>";
-char *cur_prompt = default_prompt;
 
 /* USER CODE END 0 */
 
@@ -255,6 +253,11 @@ void USART3_IRQHandler(void)
         else if((rx_buffer[rx_counter] == '\b' || rx_buffer[rx_counter] == 0x7f) && rx_counter > 0)
         {
             rx_counter -= 2;
+            write_string("\b\033[K"); // Clear the deleted character
+        }
+        else
+        {
+            __io_putchar(rx_buffer[rx_counter]);
         }
 
         rx_counter++;
@@ -263,26 +266,7 @@ void USART3_IRQHandler(void)
             /* Disable the UART 4 Receive interrupt */
             CLEAR_BIT(USART3->CR1, USART_CR1_RXNEIE);
         }
-        __io_putchar('\r');
-        show_prompt();
     }
-}
-
-void show_prompt()
-{
-    write_string(cur_prompt);
-    for (int i = 0; i < rx_counter; i++)
-        __io_putchar(rx_buffer[i]);
-}
-
-/* Sets thw prompt text. NULL pointer sets to default */
-void set_prompt(char *text)
-{
-    if (text == NULL)
-        cur_prompt = default_prompt;
-    else
-        cur_prompt = text;
-
 }
 
 /* USER CODE END 1 */

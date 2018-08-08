@@ -66,8 +66,6 @@ extern volatile uint8_t rx_counter;
 void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */ 
-void show_prompt();
-void set_prompt(char *text);
 int __io_putchar(int ch);
 void write_string(char *s);
 void write_int(uint32_t n);
