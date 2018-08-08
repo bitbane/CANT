@@ -24,6 +24,8 @@ char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
     "NACK Attack - kill the ACK response"
 };
 
+char attack_prompt_text[] = "CANT ATTACK>";
+
 static void handle_command();
 static void setArbids();
 static void showArbids();
@@ -37,7 +39,9 @@ void display_menu()
     {
         printf("%d - %s\r\n", i, Menu_Commands_Text[i]);
     }
-    write_string("\r\nCANT>");
+    write_string("\r\n");
+    set_prompt(NULL);
+    show_prompt();
 }
 
 void process_menu()
@@ -90,7 +94,8 @@ static void handle_command()
             break;
         
     }
-    write_string("CANT>");
+    set_prompt(NULL);
+    show_prompt();
 }
 
 /**
@@ -138,6 +143,7 @@ static void chooseAttack(void)
     {
         printf("%d - %s\r\n", i, Attack_Commands_Text[i]);
     }
+    set_prompt(attack_prompt_text);
     write_string("\r\nCANT ATTACK>");
 
     command_num = read_int();

@@ -711,11 +711,13 @@ void install_data_replacer()
 
     for(int i = 0; i < data_replacer_len; i++)
     {
-        write_string("Byte ");
-        write_int(i);
-        write_string(": 0x");
+        char prompt[12];
+        snprintf(prompt, 12, "%s %d%s", "Byte", i, ": 0x");
+        set_prompt(prompt);
+        show_prompt();
         data_replacer_data[i] = read_hex() & 0xFF;
     }
+    set_prompt(NULL);
 
     write_string("Force Recessive bits? (y/N) ");
     data_replacer_force_recessive = read_char();
