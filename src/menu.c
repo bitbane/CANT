@@ -13,6 +13,7 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "Show ARBIDS",
     "Set buadrate",
     "Choose Attack",
+    "End Attack",
 };
 
 char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
@@ -84,6 +85,9 @@ static void handle_command()
             break;
         case MENU_CHOOSE_ATTACK:
             chooseAttack();
+            break;
+        case MENU_STOP_ATTACK:
+            remove_attack();
             break;
         default:
             write_string("No such command\r\n");

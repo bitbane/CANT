@@ -14,6 +14,7 @@ typedef enum
     MENU_SHOW_ARBID,
     MENU_SET_BAUD,
     MENU_CHOOSE_ATTACK,
+    MENU_STOP_ATTACK,
     MENU_NUM_ITEMS,
 } Menu_Commands_T;
 

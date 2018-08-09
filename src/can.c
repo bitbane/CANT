@@ -493,6 +493,7 @@ static void sample_callback(void)
     }
 }
 
+/* Stops the timer4 timer */
 void can_timer_stop()
 {
     /* Disable the overflow interrupt and timer */
@@ -541,7 +542,7 @@ void EXTI15_10_IRQHandler(void)
     TIM4->DIER |= TIM_IT_UPDATE;
     TIM4->CR1 |= TIM_CR1_CEN;
 
-    /* Start the timer that fires on each CAN edge */
+    /* Restarts the timer that fires on each CAN edge */
     TIM3->CR1 &= ~TIM_CR1_CEN;
     TIM3->SR = ~TIM_IT_UPDATE;
     TIM3->DIER &= ~TIM_IT_UPDATE;
@@ -556,6 +557,8 @@ void EXTI15_10_IRQHandler(void)
 
 void setCanBaudrate(long int baud)
 {
+    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
+    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
     can_baud = baud;
     can_ticks_per_cycle = ((1000000000 / can_baud) / TIMER_PERIOD_NS) - 1;
 
@@ -573,10 +576,6 @@ void setCanBaudrate(long int baud)
  * BEGIN EXPLOITS
  *
  */
-void remove_attack()
-{
-    timer3_callback_handler = NULL;
-}
 
 static void arbid_killer()
 {
@@ -631,6 +630,11 @@ static void arbid_killer()
 void install_arbid_killer()
 {
     timer3_callback_handler = arbid_killer;
+}
+
+void uninstall_arbid_killer()
+{
+    timer3_callback_handler = NULL;
 }
 
 static void data_replacer()
@@ -745,6 +749,22 @@ void install_data_replacer()
     timer3_callback_handler = data_replacer;
 }
 
+void uninstall_data_replacer()
+{
+    data_replacer_len = 0;
+    data_replacer_len_bits = 0;
+
+    for(int i = 0; i < 8; i++)
+    {
+        data_replacer_data[i] = 0;
+    }
+
+    data_replacer_force_recessive = 0;
+    data_replacer_crc = 0;
+
+    timer3_callback_handler = NULL;
+}
+
 void overload_frame()
 {
     overload_frame_bit_counter++;
@@ -805,6 +825,12 @@ void install_overload_frame()
     end_of_frame_callback = overload_frame_eof;
 }
 
+void uninstall_overload_frame()
+{
+    overload_frame_count = 0;
+    end_of_frame_callback = NULL;
+}
+
 void install_bus_short()
 {
     SHORT_ON;
@@ -824,4 +850,15 @@ void install_nack_attack()
 {
     nack_attack = 1;
 }
+
+/* Calls all of the attack removal functions */
+void remove_attack()
+{
+    uninstall_arbid_killer();
+    uninstall_data_replacer();
+    uninstall_overload_frame();
+    SHORT_OFF;
+    nack_attack = 0;
+}
+
 
