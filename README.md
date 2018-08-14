@@ -40,8 +40,10 @@ convenience:
 | PB4 | 19  | 20  | PF12|
 
 ### Flashing pre-built CANT
+The Nucleo-H743ZI dev board will present itself as a USB mass storage device. Dragging and dropping the CANT.elf file 
+located in the `firmware/` folder to the dev board should properly flash the code to the dev board.
 
-You will need openocd installed to flash the prebuilt CANT. At the time of this writing the latest version
+Alternatively, you will need openocd installed to flash the prebuilt CANT. At the time of this writing the latest version
 of openocd (0.10.0) does not support the H743ZI, but it is supported in the openocd git repository.
 Presumably support will be added in the next release of openocd. In order to flash the prebuilt CANT, type
 
