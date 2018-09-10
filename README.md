@@ -59,6 +59,8 @@ configured.
 
 ## Developing with CANT
 
+NOTE: Some older versions of the arm-none-eabi-gcc toolchain generate invalid opcodes with the optimizations that CANT uses. Specifically, the 4.9.3 version that ships with Ubuntu 16.04 tries to generate ARM instructions and switch to ARM mode, which the Cortex-M7 part does not support. If CANT just isn't working and you are winding up in the hardfault handler, this is likely the issue. Upgrade to a newer compiler version to fix this issue. The 7 series and newer seem to all work fine.
+
 To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
 
 ## Shield
