@@ -46,7 +46,9 @@ $(ODIR)/$(PERIPH_ODIR)/%.o: $(SRCS)/$(PERIPH_ODIR)/src/%.c
 
 CANT: $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) $(CFLAGS) -o $(ODIR)/CANT.elf
+	arm-none-eabi-objcopy -Obinary $(ODIR)/CANT.elf $(ODIR)/CANT.bin
 	cp $(ODIR)/CANT.elf firmware/CANT.elf
+	cp $(ODIR)/CANT.bin	firmware/CANT.bin
 
 .PHONY: clean
 
