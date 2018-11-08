@@ -56,6 +56,16 @@ The green LED (LED1) flashes at a rate of 1hz. The blue LED (LED2) changes state
 that CANT has received. This is handy for ensuring that the CAN bus isn't dead and that CANT is properly
 configured.
 
+## Demos
+
+Demo videos from my talks
+[![Link to 1st demo video](https://img.youtube.com/vi/g2gCfG9jTLs/0.jpg)](https://www.youtube.com/watch?v=g2gCfG9jTLs)
+
+[![Link to 2nd demo video](https://img.youtube.com/vi/wz1S7ofVuNg/0.jpg)](https://www.youtube.com/watch?v=wz1S7ofVuNg)
+
+Original Shmoocon Talk: [![Shmoocon Talk](https://img.youtube.com/vi/oS-6xDc_pP4/0.jpg)](https://www.youtube.com/watch?v=oS-6xDc_pP4)
+
+Defcon 26 CHV Talk: [![Defcon 26 CHV Talk](https://img.youtube.com/vi/TRn_Rz2JIYQ/0.jpg)](https://www.youtube.com/watch?v=TRn_Rz2JIYQ)
 
 ## Developing with CANT
 
