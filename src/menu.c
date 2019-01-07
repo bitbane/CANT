@@ -11,7 +11,7 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "", // strtol interprets the empty string as a 0
     "Set ARBID",
     "Show ARBIDS",
-    "Set buadrate",
+    "Set baudrate",
     "Choose Attack",
     "End Attack",
 };
