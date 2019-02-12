@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="D">
+  <design>
+    <source>/home/thb/tmp/YaCANi/YaCANi.sch</source>
+    <date>Mon 11 Feb 2019 04:28:59 PM EST</date>
+    <tool>Eeschema 5.0.1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company>Phoenix Robotik</company>
+        <rev/>
+        <date/>
+        <source>YaCANi.sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R71C104KA01D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FA65A</tstamp>
+    </comp>
+    <comp ref="C3">
+      <value>1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R61E105KA12D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FA677</tstamp>
+    </comp>
+    <comp ref="C2">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R71C104KA01D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FA7BA</tstamp>
+    </comp>
+    <comp ref="P3">
+      <value>USB</value>
+      <footprint>Connectors_Molex:USB_Micro-B_Molex_47346-0001</footprint>
+      <fields>
+        <field name="MPN">USB-B1HSB6</field>
+      </fields>
+      <libsource lib="Connector" part="USB_B_Micro" description="USB Micro Type B connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FAFF9</tstamp>
+    </comp>
+    <comp ref="C7">
+      <value>100nF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R61E105KA12D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FC250</tstamp>
+    </comp>
+    <comp ref="C8">
+      <value>10uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R61E105KA12D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FC291</tstamp>
+    </comp>
+    <comp ref="U1">
+      <value>STM32F042C6T6</value>
+      <footprint>Housings_QFP:LQFP-48_7x7mm_Pitch0.5mm</footprint>
+      <fields>
+        <field name="MPN">STM32F042C6T6</field>
+      </fields>
+      <libsource lib="YaCANi" part="STM32F042C6T6" description=""/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>546FFAB4</tstamp>
+    </comp>
+    <comp ref="C1">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">GRM188R71C104KA01D</field>
+      </fields>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54701255</tstamp>
+    </comp>
+    <comp ref="R1">
+      <value>120</value>
+      <footprint>Resistors_SMD:R_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">MCR03ERTF1200</field>
+      </fields>
+      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5472656A</tstamp>
+    </comp>
+    <comp ref="P1">
+      <value>SWD</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x05_Pitch2.54mm</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5472CC61</tstamp>
+    </comp>
+    <comp ref="D2">
+      <value>LED-GREEN</value>
+      <footprint>LEDs:LED_0805</footprint>
+      <fields>
+        <field name="MPN">LTST-C191KGKT</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5472F3BF</tstamp>
+    </comp>
+    <comp ref="D1">
+      <value>LED-RED</value>
+      <footprint>LEDs:LED_0805</footprint>
+      <fields>
+        <field name="MPN">LTST-C191KRKT</field>
+      </fields>
+      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5472F58A</tstamp>
+    </comp>
+    <comp ref="R3">
+      <value>R</value>
+      <footprint>Resistors_SMD:R_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">MCR03ERTF1200</field>
+      </fields>
+      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>547309DB</tstamp>
+    </comp>
+    <comp ref="R4">
+      <value>R</value>
+      <footprint>Resistors_SMD:R_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">MCR03ERTF1200</field>
+      </fields>
+      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54730ABA</tstamp>
+    </comp>
+    <comp ref="R2">
+      <value>10k</value>
+      <footprint>Resistors_SMD:R_0805_HandSoldering</footprint>
+      <fields>
+        <field name="MPN">MCR03ERTF5100</field>
+      </fields>
+      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>5473362D</tstamp>
+    </comp>
+    <comp ref="F1">
+      <value>Polyfuse</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="Device" part="Polyfuse" description="Resettable fuse, polymeric positive temperature coefficient"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D3E875</tstamp>
+    </comp>
+    <comp ref="U2">
+      <value>MCP2562-E/SN</value>
+      <footprint>Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm</footprint>
+      <libsource lib="Interface_CAN_LIN" part="MCP2562-E-SN" description="High-Speed CAN Transceiver, 1Mbps, 5V supply, Vio pin, -40C to +125C, SOIC8 package"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D3F5F6</tstamp>
+    </comp>
+    <comp ref="C6">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D3FB44</tstamp>
+    </comp>
+    <comp ref="P2">
+      <value>CAN</value>
+      <footprint>Connectors_JST:JST_XH_S04B-XH-A_04x2.50mm_Angled</footprint>
+      <libsource lib="Connector" part="Screw_Terminal_01x04" description="Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D4267D</tstamp>
+    </comp>
+    <comp ref="JP2">
+      <value>Jumper_NC_Dual</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm</footprint>
+      <libsource lib="Device" part="Jumper_NC_Dual" description="Dual jumper, normally closed"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D436F2</tstamp>
+    </comp>
+    <comp ref="JP1">
+      <value>Jumper_NC_Dual</value>
+      <footprint>Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm</footprint>
+      <libsource lib="Device" part="Jumper_NC_Dual" description="Dual jumper, normally closed"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D45A98</tstamp>
+    </comp>
+    <comp ref="U3">
+      <value>LD1117S33TR</value>
+      <footprint>TO_SOT_Packages_SMD:SOT-223</footprint>
+      <libsource lib="Regulator_Linear" part="LD1117S33TR_SOT223" description="800mA Fixed Low Drop Positive Voltage Regulator, Fixed Output 3.3V, SOT-223"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>58D47ED1</tstamp>
+    </comp>
+    <comp ref="C5">
+      <value>0.1uF</value>
+      <footprint>Capacitors_SMD:C_0805_HandSoldering</footprint>
+      <libsource lib="pspice" part="C" description="Capacitor symbol for simulation only"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamp>54724A1C</tstamp>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="Screw_Terminal_01x04">
+      <description>Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x04</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_B_Micro">
+      <aliases>
+        <alias>USB_B_Mini</alias>
+      </aliases>
+      <description>USB Micro Type B connector</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>USB*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_B_Micro</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBUS" type="power_out"/>
+        <pin num="2" name="D-" type="passive"/>
+        <pin num="3" name="D+" type="passive"/>
+        <pin num="4" name="ID" type="passive"/>
+        <pin num="5" name="GND" type="power_out"/>
+        <pin num="6" name="Shield" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector_Generic" part="Conn_01x05">
+      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x05</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Jumper_NC_Dual">
+      <description>Dual jumper, normally closed</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">JP</field>
+        <field name="Value">Jumper_NC_Dual</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+        <pin num="3" name="3" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="LED">
+      <description>Light emitting diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>LED*</fp>
+        <fp>LED_SMD:*</fp>
+        <fp>LED_THT:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">LED</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Polyfuse">
+      <description>Resettable fuse, polymeric positive temperature coefficient</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>*polyfuse*</fp>
+        <fp>*PTC*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">Polyfuse</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Interface_CAN_LIN" part="MCP2562-E-SN">
+      <aliases>
+        <alias>MCP2562-H-SN</alias>
+      </aliases>
+      <description>High-Speed CAN Transceiver, 1Mbps, 5V supply, Vio pin, -40C to +125C, SOIC8 package</description>
+      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/25167A.pdf</docs>
+      <footprints>
+        <fp>SOIC*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">MCP2562-E-SN</field>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="TXD" type="input"/>
+        <pin num="2" name="VSS" type="power_in"/>
+        <pin num="3" name="VDD" type="power_in"/>
+        <pin num="4" name="RXD" type="output"/>
+        <pin num="5" name="Vio" type="power_in"/>
+        <pin num="6" name="CANL" type="BiDi"/>
+        <pin num="7" name="CANH" type="BiDi"/>
+        <pin num="8" name="STBY" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Linear" part="AP1117-15">
+      <aliases>
+        <alias>AP1117-18</alias>
+        <alias>AP1117-25</alias>
+        <alias>AP1117-33</alias>
+        <alias>AP1117-50</alias>
+        <alias>LD1117S33TR_SOT223</alias>
+        <alias>LD1117S12TR_SOT223</alias>
+        <alias>LD1117S18TR_SOT223</alias>
+        <alias>LD1117S25TR_SOT223</alias>
+        <alias>LD1117S50TR_SOT223</alias>
+        <alias>NCP1117-12_SOT223</alias>
+        <alias>NCP1117-1.5_SOT223</alias>
+        <alias>NCP1117-1.8_SOT223</alias>
+        <alias>NCP1117-2.0_SOT223</alias>
+        <alias>NCP1117-2.5_SOT223</alias>
+        <alias>NCP1117-2.85_SOT223</alias>
+        <alias>NCP1117-3.3_SOT223</alias>
+        <alias>NCP1117-5.0_SOT223</alias>
+        <alias>AMS1117-1.5</alias>
+        <alias>AMS1117-1.8</alias>
+        <alias>AMS1117-2.5</alias>
+        <alias>AMS1117-2.85</alias>
+        <alias>AMS1117-3.3</alias>
+        <alias>AMS1117-5.0</alias>
+      </aliases>
+      <description>1A Low Dropout regulator, positive, 1.5V fixed output, SOT-223</description>
+      <docs>http://www.diodes.com/datasheets/AP1117.pdf</docs>
+      <footprints>
+        <fp>SOT?223*TabPin2*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AP1117-15</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-223-3_TabPin2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="YaCANi" part="STM32F042C6T6">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">STM32F042C6T6</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VBAT" type="input"/>
+        <pin num="2" name="PC13" type="input"/>
+        <pin num="3" name="PC14-OSC32_IN" type="input"/>
+        <pin num="4" name="PC15-OSC32_OUT" type="input"/>
+        <pin num="5" name="PF0-OSC_IN" type="input"/>
+        <pin num="6" name="PF1-OSC_OUT" type="input"/>
+        <pin num="7" name="NRST" type="input"/>
+        <pin num="8" name="VSSA" type="input"/>
+        <pin num="9" name="VDDA" type="input"/>
+        <pin num="10" name="PA0" type="input"/>
+        <pin num="11" name="PA1" type="input"/>
+        <pin num="12" name="PA2" type="input"/>
+        <pin num="13" name="PA3" type="input"/>
+        <pin num="14" name="PA4" type="input"/>
+        <pin num="15" name="PA5" type="input"/>
+        <pin num="16" name="PA6" type="input"/>
+        <pin num="17" name="PA7" type="input"/>
+        <pin num="18" name="PB0" type="input"/>
+        <pin num="19" name="PB1" type="input"/>
+        <pin num="20" name="PB2" type="input"/>
+        <pin num="21" name="PB10" type="input"/>
+        <pin num="22" name="PB11" type="input"/>
+        <pin num="23" name="VSS" type="input"/>
+        <pin num="24" name="VDD" type="input"/>
+        <pin num="25" name="PB12" type="input"/>
+        <pin num="26" name="PB13" type="input"/>
+        <pin num="27" name="PB14" type="input"/>
+        <pin num="28" name="PB15" type="input"/>
+        <pin num="29" name="PA8" type="input"/>
+        <pin num="30" name="PA9" type="input"/>
+        <pin num="31" name="PA10" type="input"/>
+        <pin num="32" name="PA11" type="input"/>
+        <pin num="33" name="PA12" type="input"/>
+        <pin num="34" name="PA13" type="input"/>
+        <pin num="35" name="VSS" type="input"/>
+        <pin num="36" name="VDDIO" type="input"/>
+        <pin num="37" name="PA14" type="input"/>
+        <pin num="38" name="PA15" type="input"/>
+        <pin num="39" name="PB3" type="input"/>
+        <pin num="40" name="PB4" type="input"/>
+        <pin num="41" name="PB5" type="input"/>
+        <pin num="42" name="PB6" type="input"/>
+        <pin num="43" name="PB7" type="input"/>
+        <pin num="44" name="BOOT0-PF11" type="input"/>
+        <pin num="45" name="PB8" type="input"/>
+        <pin num="46" name="PB9" type="output"/>
+        <pin num="47" name="VSS" type="input"/>
+        <pin num="48" name="VDD" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="pspice" part="CAP">
+      <aliases>
+        <alias>C</alias>
+      </aliases>
+      <description>Capacitor symbol for simulation only</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">CAP</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="pspice" part="R">
+      <description>Resistor symbol for simulation only</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/library/Connector.lib</uri>
+    </library>
+    <library logical="Connector_Generic">
+      <uri>/usr/share/kicad/library/Connector_Generic.lib</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/library/Device.lib</uri>
+    </library>
+    <library logical="Interface_CAN_LIN">
+      <uri>/usr/share/kicad/library/Interface_CAN_LIN.lib</uri>
+    </library>
+    <library logical="Regulator_Linear">
+      <uri>/usr/share/kicad/library/Regulator_Linear.lib</uri>
+    </library>
+    <library logical="YaCANi">
+      <uri>/home/thb/tmp/YaCANi/YaCANi.lib</uri>
+    </library>
+    <library logical="pspice">
+      <uri>/usr/share/kicad/library/pspice.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="/NRST">
+      <node ref="U1" pin="7"/>
+      <node ref="P1" pin="5"/>
+    </net>
+    <net code="2" name="/SWDIO">
+      <node ref="U1" pin="34"/>
+      <node ref="P1" pin="4"/>
+    </net>
+    <net code="3" name="Net-(F1-Pad1)">
+      <node ref="P3" pin="1"/>
+      <node ref="F1" pin="1"/>
+    </net>
+    <net code="4" name="/USB_DP">
+      <node ref="P3" pin="3"/>
+      <node ref="U1" pin="33"/>
+    </net>
+    <net code="5" name="/CAN_RX">
+      <node ref="U2" pin="4"/>
+      <node ref="U1" pin="45"/>
+    </net>
+    <net code="6" name="/CAN_TX">
+      <node ref="U1" pin="46"/>
+      <node ref="U2" pin="1"/>
+    </net>
+    <net code="7" name="/USB_DM">
+      <node ref="P3" pin="2"/>
+      <node ref="U1" pin="32"/>
+    </net>
+    <net code="8" name="+3V3">
+      <node ref="C6" pin="2"/>
+      <node ref="U1" pin="48"/>
+      <node ref="U2" pin="5"/>
+      <node ref="C8" pin="1"/>
+      <node ref="C2" pin="1"/>
+      <node ref="U1" pin="1"/>
+      <node ref="C3" pin="1"/>
+      <node ref="C4" pin="1"/>
+      <node ref="P1" pin="1"/>
+      <node ref="U1" pin="9"/>
+      <node ref="U1" pin="36"/>
+      <node ref="C1" pin="1"/>
+      <node ref="U1" pin="24"/>
+      <node ref="JP1" pin="3"/>
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="9" name="/SWCLK">
+      <node ref="U1" pin="37"/>
+      <node ref="P1" pin="2"/>
+    </net>
+    <net code="10" name="GND">
+      <node ref="U1" pin="8"/>
+      <node ref="D1" pin="1"/>
+      <node ref="D2" pin="1"/>
+      <node ref="P1" pin="3"/>
+      <node ref="U1" pin="47"/>
+      <node ref="U1" pin="23"/>
+      <node ref="U1" pin="35"/>
+      <node ref="P3" pin="5"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C1" pin="2"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C8" pin="2"/>
+      <node ref="U2" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="R2" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="P3" pin="6"/>
+      <node ref="P2" pin="4"/>
+      <node ref="C6" pin="1"/>
+      <node ref="U2" pin="8"/>
+      <node ref="U3" pin="1"/>
+      <node ref="C5" pin="1"/>
+    </net>
+    <net code="11" name="Net-(JP1-Pad1)">
+      <node ref="JP1" pin="1"/>
+    </net>
+    <net code="12" name="BOOT0">
+      <node ref="JP1" pin="2"/>
+      <node ref="R2" pin="1"/>
+      <node ref="U1" pin="44"/>
+    </net>
+    <net code="13" name="CAN_H">
+      <node ref="P2" pin="3"/>
+      <node ref="U2" pin="7"/>
+      <node ref="R1" pin="2"/>
+    </net>
+    <net code="14" name="Net-(JP2-Pad1)">
+      <node ref="JP2" pin="1"/>
+    </net>
+    <net code="15" name="Net-(JP2-Pad3)">
+      <node ref="R1" pin="1"/>
+      <node ref="JP2" pin="3"/>
+    </net>
+    <net code="16" name="CAN_L">
+      <node ref="JP2" pin="2"/>
+      <node ref="P2" pin="2"/>
+      <node ref="U2" pin="6"/>
+    </net>
+    <net code="17" name="Net-(U1-Pad3)">
+      <node ref="U1" pin="3"/>
+    </net>
+    <net code="18" name="Net-(U1-Pad5)">
+      <node ref="U1" pin="5"/>
+    </net>
+    <net code="19" name="Net-(U1-Pad6)">
+      <node ref="U1" pin="6"/>
+    </net>
+    <net code="20" name="Net-(U1-Pad2)">
+      <node ref="U1" pin="2"/>
+    </net>
+    <net code="21" name="Net-(U1-Pad4)">
+      <node ref="U1" pin="4"/>
+    </net>
+    <net code="22" name="Net-(U1-Pad28)">
+      <node ref="U1" pin="28"/>
+    </net>
+    <net code="23" name="Net-(U1-Pad27)">
+      <node ref="U1" pin="27"/>
+    </net>
+    <net code="24" name="Net-(U1-Pad26)">
+      <node ref="U1" pin="26"/>
+    </net>
+    <net code="25" name="Net-(U1-Pad25)">
+      <node ref="U1" pin="25"/>
+    </net>
+    <net code="26" name="Net-(U1-Pad22)">
+      <node ref="U1" pin="22"/>
+    </net>
+    <net code="27" name="Net-(U1-Pad21)">
+      <node ref="U1" pin="21"/>
+    </net>
+    <net code="28" name="Net-(U1-Pad43)">
+      <node ref="U1" pin="43"/>
+    </net>
+    <net code="29" name="+5V">
+      <node ref="C5" pin="2"/>
+      <node ref="C7" pin="1"/>
+      <node ref="U3" pin="3"/>
+      <node ref="F1" pin="2"/>
+      <node ref="U2" pin="3"/>
+    </net>
+    <net code="30" name="Net-(U1-Pad42)">
+      <node ref="U1" pin="42"/>
+    </net>
+    <net code="31" name="Net-(U1-Pad17)">
+      <node ref="U1" pin="17"/>
+    </net>
+    <net code="32" name="Net-(U1-Pad41)">
+      <node ref="U1" pin="41"/>
+    </net>
+    <net code="33" name="Net-(U1-Pad40)">
+      <node ref="U1" pin="40"/>
+    </net>
+    <net code="34" name="Net-(U1-Pad39)">
+      <node ref="U1" pin="39"/>
+    </net>
+    <net code="35" name="Net-(U1-Pad20)">
+      <node ref="U1" pin="20"/>
+    </net>
+    <net code="36" name="Net-(U1-Pad38)">
+      <node ref="U1" pin="38"/>
+    </net>
+    <net code="37" name="Net-(U1-Pad31)">
+      <node ref="U1" pin="31"/>
+    </net>
+    <net code="38" name="Net-(U1-Pad30)">
+      <node ref="U1" pin="30"/>
+    </net>
+    <net code="39" name="Net-(U1-Pad29)">
+      <node ref="U1" pin="29"/>
+    </net>
+    <net code="40" name="Net-(U1-Pad16)">
+      <node ref="U1" pin="16"/>
+    </net>
+    <net code="41" name="Net-(U1-Pad15)">
+      <node ref="U1" pin="15"/>
+    </net>
+    <net code="42" name="Net-(U1-Pad14)">
+      <node ref="U1" pin="14"/>
+    </net>
+    <net code="43" name="Net-(U1-Pad13)">
+      <node ref="U1" pin="13"/>
+    </net>
+    <net code="44" name="Net-(U1-Pad12)">
+      <node ref="U1" pin="12"/>
+    </net>
+    <net code="45" name="Net-(U1-Pad11)">
+      <node ref="U1" pin="11"/>
+    </net>
+    <net code="46" name="Net-(U1-Pad10)">
+      <node ref="U1" pin="10"/>
+    </net>
+    <net code="47" name="Net-(P2-Pad1)">
+      <node ref="P2" pin="1"/>
+    </net>
+    <net code="48" name="Net-(P3-Pad4)">
+      <node ref="P3" pin="4"/>
+    </net>
+    <net code="49" name="LED_PWR">
+      <node ref="R4" pin="2"/>
+      <node ref="U1" pin="18"/>
+    </net>
+    <net code="50" name="Net-(D2-Pad2)">
+      <node ref="R4" pin="1"/>
+      <node ref="D2" pin="2"/>
+    </net>
+    <net code="51" name="LED_ACT">
+      <node ref="R3" pin="2"/>
+      <node ref="U1" pin="19"/>
+    </net>
+    <net code="52" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2"/>
+      <node ref="R3" pin="1"/>
+    </net>
+  </nets>
+</export>
