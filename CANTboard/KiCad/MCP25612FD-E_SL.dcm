@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP MCP25612FD-E_SL
+D CAN Transceiver 2-Ch <8Mbps 5V SIOC-14 Microchip MCP25612FD-E/SL, CAN Transceiver 8MBps 2-channel CAN 2.0, CAN FD, 14-Pin SOIC
+K
+F http://ww1.microchip.com/downloads/en/DeviceDoc/20005409A.pdf
+$ENDCMP
+#
+#End Doc Library

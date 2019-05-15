@@ -1,4 +1,4 @@
 (sym_lib_table
-  (lib (name YaCANi)(type Legacy)(uri ${KIPRJMOD}/YaCANi.lib)(options "")(descr ""))
   (lib (name CANT-rescue)(type Legacy)(uri ${KIPRJMOD}/CANT-rescue.lib)(options "")(descr ""))
+  (lib (name MCP25612FD-E_SL)(type Legacy)(uri ${KIPRJMOD}/KiCad/MCP25612FD-E_SL.lib)(options "")(descr ""))
 )
