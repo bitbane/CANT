@@ -2,6 +2,7 @@ The CANT project is designed to allow people to screw around with CAN easily at 
 All of the stuff that is normally handled by a CAN controller that is baked into sillicon is up for grabs.
 
 CANT is designed to run on an ST Micro [Nucleo-H743ZI](http://www.st.com/en/evaluation-tools/nucleo-h743zi.html) 
+(Update: The Nucleo-H743ZI has been discontinued. It's replacement the Nucleo-H743ZI2 works with CANT out of the box).
 development board. This board was chosen due to its speed (400MHz) and essentially infinite ram and flash.
 
 ## Getting started with the Nucleo-STM32H7 development board
