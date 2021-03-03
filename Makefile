@@ -2,7 +2,7 @@ CC=arm-none-eabi-gcc
 CFLAGS=-Wall -Wextra -std=c99 -fno-common -Os -mthumb -mcpu=cortex-m7 -DSTM32H743xx -g
 CFLAGS+=-Isrc -Isrc/STM32H7xx_Nucleo_144
 LD=arm-none-eabi-gcc
-LDFLAGS=-TCANT.ld -nostartfiles -Wl,-Map=build/flash.map -mcpu=cortex-m7 -mthumb
+LDFLAGS=-TCANT.ld -nostartfiles -Wl,-Map=build/flash.map -mcpu=cortex-m7 -mthumb --specs=nosys.specs
 AS=arm-none-eabi-as
 ASFLAGS=-g
 
