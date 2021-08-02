@@ -120,8 +120,6 @@ NoConn ~ 4500 6000
 NoConn ~ 4500 5900
 NoConn ~ 6300 7000
 NoConn ~ 6300 6900
-NoConn ~ 6300 6800
-NoConn ~ 6300 6700
 NoConn ~ 6300 6600
 NoConn ~ 6300 6500
 NoConn ~ 6300 6400
@@ -353,9 +351,9 @@ Wire Wire Line
 Wire Wire Line
 	4200 1600 3950 1600
 Connection ~ 4200 1950
-Text GLabel 6300 2300 2    50   Input ~ 0
+Text GLabel 6300 6700 2    50   Input ~ 0
 J1708_TX
-Text GLabel 6300 2400 2    50   Input ~ 0
+Text GLabel 6300 6800 2    50   Input ~ 0
 J1708_RX
 NoConn ~ 3600 2050
 NoConn ~ 4500 3700
@@ -427,23 +425,6 @@ F 3 "" H 900 3350 50  0001 C CNN
 	1    900  3350
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:C C?
-U 1 1 611A4B61
-P 2050 3600
-AR Path="/611A4B61" Ref="C?"  Part="1" 
-AR Path="/6115D60F/611A4B61" Ref="C3"  Part="1" 
-F 0 "C3" H 2165 3646 50  0000 L CNN
-F 1 "10uF" H 2165 3555 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 2088 3450 50  0001 C CNN
-F 3 "~" H 2050 3600 50  0001 C CNN
-	1    2050 3600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	900  3850 900  3750
-Wire Wire Line
-	2050 3850 2050 3750
 Wire Wire Line
 	2050 3450 2050 3350
 Wire Wire Line
@@ -540,19 +521,6 @@ F 1 "4.7uF" H 6592 1405 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 6500 1450 50  0001 C CNN
 F 3 "~" H 6500 1450 50  0001 C CNN
 	1    6500 1450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 611A4B99
-P 900 3600
-AR Path="/611A4B99" Ref="C?"  Part="1" 
-AR Path="/6115D60F/611A4B99" Ref="C2"  Part="1" 
-F 0 "C2" H 1015 3646 50  0000 L CNN
-F 1 "100nF" H 1015 3555 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 938 3450 50  0001 C CNN
-F 3 "~" H 900 3600 50  0001 C CNN
-	1    900  3600
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -901,4 +869,36 @@ NoConn ~ 6300 4400
 Wire Wire Line
 	1750 3350 2050 3350
 Connection ~ 2050 3350
+$Comp
+L Device:C_Small C?
+U 1 1 613280F6
+P 900 3550
+AR Path="/613280F6" Ref="C?"  Part="1" 
+AR Path="/6115D60F/613280F6" Ref="C2"  Part="1" 
+F 0 "C2" H 992 3596 50  0000 L CNN
+F 1 "100nF" H 992 3505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 900 3550 50  0001 C CNN
+F 3 "~" H 900 3550 50  0001 C CNN
+	1    900  3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	900  3650 900  3850
+$Comp
+L Device:C_Small C?
+U 1 1 6132FB0C
+P 2050 3550
+AR Path="/6132FB0C" Ref="C?"  Part="1" 
+AR Path="/6115D60F/6132FB0C" Ref="C3"  Part="1" 
+F 0 "C3" H 2142 3596 50  0000 L CNN
+F 1 "10uF" H 2142 3505 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2050 3550 50  0001 C CNN
+F 3 "~" H 2050 3550 50  0001 C CNN
+	1    2050 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 3650 2050 3850
+NoConn ~ 6300 2400
+NoConn ~ 6300 2300
 $EndSCHEMATC
