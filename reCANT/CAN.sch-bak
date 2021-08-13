@@ -4,9 +4,9 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 6
-Title ""
-Date ""
-Rev ""
+Title "reCANT"
+Date "2021-08-12"
+Rev "0.1"
 Comp ""
 Comment1 ""
 Comment2 ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDDC9
 P 3650 4400
 AR Path="/611CDDC9" Ref="#PWR?"  Part="1" 
@@ -27,7 +27,7 @@ F 3 "" H 3650 4400 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDDCF
 P 4950 3800
 AR Path="/611CDDCF" Ref="#PWR?"  Part="1" 
@@ -40,7 +40,7 @@ F 3 "" H 4950 3800 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L pspice:R R?
+L CANT-rescue:R-pspice R?
 U 1 1 611CDDD6
 P 3000 6250
 AR Path="/611CDDD6" Ref="R?"  Part="1" 
@@ -50,11 +50,12 @@ F 1 "120" V 3007 6251 40  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 2930 6250 30  0001 C CNN
 F 3 "" H 3000 6250 30  0000 C CNN
 F 4 "MCR03ERTF1200" H 3000 6250 60  0001 C CNN "MPN"
+F 5 "C17437" V 3000 6250 50  0001 C CNN "LCSC"
 	1    3000 6250
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDDDC
 P 3300 4700
 AR Path="/611CDDDC" Ref="#PWR?"  Part="1" 
@@ -75,7 +76,7 @@ CAN1_L
 Text GLabel 4650 4100 2    50   Input ~ 0
 CAN1_H
 $Comp
-L Device:Jumper_NC_Dual JP?
+L CANT-rescue:Jumper_NC_Dual-Device JP?
 U 1 1 611CDDE6
 P 3350 6500
 AR Path="/611CDDE6" Ref="JP?"  Part="1" 
@@ -122,11 +123,12 @@ F 0 "U7" H 9650 1616 50  0000 C CNN
 F 1 "74LVC1G66" H 9650 1525 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5_Handsoldering" H 9650 1300 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 9650 1300 50  0001 C CNN
+F 4 "C97489" H 9650 1300 50  0001 C CNN "LCSC"
 	1    9650 1300
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDDFF
 P 9400 2100
 AR Path="/611CDDFF" Ref="#PWR?"  Part="1" 
@@ -139,7 +141,7 @@ F 3 "" H 9400 2100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pspice:R R?
+L CANT-rescue:R-pspice R?
 U 1 1 611CDE06
 P 9400 1850
 AR Path="/611CDE06" Ref="R?"  Part="1" 
@@ -149,6 +151,7 @@ F 1 "4.7K" V 9407 1851 40  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 9330 1850 30  0001 C CNN
 F 3 "" H 9400 1850 30  0000 C CNN
 F 4 "MCR03ERTF5100" H 9400 1850 60  0001 C CNN "MPN"
+F 5 "C17673" V 9400 1850 50  0001 C CNN "LCSC"
 	1    9400 1850
 	1    0    0    -1  
 $EndComp
@@ -158,7 +161,7 @@ Wire Wire Line
 	9400 1600 9400 1450
 Connection ~ 9400 1450
 $Comp
-L Connector:Screw_Terminal_01x04 J?
+L CANT-rescue:Screw_Terminal_01x04-Connector J?
 U 1 1 611CDE0F
 P 1300 1200
 AR Path="/611CDE0F" Ref="J?"  Part="1" 
@@ -171,7 +174,7 @@ F 3 "~" H 1300 1200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pspice:R R?
+L CANT-rescue:R-pspice R?
 U 1 1 611CDE16
 P 1500 6200
 AR Path="/611CDE16" Ref="R?"  Part="1" 
@@ -181,11 +184,12 @@ F 1 "120" V 1507 6201 40  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 1430 6200 30  0001 C CNN
 F 3 "" H 1500 6200 30  0000 C CNN
 F 4 "MCR03ERTF1200" H 1500 6200 60  0001 C CNN "MPN"
+F 5 "C17437" V 1500 6200 50  0001 C CNN "LCSC"
 	1    1500 6200
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:Jumper_NC_Dual JP?
+L CANT-rescue:Jumper_NC_Dual-Device JP?
 U 1 1 611CDE1C
 P 1850 6450
 AR Path="/611CDE1C" Ref="JP?"  Part="1" 
@@ -211,7 +215,7 @@ Wire Wire Line
 Wire Wire Line
 	1850 6200 1750 6200
 $Comp
-L power:VBUS #PWR?
+L CANT-rescue:VBUS-power #PWR?
 U 1 1 611CDE29
 P 4600 3800
 AR Path="/611CDE29" Ref="#PWR?"  Part="1" 
@@ -228,7 +232,7 @@ CAN3_H
 Text GLabel 2300 4250 2    50   Input ~ 0
 CAN3_L
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE31
 P 4150 4600
 AR Path="/611CDE31" Ref="#PWR?"  Part="1" 
@@ -241,7 +245,7 @@ F 3 "" H 4150 4600 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Interface_CAN_LIN:MCP2558FD-xSN U?
+L CANT-rescue:MCP2558FD-xSN-Interface_CAN_LIN U?
 U 1 1 611CDE37
 P 4150 4200
 AR Path="/611CDE37" Ref="U?"  Part="1" 
@@ -250,11 +254,12 @@ F 0 "U5" H 4150 4781 50  0000 C CNN
 F 1 "MCP2558FD-xSN" H 4150 4690 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 4150 3600 50  0001 C CNN
 F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf" H 4150 4200 50  0001 C CNN
+F 4 "C124015" H 4150 4200 50  0001 C CNN "LCSC"
 	1    4150 4200
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L CANT-rescue:VCC-power #PWR?
 U 1 1 611CDE3D
 P 3300 4300
 AR Path="/611CDE3D" Ref="#PWR?"  Part="1" 
@@ -273,7 +278,7 @@ CAN3_H
 Text GLabel 1100 1100 0    50   Input ~ 0
 CAN3_L
 $Comp
-L Interface_CAN_LIN:MCP2558FD-xSN U?
+L CANT-rescue:MCP2558FD-xSN-Interface_CAN_LIN U?
 U 1 1 611CDE46
 P 1800 4150
 AR Path="/611CDE46" Ref="U?"  Part="1" 
@@ -282,11 +287,12 @@ F 0 "U4" H 1800 4731 50  0000 C CNN
 F 1 "MCP2558FD-xSN" H 1800 4640 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 1800 3550 50  0001 C CNN
 F 3 "https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf" H 1800 4150 50  0001 C CNN
+F 4 "C124015" H 1800 4150 50  0001 C CNN "LCSC"
 	1    1800 4150
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VCC #PWR?
+L CANT-rescue:VCC-power #PWR?
 U 1 1 611CDE4C
 P 1050 4250
 AR Path="/611CDE4C" Ref="#PWR?"  Part="1" 
@@ -301,7 +307,7 @@ $EndComp
 Wire Wire Line
 	1050 4250 1300 4250
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE53
 P 1300 4350
 AR Path="/611CDE53" Ref="#PWR?"  Part="1" 
@@ -314,7 +320,7 @@ F 3 "" H 1300 4350 60  0000 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE59
 P 1800 4550
 AR Path="/611CDE59" Ref="#PWR?"  Part="1" 
@@ -327,7 +333,7 @@ F 3 "" H 1800 4550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE5F
 P 1050 4650
 AR Path="/611CDE5F" Ref="#PWR?"  Part="1" 
@@ -340,7 +346,7 @@ F 3 "" H 1050 4650 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:VBUS #PWR?
+L CANT-rescue:VBUS-power #PWR?
 U 1 1 611CDE65
 P 2250 3750
 AR Path="/611CDE65" Ref="#PWR?"  Part="1" 
@@ -353,7 +359,7 @@ F 3 "" H 2250 3750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE6B
 P 2650 3750
 AR Path="/611CDE6B" Ref="#PWR?"  Part="1" 
@@ -381,11 +387,12 @@ F 0 "U6" H 7750 1666 50  0000 C CNN
 F 1 "74LVC1G66" H 7750 1575 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-353_SC-70-5_Handsoldering" H 7750 1350 50  0001 C CNN
 F 3 "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf" H 7750 1350 50  0001 C CNN
+F 4 "C97489" H 7750 1350 50  0001 C CNN "LCSC"
 	1    7750 1350
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR?
+L CANT-rescue:GND-power #PWR?
 U 1 1 611CDE7A
 P 7500 2150
 AR Path="/611CDE7A" Ref="#PWR?"  Part="1" 
@@ -398,7 +405,7 @@ F 3 "" H 7500 2150 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L pspice:R R?
+L CANT-rescue:R-pspice R?
 U 1 1 611CDE81
 P 7500 1900
 AR Path="/611CDE81" Ref="R?"  Part="1" 
@@ -408,6 +415,7 @@ F 1 "4.7K" V 7507 1901 40  0000 C CNN
 F 2 "Resistor_SMD:R_0805_2012Metric" V 7430 1900 30  0001 C CNN
 F 3 "" H 7500 1900 30  0000 C CNN
 F 4 "MCR03ERTF5100" H 7500 1900 60  0001 C CNN "MPN"
+F 5 "C17673" V 7500 1900 50  0001 C CNN "LCSC"
 	1    7500 1900
 	1    0    0    -1  
 $EndComp
@@ -443,46 +451,50 @@ CAN1_RX
 Text Notes 6750 850  0    197  ~ 39
 Switches
 $Comp
-L Device:C_Small C16
+L CANT-rescue:C_Small-Device C16
 U 1 1 61334A14
 P 1050 4550
 F 0 "C16" H 1142 4596 50  0000 L CNN
 F 1 "100nF" H 1142 4505 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 1050 4550 50  0001 C CNN
 F 3 "~" H 1050 4550 50  0001 C CNN
+F 4 "C49678" H 1050 4550 50  0001 C CNN "LCSC"
 	1    1050 4550
 	1    0    0    -1  
 $EndComp
 $Comp
-L Device:C_Small C17
+L CANT-rescue:C_Small-Device C17
 U 1 1 613359EE
 P 2550 3750
 F 0 "C17" V 2321 3750 50  0000 C CNN
 F 1 "100nF" V 2412 3750 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 2550 3750 50  0001 C CNN
 F 3 "~" H 2550 3750 50  0001 C CNN
+F 4 "C49678" V 2550 3750 50  0001 C CNN "LCSC"
 	1    2550 3750
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C_Small C19
+L CANT-rescue:C_Small-Device C19
 U 1 1 613361C8
 P 4850 3800
 F 0 "C19" V 4621 3800 50  0000 C CNN
 F 1 "100nF" V 4712 3800 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 4850 3800 50  0001 C CNN
 F 3 "~" H 4850 3800 50  0001 C CNN
+F 4 "C49678" V 4850 3800 50  0001 C CNN "LCSC"
 	1    4850 3800
 	0    1    1    0   
 $EndComp
 $Comp
-L Device:C_Small C18
+L CANT-rescue:C_Small-Device C18
 U 1 1 61336920
 P 3300 4600
 F 0 "C18" H 3392 4646 50  0000 L CNN
 F 1 "100nF" H 3392 4555 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric" H 3300 4600 50  0001 C CNN
 F 3 "~" H 3300 4600 50  0001 C CNN
+F 4 "C49678" H 3300 4600 50  0001 C CNN "LCSC"
 	1    3300 4600
 	1    0    0    -1  
 $EndComp

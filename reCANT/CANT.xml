@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/home/thb/projects/CANT/reCANT/CANT.sch</source>
-    <date>Fri Aug 13 00:11:13 2021</date>
+    <date>Fri Aug 13 15:23:51 2021</date>
     <tool>Eeschema 5.1.10</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -93,9 +93,12 @@
       <tstamp>610CF69A</tstamp>
     </comp>
     <comp ref="F1">
-      <value>Polyfuse</value>
+      <value>Polyfuse 6v 1A</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C207022</field>
+      </fields>
       <libsource lib="CANT-rescue" part="Polyfuse-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610E9C19</tstamp>
@@ -104,6 +107,9 @@
       <value>5.1K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C27834</field>
+      </fields>
       <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610EC65C</tstamp>
@@ -112,6 +118,9 @@
       <value>5.1K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C27834</field>
+      </fields>
       <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610ED325</tstamp>
@@ -120,6 +129,9 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C28323</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610F228E</tstamp>
@@ -128,6 +140,9 @@
       <value>8.06K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C19006</field>
+      </fields>
       <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AACDA</tstamp>
@@ -136,6 +151,9 @@
       <value>4.7uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1779</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AB71E</tstamp>
@@ -144,6 +162,9 @@
       <value>20K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C4328</field>
+      </fields>
       <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AC9BC</tstamp>
@@ -152,6 +173,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B0AB9</tstamp>
@@ -160,6 +184,9 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C28323</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B2AF1</tstamp>
@@ -168,6 +195,9 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C28323</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B4589</tstamp>
@@ -176,6 +206,9 @@
       <value>USB3343</value>
       <footprint>Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm</footprint>
       <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/334x.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C112967</field>
+      </fields>
       <libsource lib="CANT-rescue" part="USB3343-Interface_USB" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B809F</tstamp>
@@ -192,6 +225,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612C7E3A</tstamp>
@@ -200,6 +236,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612CAD3C</tstamp>
@@ -208,6 +247,7 @@
       <value>68</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17802</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -218,6 +258,7 @@
       <value>LED-RED</value>
       <footprint>LED_SMD:LED_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C84256</field>
         <field name="MPN">LTST-C191KRKT</field>
       </fields>
       <libsource lib="CANT-rescue" part="LED-Device" description=""/>
@@ -228,6 +269,7 @@
       <value>68</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17802</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -238,6 +280,7 @@
       <value>68</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17802</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -248,6 +291,7 @@
       <value>LED-RED</value>
       <footprint>LED_SMD:LED_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C84256</field>
         <field name="MPN">LTST-C191KRKT</field>
       </fields>
       <libsource lib="CANT-rescue" part="LED-Device" description=""/>
@@ -258,6 +302,7 @@
       <value>LED-GREEN</value>
       <footprint>LED_SMD:LED_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C2297</field>
         <field name="MPN">LTST-C191KGKT</field>
       </fields>
       <libsource lib="CANT-rescue" part="LED-Device" description=""/>
@@ -268,6 +313,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118130E</tstamp>
@@ -276,6 +324,9 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C28323</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>61181314</tstamp>
@@ -284,6 +335,9 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49217</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118137A</tstamp>
@@ -292,6 +346,9 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49217</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>61181382</tstamp>
@@ -300,6 +357,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118138A</tstamp>
@@ -316,6 +376,9 @@
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C17407</field>
+      </fields>
       <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118139A</tstamp>
@@ -329,9 +392,12 @@
       <tstamp>611813B1</tstamp>
     </comp>
     <comp ref="U3">
-      <value>STM32H743VITx</value>
+      <value>STM32H733VGTx</value>
       <footprint>Package_QFP:LQFP-100_14x14mm_P0.5mm</footprint>
-      <datasheet>http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00387108.pdf</datasheet>
+      <datasheet>https://www.st.com/resource/en/reference_manual/rm0468-stm32h723733-stm32h725735-and-stm32h730-value-line-advanced-armbased-32bit-mcus-stmicroelectronics.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C730160</field>
+      </fields>
       <libsource lib="CANT-rescue" part="STM32H743VITx-MCU_ST_STM32H7" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611813C9</tstamp>
@@ -339,6 +405,9 @@
     <comp ref="U2">
       <value>LD1117S33TR</value>
       <footprint>Package_TO_SOT_SMD:SOT-223</footprint>
+      <fields>
+        <field name="LCSC">C86781</field>
+      </fields>
       <libsource lib="CANT-rescue" part="LD1117S33TR_SOT223-Regulator_Linear" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4AFA</tstamp>
@@ -347,6 +416,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B6F</tstamp>
@@ -355,6 +427,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B75</tstamp>
@@ -363,6 +438,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B7B</tstamp>
@@ -371,6 +449,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B81</tstamp>
@@ -379,6 +460,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B87</tstamp>
@@ -387,6 +471,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B8D</tstamp>
@@ -395,6 +482,9 @@
       <value>4.7uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C1779</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B93</tstamp>
@@ -410,6 +500,7 @@
       <value>10k</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17414</field>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -427,6 +518,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>613280F6</tstamp>
@@ -435,6 +529,9 @@
       <value>10uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C15850</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6132FB0C</tstamp>
@@ -443,6 +540,7 @@
       <value>120</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17437</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -460,6 +558,9 @@
       <value>74LVC1G66</value>
       <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5_Handsoldering</footprint>
       <datasheet>http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C97489</field>
+      </fields>
       <libsource lib="CANT-rescue" part="74LVC1G66-74xGxx" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDDF9</tstamp>
@@ -468,6 +569,7 @@
       <value>4.7K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17673</field>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -486,6 +588,7 @@
       <value>120</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17437</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -503,6 +606,9 @@
       <value>MCP2558FD-xSN</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C124015</field>
+      </fields>
       <libsource lib="CANT-rescue" part="MCP2558FD-xSN-Interface_CAN_LIN" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE37</tstamp>
@@ -511,6 +617,9 @@
       <value>MCP2558FD-xSN</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C124015</field>
+      </fields>
       <libsource lib="CANT-rescue" part="MCP2558FD-xSN-Interface_CAN_LIN" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE46</tstamp>
@@ -519,6 +628,9 @@
       <value>74LVC1G66</value>
       <footprint>Package_TO_SOT_SMD:SOT-353_SC-70-5_Handsoldering</footprint>
       <datasheet>http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C97489</field>
+      </fields>
       <libsource lib="CANT-rescue" part="74LVC1G66-74xGxx" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE74</tstamp>
@@ -527,6 +639,7 @@
       <value>4.7K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17673</field>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -537,6 +650,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>61334A14</tstamp>
@@ -545,6 +661,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>613359EE</tstamp>
@@ -553,6 +672,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>613361C8</tstamp>
@@ -561,6 +683,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>61336920</tstamp>
@@ -569,6 +694,9 @@
       <value>ST485EBDR</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>http://www.st.com/resource/en/datasheet/st485eb.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C81186</field>
+      </fields>
       <libsource lib="CANT-rescue" part="ST485EBDR-Interface_UART" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC13</tstamp>
@@ -577,6 +705,9 @@
       <value>SN74LVC1G14DBV</value>
       <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
       <datasheet>http://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C7835</field>
+      </fields>
       <libsource lib="CANT-rescue" part="SN74LVC1G14DBV-74xGxx" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC32</tstamp>
@@ -585,6 +716,7 @@
       <value>4.7K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17673</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -595,6 +727,9 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49217</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC57</tstamp>
@@ -603,6 +738,9 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49217</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC64</tstamp>
@@ -611,6 +749,7 @@
       <value>4.7K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17673</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -621,6 +760,7 @@
       <value>47</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17714</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -639,6 +779,7 @@
       <value>47</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <fields>
+        <field name="LCSC">C17714</field>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
       <libsource lib="CANT-rescue" part="R-pspice" description=""/>
@@ -649,6 +790,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611F1E3E</tstamp>
@@ -657,6 +801,9 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
+      <fields>
+        <field name="LCSC">C49678</field>
+      </fields>
       <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611F3135</tstamp>
