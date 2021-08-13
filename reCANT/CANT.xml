@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <export version="D">
   <design>
-    <source>C:\Users\thb\projects\CANT\CANTboard\CANT.sch</source>
-    <date>8/2/2021 12:59:33 PM</date>
-    <tool>Eeschema (5.1.10)-1</tool>
+    <source>/home/thb/projects/CANT/reCANT/CANT.sch</source>
+    <date>Fri Aug 13 00:11:13 2021</date>
+    <tool>Eeschema 5.1.10</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
-        <title/>
-        <company>Phoenix Robotik</company>
-        <rev/>
-        <date/>
+        <title>reCANT</title>
+        <company/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>CANT.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -19,10 +19,10 @@
     </sheet>
     <sheet number="2" name="/HS_USB/" tstamps="/610B6705/">
       <title_block>
-        <title/>
+        <title>reCANT</title>
         <company/>
-        <rev/>
-        <date/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>USB.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -32,10 +32,10 @@
     </sheet>
     <sheet number="3" name="/LEDs/" tstamps="/611238D1/">
       <title_block>
-        <title/>
+        <title>reCANT</title>
         <company/>
-        <rev/>
-        <date/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>LEDs.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -45,10 +45,10 @@
     </sheet>
     <sheet number="4" name="/Microcontroller/" tstamps="/6115D60F/">
       <title_block>
-        <title/>
+        <title>reCANT</title>
         <company/>
-        <rev/>
-        <date/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>Microcontroller.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -58,10 +58,10 @@
     </sheet>
     <sheet number="5" name="/CAN/" tstamps="/611BBF4E/">
       <title_block>
-        <title/>
+        <title>reCANT</title>
         <company/>
-        <rev/>
-        <date/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>CAN.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -71,10 +71,10 @@
     </sheet>
     <sheet number="6" name="/J1708/" tstamps="/611E6D6F/">
       <title_block>
-        <title/>
+        <title>reCANT</title>
         <company/>
-        <rev/>
-        <date/>
+        <rev>0.1</rev>
+        <date>2021-08-12</date>
         <source>J1708.sch</source>
         <comment number="1" value=""/>
         <comment number="2" value=""/>
@@ -88,7 +88,7 @@
       <value>USB_C_Receptacle_USB2.0</value>
       <footprint>Connector_USB:USB_C_Receptacle_GCT_USB4085</footprint>
       <datasheet>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</datasheet>
-      <libsource lib="Connector" part="USB_C_Receptacle_USB2.0" description="USB 2.0-only Type-C Receptacle connector"/>
+      <libsource lib="CANT-rescue" part="USB_C_Receptacle_USB2.0-Connector" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610CF69A</tstamp>
     </comp>
@@ -96,7 +96,7 @@
       <value>Polyfuse</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="Polyfuse" description="Resettable fuse, polymeric positive temperature coefficient"/>
+      <libsource lib="CANT-rescue" part="Polyfuse-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610E9C19</tstamp>
     </comp>
@@ -104,7 +104,7 @@
       <value>5.1K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="R" description="Resistor"/>
+      <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610EC65C</tstamp>
     </comp>
@@ -112,7 +112,7 @@
       <value>5.1K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="R" description="Resistor"/>
+      <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610ED325</tstamp>
     </comp>
@@ -120,7 +120,7 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>610F228E</tstamp>
     </comp>
@@ -128,7 +128,7 @@
       <value>8.06K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="R" description="Resistor"/>
+      <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AACDA</tstamp>
     </comp>
@@ -136,7 +136,7 @@
       <value>4.7uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AB71E</tstamp>
     </comp>
@@ -144,7 +144,7 @@
       <value>20K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="R" description="Resistor"/>
+      <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612AC9BC</tstamp>
     </comp>
@@ -152,7 +152,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B0AB9</tstamp>
     </comp>
@@ -160,7 +160,7 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B2AF1</tstamp>
     </comp>
@@ -168,7 +168,7 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B4589</tstamp>
     </comp>
@@ -176,7 +176,7 @@
       <value>USB3343</value>
       <footprint>Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm</footprint>
       <datasheet>http://ww1.microchip.com/downloads/en/DeviceDoc/334x.pdf</datasheet>
-      <libsource lib="Interface_USB" part="USB3343" description="Hi-Speed USB ULPI Transceiver, QFN-24"/>
+      <libsource lib="CANT-rescue" part="USB3343-Interface_USB" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612B809F</tstamp>
     </comp>
@@ -192,7 +192,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612C7E3A</tstamp>
     </comp>
@@ -200,7 +200,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612CAD3C</tstamp>
     </comp>
@@ -210,7 +210,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5BC</tstamp>
     </comp>
@@ -220,7 +220,7 @@
       <fields>
         <field name="MPN">LTST-C191KRKT</field>
       </fields>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="CANT-rescue" part="LED-Device" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5C3</tstamp>
     </comp>
@@ -230,7 +230,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5D9</tstamp>
     </comp>
@@ -240,7 +240,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5E0</tstamp>
     </comp>
@@ -250,7 +250,7 @@
       <fields>
         <field name="MPN">LTST-C191KRKT</field>
       </fields>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="CANT-rescue" part="LED-Device" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5E7</tstamp>
     </comp>
@@ -260,7 +260,7 @@
       <fields>
         <field name="MPN">LTST-C191KGKT</field>
       </fields>
-      <libsource lib="Device" part="LED" description="Light emitting diode"/>
+      <libsource lib="CANT-rescue" part="LED-Device" description=""/>
       <sheetpath names="/LEDs/" tstamps="/611238D1/"/>
       <tstamp>6112E5EE</tstamp>
     </comp>
@@ -268,7 +268,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118130E</tstamp>
     </comp>
@@ -276,7 +276,7 @@
       <value>1uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>61181314</tstamp>
     </comp>
@@ -284,7 +284,7 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118137A</tstamp>
     </comp>
@@ -292,7 +292,7 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>61181382</tstamp>
     </comp>
@@ -300,7 +300,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118138A</tstamp>
     </comp>
@@ -308,7 +308,7 @@
       <value>SW_SPST</value>
       <footprint>Button_Switch_SMD:SW_SPST_PTS645</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Switch" part="SW_SPST" description="Single Pole Single Throw (SPST) switch"/>
+      <libsource lib="CANT-rescue" part="SW_SPST-Switch" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>61181391</tstamp>
     </comp>
@@ -316,7 +316,7 @@
       <value>100K</value>
       <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="R" description="Resistor"/>
+      <libsource lib="CANT-rescue" part="R-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6118139A</tstamp>
     </comp>
@@ -324,7 +324,7 @@
       <value>Conn_02x08_Odd_Even</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_2x08_P2.54mm_Vertical</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Connector_Generic" part="Conn_02x08_Odd_Even" description="Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="CANT-rescue" part="Conn_02x08_Odd_Even-Connector_Generic" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611813B1</tstamp>
     </comp>
@@ -332,14 +332,14 @@
       <value>STM32H743VITx</value>
       <footprint>Package_QFP:LQFP-100_14x14mm_P0.5mm</footprint>
       <datasheet>http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00387108.pdf</datasheet>
-      <libsource lib="MCU_ST_STM32H7" part="STM32H743VITx" description="ARM Cortex-M7 MCU, 2048KB flash, 864KB RAM, 400MHz, 1.7-3.6V, 82 GPIO, LQFP-100"/>
+      <libsource lib="CANT-rescue" part="STM32H743VITx-MCU_ST_STM32H7" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611813C9</tstamp>
     </comp>
     <comp ref="U2">
       <value>LD1117S33TR</value>
       <footprint>Package_TO_SOT_SMD:SOT-223</footprint>
-      <libsource lib="Regulator_Linear" part="LD1117S33TR_SOT223" description="800mA Fixed Low Drop Positive Voltage Regulator, Fixed Output 3.3V, SOT-223"/>
+      <libsource lib="CANT-rescue" part="LD1117S33TR_SOT223-Regulator_Linear" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4AFA</tstamp>
     </comp>
@@ -347,7 +347,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B6F</tstamp>
     </comp>
@@ -355,7 +355,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B75</tstamp>
     </comp>
@@ -363,7 +363,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B7B</tstamp>
     </comp>
@@ -371,7 +371,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B81</tstamp>
     </comp>
@@ -379,7 +379,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B87</tstamp>
     </comp>
@@ -387,7 +387,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B8D</tstamp>
     </comp>
@@ -395,14 +395,14 @@
       <value>4.7uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611A4B93</tstamp>
     </comp>
     <comp ref="P1">
       <value>SWD</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical</footprint>
-      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="CANT-rescue" part="Conn_01x05-Connector_Generic" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611B93E3</tstamp>
     </comp>
@@ -412,14 +412,14 @@
       <fields>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611C049A</tstamp>
     </comp>
     <comp ref="JP1">
       <value>Jumper_NC_Dual</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
-      <libsource lib="Device" part="Jumper_NC_Dual" description="Dual jumper, normally closed"/>
+      <libsource lib="CANT-rescue" part="Jumper_NC_Dual-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>611C04A0</tstamp>
     </comp>
@@ -427,7 +427,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>613280F6</tstamp>
     </comp>
@@ -435,7 +435,7 @@
       <value>10uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/Microcontroller/" tstamps="/6115D60F/"/>
       <tstamp>6132FB0C</tstamp>
     </comp>
@@ -445,14 +445,14 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDDD6</tstamp>
     </comp>
     <comp ref="JP3">
       <value>Jumper_NC_Dual</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
-      <libsource lib="Device" part="Jumper_NC_Dual" description="Dual jumper, normally closed"/>
+      <libsource lib="CANT-rescue" part="Jumper_NC_Dual-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDDE6</tstamp>
     </comp>
@@ -470,7 +470,7 @@
       <fields>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE06</tstamp>
     </comp>
@@ -478,7 +478,7 @@
       <value>Screw_Terminal_01x04</value>
       <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-4-3.5-H_1x04_P3.50mm_Horizontal</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Connector" part="Screw_Terminal_01x04" description="Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="CANT-rescue" part="Screw_Terminal_01x04-Connector" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE0F</tstamp>
     </comp>
@@ -488,14 +488,14 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE16</tstamp>
     </comp>
     <comp ref="JP2">
       <value>Jumper_NC_Dual</value>
       <footprint>Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical</footprint>
-      <libsource lib="Device" part="Jumper_NC_Dual" description="Dual jumper, normally closed"/>
+      <libsource lib="CANT-rescue" part="Jumper_NC_Dual-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE1C</tstamp>
     </comp>
@@ -503,7 +503,7 @@
       <value>MCP2558FD-xSN</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf</datasheet>
-      <libsource lib="Interface_CAN_LIN" part="MCP2558FD-xSN" description="CAN FD Transceiver with Silent Mode, up to 8 Mbps, SOIC-8"/>
+      <libsource lib="CANT-rescue" part="MCP2558FD-xSN-Interface_CAN_LIN" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE37</tstamp>
     </comp>
@@ -511,7 +511,7 @@
       <value>MCP2558FD-xSN</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf</datasheet>
-      <libsource lib="Interface_CAN_LIN" part="MCP2558FD-xSN" description="CAN FD Transceiver with Silent Mode, up to 8 Mbps, SOIC-8"/>
+      <libsource lib="CANT-rescue" part="MCP2558FD-xSN-Interface_CAN_LIN" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE46</tstamp>
     </comp>
@@ -529,7 +529,7 @@
       <fields>
         <field name="MPN">MCR03ERTF5100</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>611CDE81</tstamp>
     </comp>
@@ -537,7 +537,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>61334A14</tstamp>
     </comp>
@@ -545,7 +545,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>613359EE</tstamp>
     </comp>
@@ -553,7 +553,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>613361C8</tstamp>
     </comp>
@@ -561,7 +561,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/CAN/" tstamps="/611BBF4E/"/>
       <tstamp>61336920</tstamp>
     </comp>
@@ -569,7 +569,7 @@
       <value>ST485EBDR</value>
       <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
       <datasheet>http://www.st.com/resource/en/datasheet/st485eb.pdf</datasheet>
-      <libsource lib="Interface_UART" part="ST485EBDR" description="Half duplex RS-485/RS-422, 5 Mbps, ±15kV electro-static discharge (ESD) protection, no slew-rate, with low-power shutdown, with receiver/driver enable, 256 transceiver on the bus - 40 to 85 °C, SOIC-8"/>
+      <libsource lib="CANT-rescue" part="ST485EBDR-Interface_UART" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC13</tstamp>
     </comp>
@@ -577,7 +577,7 @@
       <value>SN74LVC1G14DBV</value>
       <footprint>Package_TO_SOT_SMD:SOT-23-5</footprint>
       <datasheet>http://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf</datasheet>
-      <libsource lib="74xGxx" part="SN74LVC1G14DBV" description="Single Schmitt-Trigger Inverter, SOT-23"/>
+      <libsource lib="CANT-rescue" part="SN74LVC1G14DBV-74xGxx" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC32</tstamp>
     </comp>
@@ -587,7 +587,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC4F</tstamp>
     </comp>
@@ -595,7 +595,7 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC57</tstamp>
     </comp>
@@ -603,7 +603,7 @@
       <value>2.2uF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <libsource lib="CANT-rescue" part="C-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC64</tstamp>
     </comp>
@@ -613,7 +613,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC6C</tstamp>
     </comp>
@@ -623,7 +623,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EEC7C</tstamp>
     </comp>
@@ -631,7 +631,7 @@
       <value>Screw_Terminal_01x02</value>
       <footprint>TerminalBlock_Phoenix:TerminalBlock_Phoenix_PT-1,5-2-3.5-H_1x02_P3.50mm_Horizontal</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Connector" part="Screw_Terminal_01x02" description="Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="CANT-rescue" part="Screw_Terminal_01x02-Connector" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EECA8</tstamp>
     </comp>
@@ -641,7 +641,7 @@
       <fields>
         <field name="MPN">MCR03ERTF1200</field>
       </fields>
-      <libsource lib="pspice" part="R" description="Resistor symbol for simulation only"/>
+      <libsource lib="CANT-rescue" part="R-pspice" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611EECAF</tstamp>
     </comp>
@@ -649,7 +649,7 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611F1E3E</tstamp>
     </comp>
@@ -657,31 +657,12 @@
       <value>100nF</value>
       <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
       <datasheet>~</datasheet>
-      <libsource lib="Device" part="C_Small" description="Unpolarized capacitor, small symbol"/>
+      <libsource lib="CANT-rescue" part="C_Small-Device" description=""/>
       <sheetpath names="/J1708/" tstamps="/611E6D6F/"/>
       <tstamp>611F3135</tstamp>
     </comp>
   </components>
   <libparts>
-    <libpart lib="74xGxx" part="SN74LVC1G14DBV">
-      <description>Single Schmitt-Trigger Inverter, SOT-23</description>
-      <docs>http://www.ti.com/lit/ds/symlink/sn74lvc1g14.pdf</docs>
-      <footprints>
-        <fp>SOT?23*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">SN74LVC1G14DBV</field>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
-      </fields>
-      <pins>
-        <pin num="1" name="NC" type="NotConnected"/>
-        <pin num="2" name="~" type="input"/>
-        <pin num="3" name="GND" type="power_in"/>
-        <pin num="4" name="~" type="output"/>
-        <pin num="5" name="VCC" type="power_in"/>
-      </pins>
-    </libpart>
     <libpart lib="CANT-rescue" part="74LVC1G66-74xGxx">
       <footprints>
         <fp>SOT*</fp>
@@ -699,77 +680,39 @@
         <pin num="5" name="VCC" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="Connector" part="Screw_Terminal_01x02">
-      <description>Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="C-Device">
       <footprints>
-        <fp>TerminalBlock*:*</fp>
+        <fp>C_*</fp>
       </footprints>
       <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Screw_Terminal_01x02</field>
+        <field name="Reference">C</field>
+        <field name="Value">C-Device</field>
       </fields>
       <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Connector" part="Screw_Terminal_01x04">
-      <description>Generic screw terminal, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="C_Small-Device">
       <footprints>
-        <fp>TerminalBlock*:*</fp>
+        <fp>C_*</fp>
       </footprints>
       <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Screw_Terminal_01x04</field>
+        <field name="Reference">C</field>
+        <field name="Value">C_Small-Device</field>
       </fields>
       <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
-        <pin num="3" name="Pin_3" type="passive"/>
-        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Connector" part="USB_C_Receptacle_USB2.0">
-      <description>USB 2.0-only Type-C Receptacle connector</description>
-      <docs>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</docs>
-      <footprints>
-        <fp>USB*C*Receptacle*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">J</field>
-        <field name="Value">USB_C_Receptacle_USB2.0</field>
-      </fields>
-      <pins>
-        <pin num="A1" name="GND" type="passive"/>
-        <pin num="A4" name="VBUS" type="passive"/>
-        <pin num="A5" name="CC1" type="BiDi"/>
-        <pin num="A6" name="D+" type="BiDi"/>
-        <pin num="A7" name="D-" type="BiDi"/>
-        <pin num="A8" name="SBU1" type="BiDi"/>
-        <pin num="A9" name="VBUS" type="passive"/>
-        <pin num="A12" name="GND" type="passive"/>
-        <pin num="B1" name="GND" type="passive"/>
-        <pin num="B4" name="VBUS" type="passive"/>
-        <pin num="B5" name="CC2" type="BiDi"/>
-        <pin num="B6" name="D+" type="BiDi"/>
-        <pin num="B7" name="D-" type="BiDi"/>
-        <pin num="B8" name="SBU2" type="BiDi"/>
-        <pin num="B9" name="VBUS" type="passive"/>
-        <pin num="B12" name="GND" type="passive"/>
-        <pin num="S1" name="SHIELD" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Connector_Generic" part="Conn_01x05">
-      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="Conn_01x05-Connector_Generic">
       <footprints>
         <fp>Connector*:*_1x??_*</fp>
       </footprints>
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">Conn_01x05</field>
+        <field name="Value">Conn_01x05-Connector_Generic</field>
       </fields>
       <pins>
         <pin num="1" name="Pin_1" type="passive"/>
@@ -779,15 +722,13 @@
         <pin num="5" name="Pin_5" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Connector_Generic" part="Conn_02x08_Odd_Even">
-      <description>Generic connector, double row, 02x08, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="Conn_02x08_Odd_Even-Connector_Generic">
       <footprints>
         <fp>Connector*:*_2x??_*</fp>
       </footprints>
       <fields>
         <field name="Reference">J</field>
-        <field name="Value">Conn_02x08_Odd_Even</field>
+        <field name="Value">Conn_02x08_Odd_Even-Connector_Generic</field>
       </fields>
       <pins>
         <pin num="1" name="Pin_1" type="passive"/>
@@ -808,57 +749,7 @@
         <pin num="16" name="Pin_16" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="DSC1001" part="DSC1001">
-      <description>1.7-3.3V SMD Ultra Miniature Crystal Clock Oscillator</description>
-      <docs>https://abracon.com/Oscillators/ASDMB.pdf</docs>
-      <footprints>
-        <fp>Oscillator*SMD*Abracon*ASDMB*2.5x2.0mm*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">DSC1001</field>
-        <field name="Footprint">Oscillator:Oscillator_SMD_Abracon_ASDMB-4Pin_2.5x2.0mm</field>
-      </fields>
-      <pins>
-        <pin num="1" name="Standby" type="input"/>
-        <pin num="2" name="GND" type="power_in"/>
-        <pin num="3" name="Out" type="output"/>
-        <pin num="4" name="VDD" type="power_in"/>
-      </pins>
-    </libpart>
-    <libpart lib="Device" part="C">
-      <description>Unpolarized capacitor</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>C_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">C</field>
-        <field name="Value">C</field>
-      </fields>
-      <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Device" part="C_Small">
-      <description>Unpolarized capacitor, small symbol</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>C_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">C</field>
-        <field name="Value">C_Small</field>
-      </fields>
-      <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Device" part="Jumper_NC_Dual">
-      <description>Dual jumper, normally closed</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="Jumper_NC_Dual-Device">
       <footprints>
         <fp>SolderJumper*Bridged*</fp>
         <fp>Jumper*</fp>
@@ -867,7 +758,7 @@
       </footprints>
       <fields>
         <field name="Reference">JP</field>
-        <field name="Value">Jumper_NC_Dual</field>
+        <field name="Value">Jumper_NC_Dual-Device</field>
       </fields>
       <pins>
         <pin num="1" name="1" type="passive"/>
@@ -875,9 +766,22 @@
         <pin num="3" name="3" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Device" part="LED">
-      <description>Light emitting diode</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="LD1117S33TR_SOT223-Regulator_Linear">
+      <footprints>
+        <fp>SOT?223*TabPin2*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">LD1117S33TR_SOT223-Regulator_Linear</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-223-3_TabPin2</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="VO" type="power_out"/>
+        <pin num="3" name="VI" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="LED-Device">
       <footprints>
         <fp>LED*</fp>
         <fp>LED_SMD:*</fp>
@@ -885,53 +789,20 @@
       </footprints>
       <fields>
         <field name="Reference">D</field>
-        <field name="Value">LED</field>
+        <field name="Value">LED-Device</field>
       </fields>
       <pins>
         <pin num="1" name="K" type="passive"/>
         <pin num="2" name="A" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Device" part="Polyfuse">
-      <description>Resettable fuse, polymeric positive temperature coefficient</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>*polyfuse*</fp>
-        <fp>*PTC*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">F</field>
-        <field name="Value">Polyfuse</field>
-      </fields>
-      <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Device" part="R">
-      <description>Resistor</description>
-      <docs>~</docs>
-      <footprints>
-        <fp>R_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">R</field>
-        <field name="Value">R</field>
-      </fields>
-      <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
-      </pins>
-    </libpart>
-    <libpart lib="Interface_CAN_LIN" part="MCP2558FD-xSN">
-      <description>CAN FD Transceiver with Silent Mode, up to 8 Mbps, SOIC-8</description>
-      <docs>https://ww1.microchip.com/downloads/en/DeviceDoc/20005533A.pdf</docs>
+    <libpart lib="CANT-rescue" part="MCP2558FD-xSN-Interface_CAN_LIN">
       <footprints>
         <fp>SOIC*3.9x4.9*P1.27mm*</fp>
       </footprints>
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">MCP2558FD-xSN</field>
+        <field name="Value">MCP2558FD-xSN-Interface_CAN_LIN</field>
         <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
       </fields>
       <pins>
@@ -945,15 +816,67 @@
         <pin num="8" name="S" type="input"/>
       </pins>
     </libpart>
-    <libpart lib="Interface_UART" part="ST485EBDR">
-      <description>Half duplex RS-485/RS-422, 5 Mbps, ±15kV electro-static discharge (ESD) protection, no slew-rate, with low-power shutdown, with receiver/driver enable, 256 transceiver on the bus - 40 to 85 °C, SOIC-8</description>
-      <docs>http://www.st.com/resource/en/datasheet/st485eb.pdf</docs>
+    <libpart lib="CANT-rescue" part="Polyfuse-Device">
+      <footprints>
+        <fp>*polyfuse*</fp>
+        <fp>*PTC*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">F</field>
+        <field name="Value">Polyfuse-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="R-Device">
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R-Device</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="R-pspice">
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R-pspice</field>
+      </fields>
+      <pins>
+        <pin num="1" name="~" type="passive"/>
+        <pin num="2" name="~" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="SN74LVC1G14DBV-74xGxx">
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">SN74LVC1G14DBV-74xGxx</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23-5</field>
+      </fields>
+      <pins>
+        <pin num="1" name="NC" type="NotConnected"/>
+        <pin num="2" name="~" type="input"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="~" type="output"/>
+        <pin num="5" name="VCC" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="ST485EBDR-Interface_UART">
       <footprints>
         <fp>SOIC*3.9x4.9mm*P1.27mm*</fp>
       </footprints>
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">ST485EBDR</field>
+        <field name="Value">ST485EBDR-Interface_UART</field>
         <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
       </fields>
       <pins>
@@ -967,54 +890,13 @@
         <pin num="8" name="VCC" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="Interface_USB" part="USB3343">
-      <description>Hi-Speed USB ULPI Transceiver, QFN-24</description>
-      <docs>http://ww1.microchip.com/downloads/en/DeviceDoc/334x.pdf</docs>
-      <footprints>
-        <fp>QFN*1EP*4x4mm*P0.5mm*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">USB3343</field>
-        <field name="Footprint">Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm</field>
-      </fields>
-      <pins>
-        <pin num="1" name="DIR" type="output"/>
-        <pin num="2" name="CLKOUT" type="output"/>
-        <pin num="3" name="NXT" type="output"/>
-        <pin num="4" name="DATA0" type="BiDi"/>
-        <pin num="5" name="DATA1" type="BiDi"/>
-        <pin num="6" name="DATA2" type="BiDi"/>
-        <pin num="7" name="DATA3" type="BiDi"/>
-        <pin num="8" name="DATA4" type="BiDi"/>
-        <pin num="9" name="VDDIO" type="power_in"/>
-        <pin num="10" name="DATA5" type="BiDi"/>
-        <pin num="11" name="DATA6" type="BiDi"/>
-        <pin num="12" name="DATA7" type="BiDi"/>
-        <pin num="13" name="DP" type="BiDi"/>
-        <pin num="14" name="DM" type="BiDi"/>
-        <pin num="15" name="VDD33" type="power_out"/>
-        <pin num="16" name="VBAT" type="power_in"/>
-        <pin num="17" name="VBUS" type="input"/>
-        <pin num="18" name="ID" type="input"/>
-        <pin num="19" name="RBIAS" type="passive"/>
-        <pin num="20" name="XO" type="output"/>
-        <pin num="21" name="REFCLK/XI" type="input"/>
-        <pin num="22" name="~RESETB" type="input"/>
-        <pin num="23" name="VDD18" type="power_out"/>
-        <pin num="24" name="STP" type="input"/>
-        <pin num="25" name="GND" type="power_in"/>
-      </pins>
-    </libpart>
-    <libpart lib="MCU_ST_STM32H7" part="STM32H743VITx">
-      <description>ARM Cortex-M7 MCU, 2048KB flash, 864KB RAM, 400MHz, 1.7-3.6V, 82 GPIO, LQFP-100</description>
-      <docs>http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00387108.pdf</docs>
+    <libpart lib="CANT-rescue" part="STM32H743VITx-MCU_ST_STM32H7">
       <footprints>
         <fp>LQFP*14x14mm*P0.5mm*</fp>
       </footprints>
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">STM32H743VITx</field>
+        <field name="Value">STM32H743VITx-MCU_ST_STM32H7</field>
         <field name="Footprint">Package_QFP:LQFP-100_14x14mm_P0.5mm</field>
       </fields>
       <pins>
@@ -1120,118 +1002,140 @@
         <pin num="100" name="VDD" type="power_in"/>
       </pins>
     </libpart>
-    <libpart lib="Regulator_Linear" part="AP1117-15">
-      <aliases>
-        <alias>AP1117-18</alias>
-        <alias>AP1117-25</alias>
-        <alias>AP1117-33</alias>
-        <alias>AP1117-50</alias>
-        <alias>LD1117S33TR_SOT223</alias>
-        <alias>LD1117S12TR_SOT223</alias>
-        <alias>LD1117S18TR_SOT223</alias>
-        <alias>LD1117S25TR_SOT223</alias>
-        <alias>LD1117S50TR_SOT223</alias>
-        <alias>NCP1117-12_SOT223</alias>
-        <alias>NCP1117-1.5_SOT223</alias>
-        <alias>NCP1117-1.8_SOT223</alias>
-        <alias>NCP1117-2.0_SOT223</alias>
-        <alias>NCP1117-2.5_SOT223</alias>
-        <alias>NCP1117-2.85_SOT223</alias>
-        <alias>NCP1117-3.3_SOT223</alias>
-        <alias>NCP1117-5.0_SOT223</alias>
-        <alias>AMS1117-1.5</alias>
-        <alias>AMS1117-1.8</alias>
-        <alias>AMS1117-2.5</alias>
-        <alias>AMS1117-2.85</alias>
-        <alias>AMS1117-3.3</alias>
-        <alias>AMS1117-5.0</alias>
-      </aliases>
-      <description>1A Low Dropout regulator, positive, 1.5V fixed output, SOT-223</description>
-      <docs>http://www.diodes.com/datasheets/AP1117.pdf</docs>
-      <footprints>
-        <fp>SOT?223*TabPin2*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">U</field>
-        <field name="Value">AP1117-15</field>
-        <field name="Footprint">Package_TO_SOT_SMD:SOT-223-3_TabPin2</field>
-      </fields>
-      <pins>
-        <pin num="1" name="GND" type="power_in"/>
-        <pin num="2" name="VO" type="power_out"/>
-        <pin num="3" name="VI" type="power_in"/>
-      </pins>
-    </libpart>
-    <libpart lib="Switch" part="SW_SPST">
-      <description>Single Pole Single Throw (SPST) switch</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="SW_SPST-Switch">
       <fields>
         <field name="Reference">SW</field>
-        <field name="Value">SW_SPST</field>
+        <field name="Value">SW_SPST-Switch</field>
       </fields>
       <pins>
         <pin num="1" name="A" type="passive"/>
         <pin num="2" name="B" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="pspice" part="R">
-      <description>Resistor symbol for simulation only</description>
-      <docs>~</docs>
+    <libpart lib="CANT-rescue" part="Screw_Terminal_01x02-Connector">
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
       <fields>
-        <field name="Reference">R</field>
-        <field name="Value">R</field>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x02-Connector</field>
       </fields>
       <pins>
-        <pin num="1" name="~" type="passive"/>
-        <pin num="2" name="~" type="passive"/>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="Screw_Terminal_01x04-Connector">
+      <footprints>
+        <fp>TerminalBlock*:*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Screw_Terminal_01x04-Connector</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="USB3343-Interface_USB">
+      <footprints>
+        <fp>QFN*1EP*4x4mm*P0.5mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">USB3343-Interface_USB</field>
+        <field name="Footprint">Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="DIR" type="output"/>
+        <pin num="2" name="CLKOUT" type="output"/>
+        <pin num="3" name="NXT" type="output"/>
+        <pin num="4" name="DATA0" type="BiDi"/>
+        <pin num="5" name="DATA1" type="BiDi"/>
+        <pin num="6" name="DATA2" type="BiDi"/>
+        <pin num="7" name="DATA3" type="BiDi"/>
+        <pin num="8" name="DATA4" type="BiDi"/>
+        <pin num="9" name="VDDIO" type="power_in"/>
+        <pin num="10" name="DATA5" type="BiDi"/>
+        <pin num="11" name="DATA6" type="BiDi"/>
+        <pin num="12" name="DATA7" type="BiDi"/>
+        <pin num="13" name="DP" type="BiDi"/>
+        <pin num="14" name="DM" type="BiDi"/>
+        <pin num="15" name="VDD33" type="power_out"/>
+        <pin num="16" name="VBAT" type="power_in"/>
+        <pin num="17" name="VBUS" type="input"/>
+        <pin num="18" name="ID" type="input"/>
+        <pin num="19" name="RBIAS" type="passive"/>
+        <pin num="20" name="XO" type="output"/>
+        <pin num="21" name="REFCLK/XI" type="input"/>
+        <pin num="22" name="~RESETB" type="input"/>
+        <pin num="23" name="VDD18" type="power_out"/>
+        <pin num="24" name="STP" type="input"/>
+        <pin num="25" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="CANT-rescue" part="USB_C_Receptacle_USB2.0-Connector">
+      <footprints>
+        <fp>USB*C*Receptacle*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_C_Receptacle_USB2.0-Connector</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND" type="passive"/>
+        <pin num="A4" name="VBUS" type="passive"/>
+        <pin num="A5" name="CC1" type="BiDi"/>
+        <pin num="A6" name="D+" type="BiDi"/>
+        <pin num="A7" name="D-" type="BiDi"/>
+        <pin num="A8" name="SBU1" type="BiDi"/>
+        <pin num="A9" name="VBUS" type="passive"/>
+        <pin num="A12" name="GND" type="passive"/>
+        <pin num="B1" name="GND" type="passive"/>
+        <pin num="B4" name="VBUS" type="passive"/>
+        <pin num="B5" name="CC2" type="BiDi"/>
+        <pin num="B6" name="D+" type="BiDi"/>
+        <pin num="B7" name="D-" type="BiDi"/>
+        <pin num="B8" name="SBU2" type="BiDi"/>
+        <pin num="B9" name="VBUS" type="passive"/>
+        <pin num="B12" name="GND" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="DSC1001" part="DSC1001">
+      <description>1.7-3.3V SMD Ultra Miniature Crystal Clock Oscillator</description>
+      <docs>https://abracon.com/Oscillators/ASDMB.pdf</docs>
+      <footprints>
+        <fp>Oscillator*SMD*Abracon*ASDMB*2.5x2.0mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">DSC1001</field>
+        <field name="Footprint">Oscillator:Oscillator_SMD_Abracon_ASDMB-4Pin_2.5x2.0mm</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Standby" type="input"/>
+        <pin num="2" name="GND" type="power_in"/>
+        <pin num="3" name="Out" type="output"/>
+        <pin num="4" name="VDD" type="power_in"/>
       </pins>
     </libpart>
   </libparts>
   <libraries>
-    <library logical="74xGxx">
-      <uri>C:\Program Files\KiCad\share\kicad\library/74xGxx.lib</uri>
-    </library>
     <library logical="CANT-rescue">
-      <uri>C:\Users\thb\projects\CANT\CANTboard/CANT-rescue.lib</uri>
-    </library>
-    <library logical="Connector">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Connector.lib</uri>
-    </library>
-    <library logical="Connector_Generic">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Connector_Generic.lib</uri>
+      <uri>/home/thb/projects/CANT/reCANT/CANT-rescue.lib</uri>
     </library>
     <library logical="DSC1001">
-      <uri>C:\Users\thb\projects\CANT\CANTboard/DSC1001.lib</uri>
-    </library>
-    <library logical="Device">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Device.lib</uri>
-    </library>
-    <library logical="Interface_CAN_LIN">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Interface_CAN_LIN.lib</uri>
-    </library>
-    <library logical="Interface_UART">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Interface_UART.lib</uri>
-    </library>
-    <library logical="Interface_USB">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Interface_USB.lib</uri>
-    </library>
-    <library logical="MCU_ST_STM32H7">
-      <uri>C:\Program Files\KiCad\share\kicad\library/MCU_ST_STM32H7.lib</uri>
-    </library>
-    <library logical="Regulator_Linear">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Regulator_Linear.lib</uri>
-    </library>
-    <library logical="Switch">
-      <uri>C:\Program Files\KiCad\share\kicad\library/Switch.lib</uri>
-    </library>
-    <library logical="pspice">
-      <uri>C:\Program Files\KiCad\share\kicad\library/pspice.lib</uri>
+      <uri>/home/thb/projects/CANT/reCANT/DSC1001.lib</uri>
     </library>
   </libraries>
   <nets>
     <net code="1" name="USB_CK">
-      <node ref="U3" pin="29"/>
       <node ref="U1" pin="2"/>
+      <node ref="U3" pin="29"/>
     </net>
     <net code="2" name="USB_D5">
       <node ref="U1" pin="10"/>
@@ -1250,13 +1154,13 @@
       <node ref="R16" pin="1"/>
     </net>
     <net code="6" name="VDD33">
-      <node ref="C26" pin="1"/>
-      <node ref="U1" pin="15"/>
       <node ref="U1" pin="18"/>
+      <node ref="U1" pin="15"/>
+      <node ref="C26" pin="1"/>
     </net>
     <net code="7" name="Net-(R17-Pad1)">
-      <node ref="R17" pin="1"/>
       <node ref="U1" pin="19"/>
+      <node ref="R17" pin="1"/>
     </net>
     <net code="8" name="USB_DIR">
       <node ref="U1" pin="1"/>
@@ -1266,156 +1170,156 @@
       <node ref="U1" pin="20"/>
     </net>
     <net code="10" name="VCC">
-      <node ref="C13" pin="2"/>
-      <node ref="C3" pin="1"/>
-      <node ref="C8" pin="2"/>
       <node ref="JP1" pin="3"/>
-      <node ref="P1" pin="1"/>
-      <node ref="C7" pin="2"/>
-      <node ref="C12" pin="2"/>
-      <node ref="U8" pin="5"/>
-      <node ref="C11" pin="2"/>
-      <node ref="C14" pin="2"/>
-      <node ref="C10" pin="2"/>
-      <node ref="U3" pin="21"/>
-      <node ref="U2" pin="2"/>
-      <node ref="U3" pin="100"/>
-      <node ref="U3" pin="11"/>
-      <node ref="U3" pin="27"/>
-      <node ref="U3" pin="50"/>
-      <node ref="U3" pin="75"/>
-      <node ref="U3" pin="20"/>
-      <node ref="C15" pin="2"/>
-      <node ref="U6" pin="5"/>
-      <node ref="U7" pin="5"/>
-      <node ref="U3" pin="6"/>
-      <node ref="U5" pin="5"/>
-      <node ref="C9" pin="2"/>
       <node ref="R6" pin="1"/>
-      <node ref="C20" pin="2"/>
-      <node ref="C21" pin="2"/>
       <node ref="J2" pin="10"/>
       <node ref="J2" pin="12"/>
-      <node ref="J2" pin="4"/>
-      <node ref="J2" pin="6"/>
-      <node ref="J2" pin="8"/>
-      <node ref="U4" pin="5"/>
-      <node ref="C16" pin="1"/>
-      <node ref="C18" pin="1"/>
-      <node ref="J2" pin="2"/>
-      <node ref="U9" pin="8"/>
       <node ref="J2" pin="14"/>
       <node ref="J2" pin="16"/>
-      <node ref="C29" pin="1"/>
-      <node ref="C25" pin="2"/>
-      <node ref="U1" pin="9"/>
+      <node ref="J2" pin="2"/>
+      <node ref="U3" pin="50"/>
+      <node ref="J2" pin="6"/>
+      <node ref="U3" pin="21"/>
+      <node ref="U3" pin="20"/>
+      <node ref="U3" pin="27"/>
+      <node ref="J2" pin="8"/>
+      <node ref="U3" pin="100"/>
+      <node ref="U3" pin="11"/>
+      <node ref="U3" pin="75"/>
+      <node ref="J2" pin="4"/>
+      <node ref="C8" pin="2"/>
+      <node ref="U3" pin="6"/>
+      <node ref="C10" pin="2"/>
+      <node ref="P1" pin="1"/>
+      <node ref="C14" pin="2"/>
+      <node ref="C11" pin="2"/>
+      <node ref="C9" pin="2"/>
+      <node ref="C15" pin="2"/>
+      <node ref="C13" pin="2"/>
+      <node ref="C12" pin="2"/>
+      <node ref="C7" pin="2"/>
+      <node ref="C3" pin="1"/>
+      <node ref="U2" pin="2"/>
+      <node ref="U5" pin="5"/>
       <node ref="C28" pin="1"/>
-      <node ref="U10" pin="1"/>
+      <node ref="U9" pin="8"/>
+      <node ref="U7" pin="5"/>
+      <node ref="U6" pin="5"/>
+      <node ref="C25" pin="2"/>
+      <node ref="C21" pin="2"/>
       <node ref="U10" pin="4"/>
+      <node ref="C20" pin="2"/>
+      <node ref="U10" pin="1"/>
+      <node ref="U1" pin="9"/>
+      <node ref="C29" pin="1"/>
+      <node ref="U8" pin="5"/>
       <node ref="U1" pin="16"/>
+      <node ref="U4" pin="5"/>
+      <node ref="C16" pin="1"/>
       <node ref="U1" pin="22"/>
+      <node ref="C18" pin="1"/>
     </net>
     <net code="11" name="Net-(C27-Pad2)">
-      <node ref="C27" pin="2"/>
       <node ref="U1" pin="23"/>
+      <node ref="C27" pin="2"/>
     </net>
     <net code="12" name="USB_STP">
       <node ref="U1" pin="24"/>
       <node ref="U3" pin="15"/>
     </net>
     <net code="13" name="USB_NXT">
-      <node ref="U1" pin="3"/>
       <node ref="U3" pin="18"/>
+      <node ref="U1" pin="3"/>
     </net>
     <net code="14" name="USB_D0">
       <node ref="U1" pin="4"/>
       <node ref="U3" pin="25"/>
     </net>
     <net code="15" name="USB_D1">
-      <node ref="U3" pin="34"/>
       <node ref="U1" pin="5"/>
+      <node ref="U3" pin="34"/>
     </net>
     <net code="16" name="USB_D2">
-      <node ref="U3" pin="35"/>
       <node ref="U1" pin="6"/>
+      <node ref="U3" pin="35"/>
     </net>
     <net code="17" name="GND">
-      <node ref="J1" pin="A1"/>
-      <node ref="C21" pin="1"/>
-      <node ref="C20" pin="1"/>
-      <node ref="D1" pin="1"/>
-      <node ref="C28" pin="2"/>
-      <node ref="J1" pin="A12"/>
+      <node ref="C23" pin="1"/>
+      <node ref="U9" pin="2"/>
       <node ref="U9" pin="4"/>
-      <node ref="C6" pin="1"/>
-      <node ref="C4" pin="2"/>
-      <node ref="C5" pin="2"/>
       <node ref="U9" pin="5"/>
-      <node ref="U10" pin="2"/>
-      <node ref="C29" pin="2"/>
-      <node ref="R1" pin="1"/>
-      <node ref="R2" pin="1"/>
+      <node ref="R12" pin="2"/>
       <node ref="U8" pin="3"/>
-      <node ref="C18" pin="2"/>
-      <node ref="C27" pin="1"/>
+      <node ref="C15" pin="1"/>
       <node ref="R10" pin="2"/>
+      <node ref="C9" pin="1"/>
+      <node ref="C18" pin="2"/>
       <node ref="U7" pin="3"/>
-      <node ref="U5" pin="8"/>
-      <node ref="U1" pin="25"/>
-      <node ref="U6" pin="3"/>
       <node ref="U4" pin="2"/>
+      <node ref="U3" pin="26"/>
+      <node ref="U6" pin="3"/>
+      <node ref="U3" pin="19"/>
       <node ref="U4" pin="8"/>
-      <node ref="C26" pin="2"/>
+      <node ref="C5" pin="2"/>
+      <node ref="U3" pin="10"/>
       <node ref="C16" pin="2"/>
+      <node ref="U3" pin="74"/>
       <node ref="C17" pin="1"/>
       <node ref="C19" pin="1"/>
-      <node ref="C9" pin="1"/>
-      <node ref="C15" pin="1"/>
-      <node ref="U5" pin="2"/>
+      <node ref="U3" pin="49"/>
+      <node ref="C22" pin="2"/>
       <node ref="R11" pin="2"/>
       <node ref="SW1" pin="1"/>
-      <node ref="R12" pin="2"/>
-      <node ref="C22" pin="2"/>
+      <node ref="C4" pin="2"/>
+      <node ref="C6" pin="1"/>
+      <node ref="C20" pin="1"/>
+      <node ref="C21" pin="1"/>
+      <node ref="U5" pin="8"/>
+      <node ref="U5" pin="2"/>
+      <node ref="C27" pin="1"/>
       <node ref="P1" pin="3"/>
+      <node ref="C28" pin="2"/>
+      <node ref="D2" pin="1"/>
+      <node ref="D1" pin="1"/>
+      <node ref="J1" pin="A1"/>
+      <node ref="U10" pin="2"/>
       <node ref="U3" pin="99"/>
-      <node ref="C25" pin="1"/>
-      <node ref="U3" pin="19"/>
-      <node ref="U3" pin="74"/>
-      <node ref="U3" pin="49"/>
-      <node ref="U3" pin="10"/>
-      <node ref="U3" pin="26"/>
+      <node ref="C12" pin="1"/>
+      <node ref="R7" pin="2"/>
+      <node ref="C26" pin="2"/>
+      <node ref="U1" pin="25"/>
+      <node ref="C8" pin="1"/>
+      <node ref="C7" pin="1"/>
+      <node ref="C13" pin="1"/>
+      <node ref="C10" pin="1"/>
+      <node ref="C11" pin="1"/>
+      <node ref="C14" pin="1"/>
+      <node ref="D3" pin="1"/>
+      <node ref="C1" pin="1"/>
+      <node ref="C3" pin="2"/>
+      <node ref="C2" pin="2"/>
+      <node ref="J1" pin="A12"/>
       <node ref="C24" pin="1"/>
-      <node ref="U2" pin="1"/>
+      <node ref="C29" pin="2"/>
       <node ref="R17" pin="2"/>
-      <node ref="C23" pin="1"/>
+      <node ref="U2" pin="1"/>
+      <node ref="R1" pin="1"/>
       <node ref="J1" pin="B12"/>
       <node ref="J1" pin="B1"/>
-      <node ref="D2" pin="1"/>
-      <node ref="D3" pin="1"/>
-      <node ref="C10" pin="1"/>
-      <node ref="C14" pin="1"/>
-      <node ref="C11" pin="1"/>
-      <node ref="C13" pin="1"/>
-      <node ref="C12" pin="1"/>
-      <node ref="C7" pin="1"/>
-      <node ref="C8" pin="1"/>
-      <node ref="R7" pin="2"/>
-      <node ref="C2" pin="2"/>
-      <node ref="U9" pin="2"/>
-      <node ref="C3" pin="2"/>
-      <node ref="C1" pin="1"/>
+      <node ref="C25" pin="1"/>
+      <node ref="R2" pin="1"/>
     </net>
     <net code="18" name="USB_D3">
-      <node ref="U3" pin="46"/>
       <node ref="U1" pin="7"/>
+      <node ref="U3" pin="46"/>
     </net>
     <net code="19" name="USB_D4">
       <node ref="U3" pin="47"/>
       <node ref="U1" pin="8"/>
     </net>
     <net code="20" name="Net-(U1-Pad21)">
-      <node ref="U1" pin="21"/>
       <node ref="U10" pin="3"/>
+      <node ref="U1" pin="21"/>
     </net>
     <net code="21" name="Net-(J1-PadA8)">
       <node ref="J1" pin="A8"/>
@@ -1425,20 +1329,20 @@
       <node ref="R1" pin="2"/>
     </net>
     <net code="23" name="Net-(J1-PadB5)">
-      <node ref="J1" pin="B5"/>
       <node ref="R2" pin="2"/>
+      <node ref="J1" pin="B5"/>
     </net>
     <net code="24" name="VBUS">
-      <node ref="F1" pin="1"/>
       <node ref="U5" pin="3"/>
-      <node ref="U4" pin="3"/>
-      <node ref="R13" pin="1"/>
-      <node ref="C19" pin="2"/>
-      <node ref="C17" pin="2"/>
-      <node ref="R16" pin="2"/>
       <node ref="U2" pin="3"/>
+      <node ref="C17" pin="2"/>
+      <node ref="F1" pin="1"/>
+      <node ref="C19" pin="2"/>
+      <node ref="R16" pin="2"/>
       <node ref="C2" pin="1"/>
+      <node ref="U4" pin="3"/>
       <node ref="C24" pin="2"/>
+      <node ref="R13" pin="1"/>
     </net>
     <net code="25" name="Net-(J1-PadB8)">
       <node ref="J1" pin="B8"/>
@@ -1449,14 +1353,14 @@
     </net>
     <net code="27" name="Net-(F1-Pad2)">
       <node ref="J1" pin="B4"/>
-      <node ref="J1" pin="A4"/>
       <node ref="J1" pin="A9"/>
-      <node ref="F1" pin="2"/>
       <node ref="J1" pin="B9"/>
+      <node ref="J1" pin="A4"/>
+      <node ref="F1" pin="2"/>
     </net>
     <net code="28" name="/HS_USB/D-">
-      <node ref="J1" pin="A7"/>
       <node ref="J1" pin="B7"/>
+      <node ref="J1" pin="A7"/>
       <node ref="U1" pin="14"/>
     </net>
     <net code="29" name="/HS_USB/D+">
@@ -1465,12 +1369,12 @@
       <node ref="U1" pin="13"/>
     </net>
     <net code="30" name="Net-(D2-Pad2)">
-      <node ref="D2" pin="2"/>
       <node ref="R4" pin="1"/>
+      <node ref="D2" pin="2"/>
     </net>
     <net code="31" name="LED_PWR1">
-      <node ref="R4" pin="2"/>
       <node ref="U3" pin="36"/>
+      <node ref="R4" pin="2"/>
     </net>
     <net code="32" name="Net-(D1-Pad2)">
       <node ref="R3" pin="1"/>
@@ -1485,284 +1389,284 @@
       <node ref="R5" pin="1"/>
     </net>
     <net code="36" name="LED_ACT2">
-      <node ref="R5" pin="2"/>
       <node ref="U3" pin="33"/>
+      <node ref="R5" pin="2"/>
     </net>
     <net code="37" name="Net-(JP1-Pad1)">
       <node ref="JP1" pin="1"/>
     </net>
     <net code="38" name="BOOT0">
-      <node ref="U3" pin="94"/>
       <node ref="R7" pin="1"/>
+      <node ref="U3" pin="94"/>
       <node ref="JP1" pin="2"/>
     </net>
     <net code="39" name="/Microcontroller/NRST">
-      <node ref="R6" pin="2"/>
       <node ref="C6" pin="2"/>
       <node ref="U3" pin="14"/>
-      <node ref="SW1" pin="2"/>
       <node ref="P1" pin="5"/>
+      <node ref="SW1" pin="2"/>
+      <node ref="R6" pin="2"/>
     </net>
-    <net code="40" name="Net-(U3-Pad55)">
-      <node ref="U3" pin="55"/>
-    </net>
-    <net code="41" name="Net-(U3-Pad56)">
-      <node ref="U3" pin="56"/>
-    </net>
-    <net code="42" name="Net-(U3-Pad57)">
-      <node ref="U3" pin="57"/>
-    </net>
-    <net code="43" name="Net-(U3-Pad58)">
-      <node ref="U3" pin="58"/>
-    </net>
-    <net code="44" name="Net-(U3-Pad61)">
-      <node ref="U3" pin="61"/>
-    </net>
-    <net code="45" name="Net-(U3-Pad62)">
+    <net code="40" name="Net-(U3-Pad62)">
       <node ref="U3" pin="62"/>
     </net>
-    <net code="47" name="Net-(U3-Pad70)">
-      <node ref="U3" pin="70"/>
+    <net code="41" name="Net-(U3-Pad55)">
+      <node ref="U3" pin="55"/>
     </net>
-    <net code="48" name="Net-(U3-Pad71)">
-      <node ref="U3" pin="71"/>
+    <net code="42" name="Net-(U3-Pad56)">
+      <node ref="U3" pin="56"/>
     </net>
-    <net code="49" name="Net-(U3-Pad13)">
-      <node ref="U3" pin="13"/>
+    <net code="43" name="Net-(U3-Pad57)">
+      <node ref="U3" pin="57"/>
     </net>
-    <net code="50" name="Net-(U3-Pad12)">
-      <node ref="U3" pin="12"/>
+    <net code="44" name="Net-(U3-Pad58)">
+      <node ref="U3" pin="58"/>
     </net>
-    <net code="51" name="Net-(U3-Pad90)">
-      <node ref="U3" pin="90"/>
+    <net code="45" name="Net-(U3-Pad61)">
+      <node ref="U3" pin="61"/>
     </net>
-    <net code="52" name="Net-(U3-Pad9)">
-      <node ref="U3" pin="9"/>
-    </net>
-    <net code="53" name="Net-(U3-Pad8)">
-      <node ref="U3" pin="8"/>
-    </net>
-    <net code="54" name="Net-(C4-Pad1)">
-      <node ref="U3" pin="48"/>
-      <node ref="C4" pin="1"/>
-    </net>
-    <net code="55" name="Net-(U3-Pad89)">
-      <node ref="U3" pin="89"/>
-    </net>
-    <net code="56" name="Net-(C5-Pad1)">
-      <node ref="U3" pin="73"/>
-      <node ref="C5" pin="1"/>
-    </net>
-    <net code="57" name="Net-(U3-Pad24)">
-      <node ref="U3" pin="24"/>
-    </net>
-    <net code="58" name="Net-(U3-Pad28)">
-      <node ref="U3" pin="28"/>
-    </net>
-    <net code="59" name="Net-(U3-Pad30)">
-      <node ref="U3" pin="30"/>
-    </net>
-    <net code="60" name="Net-(U3-Pad31)">
-      <node ref="U3" pin="31"/>
-    </net>
-    <net code="61" name="Net-(U3-Pad67)">
-      <node ref="U3" pin="67"/>
-    </net>
-    <net code="62" name="Net-(U3-Pad68)">
-      <node ref="U3" pin="68"/>
-    </net>
-    <net code="63" name="Net-(U3-Pad69)">
-      <node ref="U3" pin="69"/>
-    </net>
-    <net code="64" name="Net-(U3-Pad77)">
-      <node ref="U3" pin="77"/>
-    </net>
-    <net code="65" name="Net-(U3-Pad53)">
-      <node ref="U3" pin="53"/>
-    </net>
-    <net code="66" name="Net-(U3-Pad54)">
-      <node ref="U3" pin="54"/>
-    </net>
-    <net code="67" name="Net-(U3-Pad82)">
-      <node ref="U3" pin="82"/>
-    </net>
-    <net code="68" name="Net-(U3-Pad81)">
-      <node ref="U3" pin="81"/>
-    </net>
-    <net code="69" name="Net-(U3-Pad16)">
-      <node ref="U3" pin="16"/>
-    </net>
-    <net code="70" name="Net-(U3-Pad87)">
-      <node ref="U3" pin="87"/>
-    </net>
-    <net code="71" name="Net-(U3-Pad63)">
-      <node ref="U3" pin="63"/>
-    </net>
-    <net code="72" name="Net-(U3-Pad64)">
-      <node ref="U3" pin="64"/>
-    </net>
-    <net code="73" name="Net-(U3-Pad65)">
-      <node ref="U3" pin="65"/>
-    </net>
-    <net code="74" name="Net-(U3-Pad66)">
-      <node ref="U3" pin="66"/>
-    </net>
-    <net code="75" name="Net-(U3-Pad78)">
-      <node ref="U3" pin="78"/>
-    </net>
-    <net code="76" name="Net-(U3-Pad79)">
-      <node ref="U3" pin="79"/>
-    </net>
-    <net code="77" name="Net-(U3-Pad80)">
-      <node ref="U3" pin="80"/>
-    </net>
-    <net code="78" name="Net-(U3-Pad7)">
-      <node ref="U3" pin="7"/>
-    </net>
-    <net code="79" name="Net-(U3-Pad83)">
-      <node ref="U3" pin="83"/>
-    </net>
-    <net code="80" name="Net-(U3-Pad84)">
-      <node ref="U3" pin="84"/>
-    </net>
-    <net code="81" name="Net-(U3-Pad85)">
-      <node ref="U3" pin="85"/>
-    </net>
-    <net code="82" name="Net-(U3-Pad86)">
-      <node ref="U3" pin="86"/>
-    </net>
-    <net code="83" name="Net-(U3-Pad88)">
-      <node ref="U3" pin="88"/>
-    </net>
-    <net code="84" name="Net-(U3-Pad37)">
-      <node ref="U3" pin="37"/>
-    </net>
-    <net code="85" name="Net-(U3-Pad5)">
-      <node ref="U3" pin="5"/>
-    </net>
-    <net code="86" name="Net-(U3-Pad4)">
-      <node ref="U3" pin="4"/>
-    </net>
-    <net code="87" name="Net-(U3-Pad3)">
-      <node ref="U3" pin="3"/>
-    </net>
-    <net code="88" name="Net-(U3-Pad2)">
-      <node ref="U3" pin="2"/>
-    </net>
-    <net code="89" name="Net-(U3-Pad1)">
-      <node ref="U3" pin="1"/>
-    </net>
-    <net code="90" name="Net-(U3-Pad98)">
+    <net code="46" name="Net-(U3-Pad98)">
       <node ref="U3" pin="98"/>
     </net>
-    <net code="91" name="Net-(U3-Pad97)">
-      <node ref="U3" pin="97"/>
+    <net code="47" name="Net-(U3-Pad89)">
+      <node ref="U3" pin="89"/>
     </net>
-    <net code="92" name="CAN3_TX">
-      <node ref="U3" pin="60"/>
-      <node ref="U4" pin="1"/>
-    </net>
-    <net code="93" name="CAN3_RX">
-      <node ref="U4" pin="4"/>
-      <node ref="U3" pin="59"/>
-    </net>
-    <net code="94" name="CAN1_TX">
+    <net code="48" name="CAN1_TX">
       <node ref="U5" pin="1"/>
       <node ref="U3" pin="96"/>
     </net>
-    <net code="95" name="Net-(J2-Pad13)">
-      <node ref="J2" pin="13"/>
-      <node ref="U3" pin="39"/>
+    <net code="49" name="CAN1_RX">
+      <node ref="U3" pin="95"/>
+      <node ref="U5" pin="4"/>
     </net>
-    <net code="96" name="Net-(J2-Pad15)">
+    <net code="50" name="CAN1_SHORT">
+      <node ref="R11" pin="1"/>
+      <node ref="U3" pin="93"/>
+      <node ref="U7" pin="4"/>
+    </net>
+    <net code="51" name="CAN3_SHORT">
+      <node ref="R10" pin="1"/>
+      <node ref="U3" pin="92"/>
+      <node ref="U6" pin="4"/>
+    </net>
+    <net code="52" name="Net-(U3-Pad90)">
+      <node ref="U3" pin="90"/>
+    </net>
+    <net code="53" name="Net-(U3-Pad9)">
+      <node ref="U3" pin="9"/>
+    </net>
+    <net code="54" name="Net-(U3-Pad97)">
+      <node ref="U3" pin="97"/>
+    </net>
+    <net code="55" name="Net-(U3-Pad13)">
+      <node ref="U3" pin="13"/>
+    </net>
+    <net code="56" name="Net-(U3-Pad70)">
+      <node ref="U3" pin="70"/>
+    </net>
+    <net code="57" name="Net-(U3-Pad71)">
+      <node ref="U3" pin="71"/>
+    </net>
+    <net code="58" name="Net-(U3-Pad12)">
+      <node ref="U3" pin="12"/>
+    </net>
+    <net code="60" name="Net-(U3-Pad22)">
+      <node ref="U3" pin="22"/>
+    </net>
+    <net code="61" name="Net-(U3-Pad23)">
+      <node ref="U3" pin="23"/>
+    </net>
+    <net code="62" name="Net-(C4-Pad1)">
+      <node ref="U3" pin="48"/>
+      <node ref="C4" pin="1"/>
+    </net>
+    <net code="63" name="Net-(U3-Pad8)">
+      <node ref="U3" pin="8"/>
+    </net>
+    <net code="64" name="Net-(C5-Pad1)">
+      <node ref="U3" pin="73"/>
+      <node ref="C5" pin="1"/>
+    </net>
+    <net code="65" name="Net-(U3-Pad24)">
+      <node ref="U3" pin="24"/>
+    </net>
+    <net code="66" name="Net-(U3-Pad28)">
+      <node ref="U3" pin="28"/>
+    </net>
+    <net code="67" name="Net-(U3-Pad30)">
+      <node ref="U3" pin="30"/>
+    </net>
+    <net code="68" name="Net-(U3-Pad31)">
+      <node ref="U3" pin="31"/>
+    </net>
+    <net code="69" name="Net-(U3-Pad67)">
+      <node ref="U3" pin="67"/>
+    </net>
+    <net code="70" name="Net-(U3-Pad68)">
+      <node ref="U3" pin="68"/>
+    </net>
+    <net code="71" name="Net-(U3-Pad69)">
+      <node ref="U3" pin="69"/>
+    </net>
+    <net code="72" name="Net-(U3-Pad77)">
+      <node ref="U3" pin="77"/>
+    </net>
+    <net code="73" name="Net-(J2-Pad15)">
       <node ref="J2" pin="15"/>
       <node ref="U3" pin="38"/>
     </net>
-    <net code="97" name="Net-(J2-Pad1)">
-      <node ref="U3" pin="45"/>
-      <node ref="J2" pin="1"/>
+    <net code="74" name="Net-(U3-Pad82)">
+      <node ref="U3" pin="82"/>
     </net>
-    <net code="98" name="Net-(J2-Pad3)">
+    <net code="75" name="Net-(U3-Pad81)">
+      <node ref="U3" pin="81"/>
+    </net>
+    <net code="76" name="Net-(U3-Pad53)">
+      <node ref="U3" pin="53"/>
+    </net>
+    <net code="77" name="Net-(U3-Pad87)">
+      <node ref="U3" pin="87"/>
+    </net>
+    <net code="78" name="Net-(U3-Pad54)">
+      <node ref="U3" pin="54"/>
+    </net>
+    <net code="79" name="Net-(U3-Pad16)">
+      <node ref="U3" pin="16"/>
+    </net>
+    <net code="80" name="Net-(U3-Pad63)">
+      <node ref="U3" pin="63"/>
+    </net>
+    <net code="81" name="Net-(U3-Pad64)">
+      <node ref="U3" pin="64"/>
+    </net>
+    <net code="82" name="Net-(U3-Pad65)">
+      <node ref="U3" pin="65"/>
+    </net>
+    <net code="83" name="Net-(U3-Pad66)">
+      <node ref="U3" pin="66"/>
+    </net>
+    <net code="84" name="Net-(U3-Pad80)">
+      <node ref="U3" pin="80"/>
+    </net>
+    <net code="85" name="Net-(U3-Pad7)">
+      <node ref="U3" pin="7"/>
+    </net>
+    <net code="86" name="Net-(U3-Pad83)">
+      <node ref="U3" pin="83"/>
+    </net>
+    <net code="87" name="Net-(U3-Pad84)">
+      <node ref="U3" pin="84"/>
+    </net>
+    <net code="88" name="Net-(U3-Pad85)">
+      <node ref="U3" pin="85"/>
+    </net>
+    <net code="89" name="Net-(U3-Pad86)">
+      <node ref="U3" pin="86"/>
+    </net>
+    <net code="90" name="Net-(U3-Pad88)">
+      <node ref="U3" pin="88"/>
+    </net>
+    <net code="91" name="Net-(U3-Pad37)">
+      <node ref="U3" pin="37"/>
+    </net>
+    <net code="92" name="Net-(U3-Pad5)">
+      <node ref="U3" pin="5"/>
+    </net>
+    <net code="93" name="Net-(U3-Pad4)">
+      <node ref="U3" pin="4"/>
+    </net>
+    <net code="94" name="Net-(U3-Pad3)">
+      <node ref="U3" pin="3"/>
+    </net>
+    <net code="95" name="Net-(U3-Pad2)">
+      <node ref="U3" pin="2"/>
+    </net>
+    <net code="96" name="Net-(U3-Pad1)">
+      <node ref="U3" pin="1"/>
+    </net>
+    <net code="97" name="CAN3_TX">
+      <node ref="U3" pin="60"/>
+      <node ref="U4" pin="1"/>
+    </net>
+    <net code="98" name="CAN3_RX">
+      <node ref="U4" pin="4"/>
+      <node ref="U3" pin="59"/>
+    </net>
+    <net code="99" name="Net-(J2-Pad1)">
+      <node ref="J2" pin="1"/>
+      <node ref="U3" pin="45"/>
+    </net>
+    <net code="100" name="Net-(J2-Pad3)">
       <node ref="J2" pin="3"/>
       <node ref="U3" pin="44"/>
     </net>
-    <net code="99" name="Net-(J2-Pad5)">
-      <node ref="U3" pin="43"/>
-      <node ref="J2" pin="5"/>
-    </net>
-    <net code="100" name="Net-(J2-Pad7)">
-      <node ref="U3" pin="42"/>
+    <net code="101" name="Net-(J2-Pad7)">
       <node ref="J2" pin="7"/>
+      <node ref="U3" pin="42"/>
     </net>
-    <net code="101" name="Net-(J2-Pad9)">
-      <node ref="J2" pin="9"/>
+    <net code="102" name="Net-(J2-Pad9)">
       <node ref="U3" pin="41"/>
+      <node ref="J2" pin="9"/>
     </net>
-    <net code="102" name="Net-(J2-Pad11)">
-      <node ref="J2" pin="11"/>
+    <net code="103" name="Net-(J2-Pad11)">
       <node ref="U3" pin="40"/>
+      <node ref="J2" pin="11"/>
     </net>
-    <net code="103" name="J1708_RX">
-      <node ref="U9" pin="1"/>
-      <node ref="U3" pin="23"/>
-    </net>
-    <net code="104" name="J1708_TX">
-      <node ref="U3" pin="22"/>
-      <node ref="U8" pin="2"/>
-    </net>
-    <net code="105" name="CAN1_SHORT">
-      <node ref="U3" pin="93"/>
-      <node ref="R11" pin="1"/>
-      <node ref="U7" pin="4"/>
-    </net>
-    <net code="106" name="CAN1_RX">
-      <node ref="U5" pin="4"/>
-      <node ref="U3" pin="95"/>
-    </net>
-    <net code="107" name="SWDIO">
-      <node ref="U3" pin="72"/>
-      <node ref="P1" pin="4"/>
-    </net>
-    <net code="108" name="CAN3_SHORT">
-      <node ref="U3" pin="92"/>
-      <node ref="R10" pin="1"/>
-      <node ref="U6" pin="4"/>
-    </net>
-    <net code="109" name="SWCLK">
+    <net code="104" name="SWCLK">
       <node ref="P1" pin="2"/>
       <node ref="U3" pin="76"/>
     </net>
+    <net code="105" name="J1708_RX">
+      <node ref="U9" pin="1"/>
+      <node ref="U3" pin="79"/>
+    </net>
+    <net code="106" name="J1708_TX">
+      <node ref="U3" pin="78"/>
+      <node ref="U8" pin="2"/>
+    </net>
+    <net code="107" name="Net-(J2-Pad5)">
+      <node ref="J2" pin="5"/>
+      <node ref="U3" pin="43"/>
+    </net>
+    <net code="108" name="SWDIO">
+      <node ref="U3" pin="72"/>
+      <node ref="P1" pin="4"/>
+    </net>
+    <net code="109" name="Net-(J2-Pad13)">
+      <node ref="U3" pin="39"/>
+      <node ref="J2" pin="13"/>
+    </net>
     <net code="110" name="CAN3_L">
       <node ref="U6" pin="1"/>
-      <node ref="JP2" pin="2"/>
-      <node ref="J3" pin="3"/>
       <node ref="U4" pin="6"/>
+      <node ref="JP2" pin="2"/>
+      <node ref="J3" pin="1"/>
     </net>
     <net code="111" name="CAN3_H">
       <node ref="U6" pin="2"/>
-      <node ref="R8" pin="2"/>
-      <node ref="J3" pin="4"/>
       <node ref="U4" pin="7"/>
+      <node ref="J3" pin="2"/>
+      <node ref="R8" pin="2"/>
     </net>
     <net code="112" name="Net-(JP2-Pad3)">
       <node ref="R8" pin="1"/>
       <node ref="JP2" pin="3"/>
     </net>
     <net code="113" name="CAN1_H">
-      <node ref="J3" pin="2"/>
-      <node ref="U5" pin="7"/>
       <node ref="R9" pin="2"/>
       <node ref="U7" pin="2"/>
+      <node ref="J3" pin="4"/>
+      <node ref="U5" pin="7"/>
     </net>
     <net code="114" name="CAN1_L">
-      <node ref="JP3" pin="2"/>
       <node ref="U7" pin="1"/>
       <node ref="U5" pin="6"/>
-      <node ref="J3" pin="1"/>
+      <node ref="J3" pin="3"/>
+      <node ref="JP3" pin="2"/>
     </net>
     <net code="115" name="Net-(JP3-Pad3)">
-      <node ref="JP3" pin="3"/>
       <node ref="R9" pin="1"/>
+      <node ref="JP3" pin="3"/>
     </net>
     <net code="116" name="Net-(JP3-Pad1)">
       <node ref="JP3" pin="1"/>
@@ -1771,19 +1675,19 @@
       <node ref="JP2" pin="1"/>
     </net>
     <net code="118" name="Net-(C23-Pad2)">
-      <node ref="U9" pin="6"/>
       <node ref="R15" pin="1"/>
       <node ref="C23" pin="2"/>
+      <node ref="U9" pin="6"/>
       <node ref="R13" pin="2"/>
     </net>
     <net code="119" name="Net-(J4-Pad1)">
-      <node ref="J4" pin="1"/>
       <node ref="R15" pin="2"/>
+      <node ref="J4" pin="1"/>
     </net>
     <net code="120" name="Net-(C22-Pad1)">
-      <node ref="U9" pin="7"/>
       <node ref="R12" pin="1"/>
       <node ref="C22" pin="1"/>
+      <node ref="U9" pin="7"/>
       <node ref="R14" pin="1"/>
     </net>
     <net code="121" name="Net-(J4-Pad2)">
