@@ -2,7 +2,7 @@
 <export version="D">
   <design>
     <source>/home/thb/projects/CANT/reCANT/CANT.sch</source>
-    <date>Fri Aug 13 15:23:51 2021</date>
+    <date>Fri Aug 13 16:41:28 2021</date>
     <tool>Eeschema 5.1.10</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -217,6 +217,9 @@
       <value>DSC1001</value>
       <footprint>DSC1001:Oscillator_SMD_Microchip_DSC1001-4Pin_2.5x2.0mm</footprint>
       <datasheet>https://abracon.com/Oscillators/ASDMB.pdf</datasheet>
+      <fields>
+        <field name="LCSC">C409249</field>
+      </fields>
       <libsource lib="DSC1001" part="DSC1001" description="1.7-3.3V SMD Ultra Miniature Crystal Clock Oscillator"/>
       <sheetpath names="/HS_USB/" tstamps="/610B6705/"/>
       <tstamp>612C2D53</tstamp>

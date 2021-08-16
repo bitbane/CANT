@@ -1,4 +1,4 @@
-update=8/2/2021 2:27:29 PM
+update=Mon Aug 16 18:54:02 2021
 version=1
 last_client=kicad
 [cvpcb]
@@ -29,9 +29,9 @@ AllowMicroVias=0
 AllowBlindVias=0
 RequireCourtyardDefinitions=0
 ProhibitOverlappingCourtyards=1
-MinTrackWidth=0.2
+MinTrackWidth=0.08889999999999999
 MinViaDiameter=0.4
-MinViaDrill=0.3
+MinViaDrill=0.2
 MinMicroViaDiameter=0.2
 MinMicroViaDrill=0.09999999999999999
 MinHoleToHole=0.25
@@ -291,4 +291,15 @@ uViaDiameter=0.3
 uViaDrill=0.1
 dPairWidth=0.2
 dPairGap=0.25
+dPairViaGap=0.25
+[pcbnew/Netclasses/5]
+Name=USB Data
+Clearance=0.2
+TrackWidth=0.25
+ViaDiameter=0.6
+ViaDrill=0.4
+uViaDiameter=0.3
+uViaDrill=0.1
+dPairWidth=0.25
+dPairGap=0.0889
 dPairViaGap=0.25
