@@ -13,7 +13,7 @@ operational mode. The following modes are supported:
 |--------|------|--------|
 | 1 | [CanCat](https://github.com/atlas0fd00m/CanCat) | Incomplete |
 | 2 | CANT | Incomplete|
-| 3 | SocketCNA (based on [Candlelight](https://github.com/candle-usb/candleLight_fw) | Incomplete |
+| 3 | SocketCAN (based on [Candlelight](https://github.com/candle-usb/candleLight_fw)) | Incomplete |
 | 4 | [TruckDevil](https://github.com/LittleBlondeDevil/TruckDevil) | Incomplete |
 | 5 | TBD | |
 | 6 | TBD | |
@@ -53,6 +53,9 @@ NOTE: Some older versions of the arm-none-eabi-gcc toolchain generate invalid op
 To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
 
 ## Assembly
+
+For PCB design, the impedance of the USB traces is correct for FR4 board with a 0.2mm separation from the traces on the top copper plane and the ground plane on the second layer. The trace spacing is 5mil. If your PCB manufacturer has different buildpup the USB traces will need to be modified to maintain the proper impedence. 
+
 |Ref | Qnty | Value | Description | 
 |----|------|-------|-------------|
 |C1, C15, C26, C27  | 4 | 1uF | C_0805 | 
