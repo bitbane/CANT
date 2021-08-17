@@ -1,64 +1,38 @@
+*NOTE: This is the new reCANT multipurpose CAN tool that supports 2 CAN-FD buses and firmware for multiple different
+operational modes. The old version that consists of a shield for the Nucleo-H743ZI[2] dev board and firmware for
+that board can be found in the old/ directory.*
+
 The CANT project is designed to allow people to screw around with CAN easily at layers 1/2.
 All of the stuff that is normally handled by a CAN controller that is baked into sillicon is up for grabs.
 
-CANT is designed to run on an ST Micro [Nucleo-H743ZI](http://www.st.com/en/evaluation-tools/nucleo-h743zi.html) 
-development board. This board was chosen due to its speed (400MHz) and essentially infinite ram and flash.
+The reCANT hardware is a multipurpose CAN bus tool that is capable of operating in several different
+modes. Modes are selected by moving the jumper on the board to the position corresponding to the desired 
+operational mode. The following modes are supported:
 
-## Getting started with the Nucleo-STM32H7 development board
+| Number | Mode | Status |
+|--------|------|--------|
+| 1 | [CanCat](https://github.com/atlas0fd00m/CanCat) | Incomplete |
+| 2 | CANT | Incomplete|
+| 3 | SocketCNA (based on [Candlelight](https://github.com/candle-usb/candleLight_fw) | Incomplete |
+| 4 | [TruckDevil](https://github.com/LittleBlondeDevil/TruckDevil) | Incomplete |
+| 5 | TBD | |
+| 6 | TBD | |
+| 7 | TBD | |
+| 8 | TBD | |
 
-The Nucleo-H743ZI board has an STLink V2.1 debugger built in, available via the Micro-USB port on the 
-opposite side of the board from the RJ-45 jack. This port provides the serial port for communication, 
-as well as the debugging interface. The serial port has a baud rate of 115200 kbps, 8N1. 
 
-For CAN communication, PB12 is CAN RX and PB13 is CAN TX. Conveniently the CAN2 peripheral can also be 
-multiplexed to these pins, so switching from normal CAN operation to CANT operation would be 
-possible without rewiring. This is currently not implemented. I'm using the 
-[TI SN65HVD232](http://www.ti.com/product/sn65hvd232?qgpn=sn65hvd232) 3.3V CAN transceiver, 
-but any 3.3V CAN Transceiver should work. Some transceivers may require some additional 
-programming or wiring, so check that if you go with something else.
+## reCANT Hardware Description
 
-If you are using the CANT shield, pin PA5 is used to toggle the analog switch that shorts CANH and CANL
-together.
 
-Additionally, GPIO pins PA4 and PA15 are configured as GPIO outputs. I find banging on these
-useful during debugging. These pins, along with the two pins for the CAN peripheral, are all located
-on connector CN7, on the upper-right of the dev board if the RJ-45 connector is pointed towards you.
-STs documentation contains the schematics for this board, but connector CN7 is reproduced here for
-convenience:
+### Flashing Software
 
-| PIN |     |     | PIN |
-|:---:|:---:|:---:|:---:|
-| PC6 | 1   | 2   | PB8 |
-| PB15| 3   | 4   | PB9 |
-| PB13| 5   | 6   | AVDD|
-| PB12| 7   | 8   | GND |
-| PA15| 9   | 10  | PA5 |
-| PC7 | 11  | 12  | PA6 |
-| PB5 | 13  | 14  |     |
-| PB3 | 15  | 16  | PD14|
-| PA4 | 17  | 18  | PD15|
-| PB4 | 19  | 20  | PF12|
-
-### Flashing pre-built CANT
-The Nucleo-H743ZI dev board will present itself as a USB mass storage device. Dragging and dropping the CANT.bin file 
-located in the `firmware/` folder to the dev board should properly flash the code to the dev board.
-
-Alternatively, you will need openocd installed to flash the prebuilt CANT. At the time of this writing the latest version
-of openocd (0.10.0) does not support the H743ZI, but it is supported in the openocd git repository.
-Presumably support will be added in the next release of openocd. In order to flash the prebuilt CANT, type
-
-```
-make flash_prebuilt
-```
 
 ### LEDs
-The green LED (LED1) flashes at a rate of 1hz. The blue LED (LED2) changes state for every 128 CAN frames
-that CANT has received. This is handy for ensuring that the CAN bus isn't dead and that CANT is properly
-configured.
+
 
 ## Demos
 
-Demo videos from my talks
+Demo videos from my talks (Original CANT board)
 
 [![Link to 1st demo video](https://img.youtube.com/vi/g2gCfG9jTLs/0.jpg)](https://www.youtube.com/watch?v=g2gCfG9jTLs)
 
@@ -78,21 +52,38 @@ NOTE: Some older versions of the arm-none-eabi-gcc toolchain generate invalid op
 
 To start developing on CANT, all you need is an arm-none-eabi toolcahin installed and in your path.
 
-## Shield
-
-Version 0.1 of the shield was designed with a TI SN65HVD232DRG4 CAN transceiver, which costs about $1.75. Version 0.2 was redesigned for a TJA1051T/3 CAN transceiver which costs a little under a dollar. Version 0.2 also has an additional capacitor C6 for filtering the VIO line on the TJA1051T/3. Besides those changes, v0.1 and v0.2 are identical. Cost for building one is about $3.40 for one, or about $22.75 for 10, plus the cost of the PCB.
-
-| Location | Part | Link | Notes |
-|----------|------|------|-------|
-| U1 | TJA1051T/3 CAN Transceiver | https://www.arrow.com/en/products/tja1051t3118/nxp-semiconductors |  |
-| U2 | 74LVC1G66 Analog Switch | https://www.arrow.com/en/products/74lvc1g66gw125/nexperia |  |
-| D1 | SP1002-02 Diode TVS Single Bi-Dir | https://www.arrow.com/en/products/sp1002-02jtg/littelfuse |  |
-| R1 | 120 Ohm 0805 Resistor | https://www.arrow.com/en/products/nrc10j121trf/nic-components |  |
-| C1, C4, C5 | 100pF 0805 Ceramic Capacitor | https://www.arrow.com/en/products/vj0805y101kxacw1bc/vishay |  |
-| C2, C6 | 0.1uF 0805 Ceramic Capacitor  |  https://www.arrow.com/en/products/vj0805y104jxxcw1bc/vishay|  |
-| C3 | 10uF 0805 Ceramic Capacitor | https://www.arrow.com/en/products/cl21a106kpfnnnf/samsung-electro-mechanics |  |
-| J1 | 3.5mm Screw Terminal Block | https://www.arrow.com/en/products/ctb30512bk/camdenboss-ltd |  |
-| CN7 | 20 pin 2.54mm pitch pin terminal | https://www.arrow.com/en/products/54102-t08-00/amphenol-fci | It's not clear, but these are sold singly. Buy 19 and they will come in a strip that you can use for CN7, CN8 and JP1 |
-| CN8 | 16 pin 2.54mm pitch pin terminal |  |  |
-| JP1 | 2 pin 2.54mm jumper header for 120Ohm resistor |  | Don't forget a jumper https://www.arrow.com/en/products/aksctgblack/assmann-wsw-components-inc |
-
+## Assembly
+|Ref | Qnty | Value | Description | 
+|----|------|-------|-------------|
+|C1, C15, C26, C27  | 4 | 1uF | C_0805 | 
+|C2, C6, C7, C8, C9, C10, C12, C13, C14, C16, C17, C18, C19, C20, C21, C25, C28, C29  | 18 | 100nF | C_0805 | 
+|C3  | 1 | 10uF | C_0805 | 
+|C4, C5, C22, C23  | 4 | 2.2uF | C_0805 | 
+|C11, C24  | 2 | 4.7uF | C_0805 | 
+|D1, D3  | 2 | LED-RED | LED_0805 | 
+|D2  | 1 | LED-GREEN | LED_0805 | 
+|F1  | 1 | Polyfuse 6v 1A | C_0805 | 
+|J1  | 1 | USB_C_Receptacle_USB2.0 | USB C Receptacle P/N GCT_USB4085 | 
+|J2  | 1 | 2x8 Pin Terminal for mode selection | 2.54mm pitch 2x8 Pin Header | 
+|J3  | 1 | Screw_Terminal_01x04 | 1x4 3.50mm pitch screw terminal | 
+|J4  | 1 | Screw_Terminal_01x02 | 1x2 3.50mm pitch screw terminal | 
+|JP1, JP2, JP3  | 3 | Jumpers | 2.54mm pitch 1x3 Pin Header | 
+|P1  | 1 | SWD Connector | 2.54mm pitch 1x5 Pin Header | 
+|R1, R2  | 2 | 5.1K? | R_0805 | 
+|R3, R4, R5  | 3 | 68? | R_0805 | 
+|R6  | 1 | 100K? | R_0805 | 
+|R7  | 1 | 10k? | R_0805 | 
+|R8, R9  | 2 | 120? | R_0805 | 
+|R10, R11, R12, R13  | 4 | 4.7K? | R_0805 | 
+|R14, R15  | 2 | 47? | R_0805 | 
+|R16  | 1 | 20K? | R_0805 | 
+|R17  | 1 | 8.06K? | R_0805 | 
+|SW1  | 1 | SW_SPST | Push Button Switch SMD:SW_SPST_PTS645 | 
+|U1  | 1 | USB3343 | Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm | 
+|U2  | 1 | LD1117S33TR | Package_TO_SOT_SMD:SOT-223 | 
+|U3  | 1 | STM32H733VGTx | Package_QFP:LQFP-100_14x14mm_P0.5mm | 
+|U4, U5,   | 2 | MCP2558FD-xSN | Package_SO:SOIC-8_3.9x4.9mm_P1.27mm | 
+|U6, U7  | 2 | 74LVC1G66 | Package_TO_SOT_SMD:SOT-353_SC-70-5_Handsoldering | 
+|U8  | 1 | SN74LVC1G14DBV | Package_TO_SOT_SMD:SOT-23-5 | 
+|U9  | 1 | ST485EBDR | Package_SO:SOIC-8_3.9x4.9mm_P1.27mm | 
+|U10  | 1 | DSC1001 | DSC1001:Oscillator_SMD_Microchip_DSC1001-4Pin_2.5x2.0mm | 1.7-3.3V SMD Ultra Miniature Crystal Clock Oscillator |

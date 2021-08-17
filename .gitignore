@@ -1,4 +1,6 @@
 build/*
+old/build/*
+old/build/STM32F4xx_StdPeriph_Driver/*
 build/STM32F4xx_StdPeriph_Driver/*
 .ycm_extra_conf.py
 tags
