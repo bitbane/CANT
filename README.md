@@ -72,15 +72,15 @@ For PCB design, the impedance of the USB traces is correct for FR4 board with a 
 |J4  | 1 | Screw_Terminal_01x02 | 1x2 3.50mm pitch screw terminal | 
 |JP1, JP2, JP3  | 3 | Jumpers | 2.54mm pitch 1x3 Pin Header | 
 |P1  | 1 | SWD Connector | 2.54mm pitch 1x5 Pin Header | 
-|R1, R2  | 2 | 5.1K? | R_0805 | 
-|R3, R4, R5  | 3 | 68? | R_0805 | 
-|R6  | 1 | 100K? | R_0805 | 
-|R7  | 1 | 10k? | R_0805 | 
-|R8, R9  | 2 | 120? | R_0805 | 
-|R10, R11, R12, R13  | 4 | 4.7K? | R_0805 | 
-|R14, R15  | 2 | 47? | R_0805 | 
-|R16  | 1 | 20K? | R_0805 | 
-|R17  | 1 | 8.06K? | R_0805 | 
+|R1, R2  | 2 | 5.1K\Omega | R_0805 | 
+|R3, R4, R5  | 3 | 68\Omega | R_0805 | 
+|R6  | 1 | 100K\Omega | R_0805 | 
+|R7  | 1 | 10k\Omega | R_0805 | 
+|R8, R9  | 2 | 120\Omega | R_0805 | 
+|R10, R11, R12, R13  | 4 | 4.7K\Omega | R_0805 | 
+|R14, R15  | 2 | 47\Omega | R_0805 | 
+|R16  | 1 | 20K\Omega | R_0805 | 
+|R17  | 1 | 8.06K\Omega | R_0805 | 
 |SW1  | 1 | SW_SPST | Push Button Switch SMD:SW_SPST_PTS645 | 
 |U1  | 1 | USB3343 | Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm | 
 |U2  | 1 | LD1117S33TR | Package_TO_SOT_SMD:SOT-223 | 
