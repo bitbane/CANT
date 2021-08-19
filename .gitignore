@@ -1,4 +1,5 @@
 build/*
+CANT_Unified_Board_SW/build/*
 old/build/*
 old/build/STM32F4xx_StdPeriph_Driver/*
 build/STM32F4xx_StdPeriph_Driver/*
