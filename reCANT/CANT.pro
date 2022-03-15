@@ -1,4 +1,4 @@
-update=Tue Aug 17 09:04:09 2021
+update=Tue 15 Mar 2022 01:19:17 AM EDT
 version=1
 last_client=kicad
 [cvpcb]
@@ -295,11 +295,11 @@ dPairViaGap=0.25
 [pcbnew/Netclasses/5]
 Name=USB Data
 Clearance=0.2
-TrackWidth=0.25
+TrackWidth=0.2286
 ViaDiameter=0.6
 ViaDrill=0.4
 uViaDiameter=0.3
 uViaDrill=0.1
-dPairWidth=0.29
-dPairGap=0.127
+dPairWidth=0.2286
+dPairGap=0.1524
 dPairViaGap=0.25

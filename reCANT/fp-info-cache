@@ -1,4 +1,4 @@
-19217691116122362
+19194410032084797
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -48769,8 +48769,8 @@ THT ceramic resonator filter DSS6
 3
 3
 DSC1001
-Oscillator_SMD_Abracon_ASDMB-4Pin_2.5x2.0mm
-Miniature Crystal Clock Oscillator Abracon ASDMB series, 2.5x2.0mm package, http://www.abracon.com/Oscillators/ASDMB.pdf
+Oscillator_SMD_Microchip_DSC1001-4Pin_2.5x2.0mm
+Miniature Crystal Clock Oscillator Microchip DSC1001 series, 2.5x2.0mm package
 SMD SMT crystal oscillator
 0
 4
@@ -81178,97 +81178,6 @@ THT Terminal Block WAGO 804-324 45Degree pitch 7.5mm size 179x15mm^2 drill 1.2mm
 0
 48
 24
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650073_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650073.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650074_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650074.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650094_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650094.pdf)
-screw terminal thread redcube thr power connector
-0
-16
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650173_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650173.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650174_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650174.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650194_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650194.pdf)
-screw terminal thread redcube thr power connector
-0
-18
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74650195_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74650195.pdf)
-screw terminal thread redcube thr power connector
-0
-18
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRBU_74655095_THR
-REDCUBE THR with internal through-hole thread WP-THRBU (https://www.we-online.de/katalog/datasheet/74655095.pdf)
-screw terminal thread redcube thr power connector
-0
-16
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRSH_74651173_THR
-REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651173.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRSH_74651174_THR
-REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651174.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRSH_74651175_THR
-REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651175.pdf)
-screw terminal thread redcube thr power connector
-0
-8
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRSH_74651194_THR
-REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651194.pdf)
-screw terminal thread redcube thr power connector
-0
-18
-1
-TerminalBlock_Wuerth
-Wuerth_REDCUBE-THR_WP-THRSH_74651195_THR
-REDCUBE THR with internal through-hole thread WP-THRSH (https://www.we-online.de/katalog/datasheet/74651195.pdf)
-screw terminal thread redcube thr power connector
-0
-18
-1
 TestPoint
 TestPoint_2Pads_Pitch2.54mm_Drill0.8mm
 Test point with 2 pins, pitch 2.54mm, drill diameter 0.8mm
