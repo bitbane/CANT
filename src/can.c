@@ -56,6 +56,8 @@ inline static void short_on();
 inline static void short_off();
 static uint8_t nack_attack = 0;
 
+volatile uint8_t sniff_traffic = 0;
+
 const uint32_t TIMER_PERIOD_NS = 50;
 
 /**************************************
@@ -261,16 +263,18 @@ void can_poll()
     if(frame_done)
     {
         frame_done = 0;
-#ifdef DEBUG_PRINT
-        printf("Arbid: %lx\r\n", arbid);
-        write_string("Msg: ");
-        for(int i = 0; i < msg_len; i++)
+        if(sniff_traffic)
         {
-            write_int(message[i]);
-            write_string(" ");
+            printf("Arbid: %lx\r\n", arbid);
+            write_string("Msg: ");
+            for(int i = 0; i < msg_len; i++)
+            {
+                write_int(message[i]);
+                write_string(" ");
+            }
+            printf("\r\nCRC: %lx\r\n", can_rx_crc);
         }
-        printf("\r\nCRC: %lx\r\n", can_rx_crc);
-#endif
+
         /* After 128 frames, turn the LED on */
         if ((frames_seen & 0x000000FF) == 128)
         {

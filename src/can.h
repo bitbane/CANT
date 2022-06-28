@@ -5,6 +5,7 @@
 #include <stdint.h>
 
 extern volatile uint32_t attack_arbid;
+extern volatile uint8_t sniff_traffic;
 
 void can_init(void);
 void can_poll(void);

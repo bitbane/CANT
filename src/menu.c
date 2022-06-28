@@ -14,6 +14,7 @@ char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "Set baudrate",
     "Choose Attack",
     "End Attack",
+    "Start/Stop Sniffing Traffic",
 };
 
 char* Attack_Commands_Text[ATTACK_NUM_ITEMS] = {
@@ -88,6 +89,15 @@ static void handle_command()
             break;
         case MENU_STOP_ATTACK:
             remove_attack();
+            break;
+        case MENU_SNIFF_TRAFFIC:
+            if(sniff_traffic)
+                sniff_traffic = 0;
+            else
+            {
+                sniff_traffic = 1;
+                write_string("Attacks will not work while sniffing is active. Stop sniffing before launching any attacks.");
+            }
             break;
         default:
             write_string("No such command\r\n");

@@ -15,6 +15,7 @@ typedef enum
     MENU_SET_BAUD,
     MENU_CHOOSE_ATTACK,
     MENU_STOP_ATTACK,
+    MENU_SNIFF_TRAFFIC,
     MENU_NUM_ITEMS,
 } Menu_Commands_T;
 
