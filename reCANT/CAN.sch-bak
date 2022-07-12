@@ -498,4 +498,30 @@ F 4 "C49678" H 3300 4600 50  0001 C CNN "LCSC"
 	1    3300 4600
 	1    0    0    -1  
 $EndComp
+Text GLabel 7450 3150 0    50   Input ~ 0
+CAN3_SHORT
+Text GLabel 7450 3550 0    50   Input ~ 0
+CAN1_SHORT
+$Comp
+L Connector:TestPoint TP14
+U 1 1 623338B5
+P 7450 3150
+F 0 "TP14" V 7404 3338 50  0000 L CNN
+F 1 "TestPoint" V 7495 3338 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 7650 3150 50  0001 C CNN
+F 3 "~" H 7650 3150 50  0001 C CNN
+	1    7450 3150
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:TestPoint TP15
+U 1 1 623340D2
+P 7450 3550
+F 0 "TP15" V 7404 3738 50  0000 L CNN
+F 1 "TestPoint" V 7495 3738 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 7650 3550 50  0001 C CNN
+F 3 "~" H 7650 3550 50  0001 C CNN
+	1    7450 3550
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC

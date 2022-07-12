@@ -417,7 +417,7 @@ F 3 "" H 2300 3350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3100 3350 3100 2650
+	3100 3350 3100 3100
 Wire Wire Line
 	3100 2650 4000 2650
 $Comp
@@ -465,8 +465,6 @@ F 3 "" H 5750 1600 50  0001 C CNN
 	1    5750 1600
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5750 1400 5150 1400
 Wire Wire Line
 	5150 1400 5150 1250
 Wire Wire Line
@@ -520,4 +518,176 @@ F 3 "" H 3800 1000 50  0001 C CNN
 	1    3800 1000
 	1    0    0    -1  
 $EndComp
+Text GLabel 6750 1000 2    50   Input ~ 0
+USB_CK
+Text GLabel 6750 1100 2    50   Input ~ 0
+USB_D0
+Text GLabel 6750 1200 2    50   Input ~ 0
+USB_D1
+Text GLabel 6750 1300 2    50   Input ~ 0
+USB_D2
+Text GLabel 6750 1400 2    50   Input ~ 0
+USB_D3
+Text GLabel 6750 1500 2    50   Input ~ 0
+USB_D4
+Text GLabel 6750 1600 2    50   Input ~ 0
+USB_D5
+Text GLabel 6750 1700 2    50   Input ~ 0
+USB_D6
+Text GLabel 6750 1800 2    50   Input ~ 0
+USB_D7
+Text GLabel 6750 1900 2    50   Input ~ 0
+USB_DIR
+Text GLabel 6750 2000 2    50   Input ~ 0
+USB_STP
+Text GLabel 6750 2100 2    50   Input ~ 0
+USB_NXT
+$Comp
+L Connector:TestPoint TP2
+U 1 1 623221AE
+P 6750 1000
+F 0 "TP2" V 6750 1600 50  0000 C CNN
+F 1 "TestPoint" V 6750 1350 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1000 50  0001 C CNN
+F 3 "~" H 6950 1000 50  0001 C CNN
+	1    6750 1000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5150 1400 5750 1400
+$Comp
+L Connector:TestPoint TP3
+U 1 1 62325BCC
+P 6750 1100
+F 0 "TP3" V 6750 1700 50  0000 C CNN
+F 1 "TestPoint" V 6750 1450 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1100 50  0001 C CNN
+F 3 "~" H 6950 1100 50  0001 C CNN
+	1    6750 1100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP4
+U 1 1 62325E52
+P 6750 1200
+F 0 "TP4" V 6750 1800 50  0000 C CNN
+F 1 "TestPoint" V 6750 1550 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1200 50  0001 C CNN
+F 3 "~" H 6950 1200 50  0001 C CNN
+	1    6750 1200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP5
+U 1 1 623260E2
+P 6750 1300
+F 0 "TP5" V 6750 1900 50  0000 C CNN
+F 1 "TestPoint" V 6750 1650 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1300 50  0001 C CNN
+F 3 "~" H 6950 1300 50  0001 C CNN
+	1    6750 1300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP6
+U 1 1 6232637C
+P 6750 1400
+F 0 "TP6" V 6750 2000 50  0000 C CNN
+F 1 "TestPoint" V 6750 1750 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1400 50  0001 C CNN
+F 3 "~" H 6950 1400 50  0001 C CNN
+	1    6750 1400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP7
+U 1 1 62326612
+P 6750 1500
+F 0 "TP7" V 6750 2100 50  0000 C CNN
+F 1 "TestPoint" V 6750 1850 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1500 50  0001 C CNN
+F 3 "~" H 6950 1500 50  0001 C CNN
+	1    6750 1500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP8
+U 1 1 623268B2
+P 6750 1600
+F 0 "TP8" V 6750 2200 50  0000 C CNN
+F 1 "TestPoint" V 6750 1950 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1600 50  0001 C CNN
+F 3 "~" H 6950 1600 50  0001 C CNN
+	1    6750 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP9
+U 1 1 62326B5C
+P 6750 1700
+F 0 "TP9" V 6750 2300 50  0000 C CNN
+F 1 "TestPoint" V 6750 2050 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1700 50  0001 C CNN
+F 3 "~" H 6950 1700 50  0001 C CNN
+	1    6750 1700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP10
+U 1 1 62326E10
+P 6750 1800
+F 0 "TP10" V 6750 2400 50  0000 C CNN
+F 1 "TestPoint" V 6750 2150 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1800 50  0001 C CNN
+F 3 "~" H 6950 1800 50  0001 C CNN
+	1    6750 1800
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP11
+U 1 1 623270CE
+P 6750 1900
+F 0 "TP11" V 6750 2500 50  0000 C CNN
+F 1 "TestPoint" V 6750 2250 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 1900 50  0001 C CNN
+F 3 "~" H 6950 1900 50  0001 C CNN
+	1    6750 1900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP12
+U 1 1 62327396
+P 6750 2000
+F 0 "TP12" V 6750 2600 50  0000 C CNN
+F 1 "TestPoint" V 6750 2350 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 2000 50  0001 C CNN
+F 3 "~" H 6950 2000 50  0001 C CNN
+	1    6750 2000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP13
+U 1 1 62327676
+P 6750 2100
+F 0 "TP13" V 6750 2700 50  0000 C CNN
+F 1 "TestPoint" V 6750 2450 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 6950 2100 50  0001 C CNN
+F 3 "~" H 6950 2100 50  0001 C CNN
+	1    6750 2100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP1
+U 1 1 62327960
+P 3100 3100
+F 0 "TP1" V 3100 3700 50  0000 C CNN
+F 1 "TestPoint" V 3100 3450 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Pad_D1.0mm" H 3300 3100 50  0001 C CNN
+F 3 "~" H 3300 3100 50  0001 C CNN
+	1    3100 3100
+	0    1    1    0   
+$EndComp
+Connection ~ 3100 3100
+Wire Wire Line
+	3100 3100 3100 2650
 $EndSCHEMATC
