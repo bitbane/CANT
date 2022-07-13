@@ -3815,7 +3815,7 @@
   (gr_text "-CAN2+  -CAN1+" (at 108.1 47.75) (layer "F.SilkS") (tstamp ddb65186-5980-4816-92cd-baba738dc74c)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_text "reCANT Hat For Teensy 4.1\nhttps://github.com/bitbane/CANT" (at 44.35 46.61) (layer "F.SilkS") (tstamp e6a2e6ff-b44b-4642-9dcc-376b087185db)
+  (gr_text "reCANT Hat For Teensy 4.1 v0.1\nhttps://github.com/bitbane/CANT" (at 44.35 46.61) (layer "F.SilkS") (tstamp e6a2e6ff-b44b-4642-9dcc-376b087185db)
     (effects (font (size 1 1) (thickness 0.15)))
   )
   (gr_text "+J1708-" (at 115.48 51.31) (layer "F.SilkS") (tstamp f1b058a4-f10f-4499-a6c0-547dfc85df00)
