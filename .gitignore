@@ -2,3 +2,4 @@ build/*
 build/STM32F4xx_StdPeriph_Driver/*
 .ycm_extra_conf.py
 tags
+reCANT_Teensy_Shield/reCANT_Teensy_Shield-backups/*
