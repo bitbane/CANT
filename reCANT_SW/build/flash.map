@@ -1404,78 +1404,78 @@ LOAD /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m
 LOAD /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libm.a
 LOAD /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a
 
-.debug_info     0x0000000000000000    0x3e80b
- .debug_info    0x0000000000000000      0xf26 build/usb_device_interface_0_cic_vcom.o
- .debug_info    0x0000000000000f26     0x1a89 build/usb_device_composite.o
- .debug_info    0x00000000000029af      0xf5d build/usb_device_descriptor.o
- .debug_info    0x000000000000390c     0x2c8a build/clock_config.o
- .debug_info    0x0000000000006596       0x65 build/dcd.o
- .debug_info    0x00000000000065fb     0x20bf build/peripherals.o
- .debug_info    0x00000000000086ba     0x1bd9 build/pin_mux.o
- .debug_info    0x000000000000a293      0x263 build/MIMXRT1062DVJ6A/fsl_common.o
- .debug_info    0x000000000000a4f6      0xc92 build/MIMXRT1062DVJ6A/system_MIMXRT1062.o
- .debug_info    0x000000000000b188      0x1ba build/MIMXRT1062DVJ6A/fsl_common_arm.o
- .debug_info    0x000000000000b342     0x2899 build/MIMXRT1062DVJ6A/fsl_clock.o
- .debug_info    0x000000000000dbdb     0x1bf2 build/MIMXRT1062DVJ6A/fsl_os_abstraction_bm.o
- .debug_info    0x000000000000f7cd     0x1202 build/MIMXRT1062DVJ6A/usb_device_class.o
- .debug_info    0x00000000000109cf     0x152a build/MIMXRT1062DVJ6A/usb_device_cdc_acm.o
- .debug_info    0x0000000000011ef9     0x1c5e build/MIMXRT1062DVJ6A/usb_device_ch9.o
- .debug_info    0x0000000000013b57      0x712 build/MIMXRT1062DVJ6A/usb_phy.o
- .debug_info    0x0000000000014269     0x5efa build/MIMXRT1062DVJ6A/fsl_flexcan.o
- .debug_info    0x000000000001a163     0x1044 build/MIMXRT1062DVJ6A/fsl_gpio.o
- .debug_info    0x000000000001b1a7     0x3cb2 build/MIMXRT1062DVJ6A/fsl_lpuart.o
- .debug_info    0x000000000001ee59     0x17bb build/MIMXRT1062DVJ6A/usb_device_dci.o
- .debug_info    0x0000000000020614     0x2158 build/MIMXRT1062DVJ6A/usb_device_ehci.o
- .debug_info    0x000000000002276c     0x11b4 build/MIMXRT1062DVJ6A/fsl_debug_console.o
- .debug_info    0x0000000000023920      0xddc build/MIMXRT1062DVJ6A/fsl_adapter_lpuart.o
- .debug_info    0x00000000000246fc       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
- .debug_info    0x0000000000024721       0x24 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x0000000000024745      0x6fd /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
- .debug_info    0x0000000000024e42       0x24 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
- .debug_info    0x0000000000024e66      0x9d5 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
- .debug_info    0x000000000002583b      0xa04 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
- .debug_info    0x000000000002623f      0x8c8 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-impure.o)
- .debug_info    0x0000000000026b07      0x94c /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-malloc.o)
- .debug_info    0x0000000000027453      0xe77 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
- .debug_info    0x00000000000282ca      0x135 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
- .debug_info    0x00000000000283ff      0x923 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
- .debug_info    0x0000000000028d22      0x934 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
- .debug_info    0x0000000000029656       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strlen.o)
- .debug_info    0x000000000002967b     0x1a81 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
- .debug_info    0x000000000002b0fc      0x973 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
- .debug_info    0x000000000002ba6f       0xd8 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
- .debug_info    0x000000000002bb47      0xc0a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
- .debug_info    0x000000000002c751     0x12b7 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
- .debug_info    0x000000000002da08      0xc34 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
- .debug_info    0x000000000002e63c      0xcdf /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
- .debug_info    0x000000000002f31b      0xcb0 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
- .debug_info    0x000000000002ffcb      0x9f1 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
- .debug_info    0x00000000000309bc      0xbdb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
- .debug_info    0x0000000000031597      0xdfc /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
- .debug_info    0x0000000000032393      0x21a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
- .debug_info    0x00000000000325ad      0xdc2 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
- .debug_info    0x000000000003336f      0xc65 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
- .debug_info    0x0000000000033fd4       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memchr.o)
- .debug_info    0x0000000000033ff9       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memcpy.o)
- .debug_info    0x000000000003401e      0x148 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
- .debug_info    0x0000000000034166      0xd93 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
- .debug_info    0x0000000000034ef9      0xb72 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
- .debug_info    0x0000000000035a6b      0xedb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
- .debug_info    0x0000000000036946      0x996 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
- .debug_info    0x00000000000372dc      0xc06 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
- .debug_info    0x0000000000037ee2       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strcmp.o)
- .debug_info    0x0000000000037f07      0x14a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
- .debug_info    0x0000000000038051      0xa19 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
- .debug_info    0x0000000000038a6a      0xcdb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
- .debug_info    0x0000000000039745      0xc21 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
- .debug_info    0x000000000003a366      0x96b /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
- .debug_info    0x000000000003acd1      0x90f /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
- .debug_info    0x000000000003b5e0       0xb9 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-ctype_.o)
- .debug_info    0x000000000003b699      0xa83 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
- .debug_info    0x000000000003c11c      0xb2d /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
- .debug_info    0x000000000003cc49      0x90f /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
- .debug_info    0x000000000003d558      0x94e /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
- .debug_info    0x000000000003dea6      0x965 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
+.debug_info     0x0000000000000000    0x3e7f3
+ .debug_info    0x0000000000000000      0xf0e build/usb_device_interface_0_cic_vcom.o
+ .debug_info    0x0000000000000f0e     0x1a89 build/usb_device_composite.o
+ .debug_info    0x0000000000002997      0xf5d build/usb_device_descriptor.o
+ .debug_info    0x00000000000038f4     0x2c8a build/clock_config.o
+ .debug_info    0x000000000000657e       0x65 build/dcd.o
+ .debug_info    0x00000000000065e3     0x20bf build/peripherals.o
+ .debug_info    0x00000000000086a2     0x1bd9 build/pin_mux.o
+ .debug_info    0x000000000000a27b      0x263 build/MIMXRT1062DVJ6A/fsl_common.o
+ .debug_info    0x000000000000a4de      0xc92 build/MIMXRT1062DVJ6A/system_MIMXRT1062.o
+ .debug_info    0x000000000000b170      0x1ba build/MIMXRT1062DVJ6A/fsl_common_arm.o
+ .debug_info    0x000000000000b32a     0x2899 build/MIMXRT1062DVJ6A/fsl_clock.o
+ .debug_info    0x000000000000dbc3     0x1bf2 build/MIMXRT1062DVJ6A/fsl_os_abstraction_bm.o
+ .debug_info    0x000000000000f7b5     0x1202 build/MIMXRT1062DVJ6A/usb_device_class.o
+ .debug_info    0x00000000000109b7     0x152a build/MIMXRT1062DVJ6A/usb_device_cdc_acm.o
+ .debug_info    0x0000000000011ee1     0x1c5e build/MIMXRT1062DVJ6A/usb_device_ch9.o
+ .debug_info    0x0000000000013b3f      0x712 build/MIMXRT1062DVJ6A/usb_phy.o
+ .debug_info    0x0000000000014251     0x5efa build/MIMXRT1062DVJ6A/fsl_flexcan.o
+ .debug_info    0x000000000001a14b     0x1044 build/MIMXRT1062DVJ6A/fsl_gpio.o
+ .debug_info    0x000000000001b18f     0x3cb2 build/MIMXRT1062DVJ6A/fsl_lpuart.o
+ .debug_info    0x000000000001ee41     0x17bb build/MIMXRT1062DVJ6A/usb_device_dci.o
+ .debug_info    0x00000000000205fc     0x2158 build/MIMXRT1062DVJ6A/usb_device_ehci.o
+ .debug_info    0x0000000000022754     0x11b4 build/MIMXRT1062DVJ6A/fsl_debug_console.o
+ .debug_info    0x0000000000023908      0xddc build/MIMXRT1062DVJ6A/fsl_adapter_lpuart.o
+ .debug_info    0x00000000000246e4       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .debug_info    0x0000000000024709       0x24 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x000000000002472d      0x6fd /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .debug_info    0x0000000000024e2a       0x24 /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x0000000000024e4e      0x9d5 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-assert.o)
+ .debug_info    0x0000000000025823      0xa04 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fiprintf.o)
+ .debug_info    0x0000000000026227      0x8c8 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-impure.o)
+ .debug_info    0x0000000000026aef      0x94c /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-malloc.o)
+ .debug_info    0x000000000002743b      0xe77 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mallocr.o)
+ .debug_info    0x00000000000282b2      0x135 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memset.o)
+ .debug_info    0x00000000000283e7      0x923 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mlock.o)
+ .debug_info    0x0000000000028d0a      0x934 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-sbrkr.o)
+ .debug_info    0x000000000002963e       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strlen.o)
+ .debug_info    0x0000000000029663     0x1a81 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-vfiprintf.o)
+ .debug_info    0x000000000002b0e4      0x973 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wsetup.o)
+ .debug_info    0x000000000002ba57       0xd8 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-abort.o)
+ .debug_info    0x000000000002bb2f      0xc0a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fflush.o)
+ .debug_info    0x000000000002c739     0x12b7 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-findfp.o)
+ .debug_info    0x000000000002d9f0      0xc34 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fputwc.o)
+ .debug_info    0x000000000002e624      0xcdf /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-freer.o)
+ .debug_info    0x000000000002f303      0xcb0 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fvwrite.o)
+ .debug_info    0x000000000002ffb3      0x9f1 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fwalk.o)
+ .debug_info    0x00000000000309a4      0xbdb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-localeconv.o)
+ .debug_info    0x000000000003157f      0xdfc /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-locale.o)
+ .debug_info    0x000000000003237b      0x21a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lock.o)
+ .debug_info    0x0000000000032595      0xdc2 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-makebuf.o)
+ .debug_info    0x0000000000033357      0xc65 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-mbtowc_r.o)
+ .debug_info    0x0000000000033fbc       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memchr.o)
+ .debug_info    0x0000000000033fe1       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memcpy.o)
+ .debug_info    0x0000000000034006      0x148 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-memmove.o)
+ .debug_info    0x000000000003414e      0xd93 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reallocr.o)
+ .debug_info    0x0000000000034ee1      0xb72 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-reent.o)
+ .debug_info    0x0000000000035a53      0xedb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signal.o)
+ .debug_info    0x000000000003692e      0x996 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-signalr.o)
+ .debug_info    0x00000000000372c4      0xc06 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-stdio.o)
+ .debug_info    0x0000000000037eca       0x25 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strcmp.o)
+ .debug_info    0x0000000000037eef      0x14a /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-strncpy.o)
+ .debug_info    0x0000000000038039      0xa19 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wbuf.o)
+ .debug_info    0x0000000000038a52      0xcdb /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wcrtomb.o)
+ .debug_info    0x000000000003972d      0xc21 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-wctomb_r.o)
+ .debug_info    0x000000000003a34e      0x96b /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-writer.o)
+ .debug_info    0x000000000003acb9      0x90f /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-closer.o)
+ .debug_info    0x000000000003b5c8       0xb9 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-ctype_.o)
+ .debug_info    0x000000000003b681      0xa83 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fclose.o)
+ .debug_info    0x000000000003c104      0xb2d /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-fstatr.o)
+ .debug_info    0x000000000003cc31      0x90f /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-isattyr.o)
+ .debug_info    0x000000000003d540      0x94e /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-lseekr.o)
+ .debug_info    0x000000000003de8e      0x965 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
 
 .debug_abbrev   0x0000000000000000     0xa92c
  .debug_abbrev  0x0000000000000000      0x2d4 build/usb_device_interface_0_cic_vcom.o
@@ -2048,9 +2048,9 @@ LOAD /usr/lib/gcc/arm-none-eabi/12.1.0/thumb/v7e-m/nofp/libgcc.a
  .debug_line    0x0000000000016cfb      0x1c6 /usr/lib/gcc/arm-none-eabi/12.1.0/../../../../arm-none-eabi/lib/thumb/v7e-m/nofp/libg.a(lib_a-readr.o)
 
 .debug_str      0x0000000000000000     0xda46
- .debug_str     0x0000000000000000     0x1920 build/usb_device_interface_0_cic_vcom.o
-                                       0x19ec (size before relaxing)
- .debug_str     0x0000000000001920     0x1468 build/usb_device_composite.o
+ .debug_str     0x0000000000000000     0x1916 build/usb_device_interface_0_cic_vcom.o
+                                       0x19da (size before relaxing)
+ .debug_str     0x0000000000001916     0x1472 build/usb_device_composite.o
                                        0x2890 (size before relaxing)
  .debug_str     0x0000000000002d88      0x64a build/usb_device_descriptor.o
                                        0x1934 (size before relaxing)

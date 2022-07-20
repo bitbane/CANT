@@ -1,5 +1,5 @@
 CC=arm-none-eabi-gcc
-override CFLAGS+=-Wall -Wextra -std=c99 -fno-common -Os -mthumb -mcpu=cortex-m7 -DCPU_MIMXRT1062DVJ6A -g -Iboard -Isource -Isource/generated -Isource/MIMXRT1062DVJ6A
+override CFLAGS+=-Wall -Wextra -std=c99 -fno-common -Os -mthumb -mcpu=cortex-m7 -DCPU_MIMXRT1062DVJ6A -g -Iboard -Isource -Isource/generated -Isource/MIMXRT1062DVJ6A -Wno-unused-parameter
 LD=arm-none-eabi-gcc
 LDFLAGS=-TreCANT.ld -nostartfiles -Wl,-Map=build/flash.map -mcpu=cortex-m7 -mthumb --specs=nosys.specs
 AS=arm-none-eabi-as
