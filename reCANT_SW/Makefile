@@ -12,7 +12,7 @@ SRCS=source
 GEN_SRCS=source/generated
 BOARD_SRCS=board
 
-_OBJS=usb_device_interface_0_cic_vcom.o usb_device_composite.o usb_device_descriptor.o clock_config.o dcd.o peripherals.o pin_mux.o
+_OBJS=startup_MIMXRT1062.o usb_device_interface_0_cic_vcom.o usb_device_composite.o usb_device_descriptor.o clock_config.o dcd.o peripherals.o pin_mux.o main.o
 _PERIPH_OBJS=fsl_common.o system_MIMXRT1062.o fsl_common_arm.o fsl_clock.o fsl_os_abstraction_bm.o usb_device_class.o usb_device_cdc_acm.o usb_device_ch9.o usb_phy.o fsl_flexcan.o fsl_gpio.o fsl_lpuart.o usb_device_dci.o usb_device_ehci.o fsl_debug_console.o fsl_adapter_lpuart.o 
 
 PERIPH_OBJS = $(patsubst %,$(PERIPH_ODIR)/%,$(_PERIPH_OBJS))
@@ -22,6 +22,10 @@ _OBJS += $(_BOARD_OBJS)
 OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
 
 all: reCANT
+
+$(ODIR)/startup_MIMXRT1062.o: $(SRCS)/startup_MIMXRT1062.S
+	@mkdir -p $(@D)
+	$(AS) $(SRCS)/startup_MIMXRT1062.S -o $@ $(ASFLAGS)
 
 $(ODIR)/%.o: $(SRCS)/%.c
 	@mkdir -p $(@D)
@@ -41,8 +45,10 @@ $(ODIR)/$(PERIPH_ODIR)/%.o: $(SRCS)/$(PERIPH_ODIR)/src/%.c
 reCANT: $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) $(CFLAGS) -o $(ODIR)/reCANT.elf
 	arm-none-eabi-objcopy -Obinary $(ODIR)/reCANT.elf $(ODIR)/reCANT.bin
+	arm-none-eabi-objcopy -Oihex $(ODIR)/reCANT.elf $(ODIR)/reCANT.hex
 	cp $(ODIR)/reCANT.elf firmware/reCANT.elf
 	cp $(ODIR)/reCANT.bin	firmware/reCANT.bin
+	cp $(ODIR)/reCANT.hex	firmware/reCANT.hex
 
 .PHONY: clean
 

@@ -38,7 +38,7 @@ extern "C" {
 void BOARD_InitBootPins(void);
 
 #define BOARD_INITPINS_IOMUXC_GPR_GPR26_GPIO_MUX1_GPIO_SEL_MASK 0x0C000000U /*!< GPIO1 and GPIO6 share same IO MUX function, GPIO_MUX1 selects one GPIO function: affected bits mask */
-#define BOARD_INITPINS_IOMUXC_GPR_GPR27_GPIO_MUX2_GPIO_SEL_MASK 0xC0031C05U /*!< GPIO2 and GPIO7 share same IO MUX function, GPIO_MUX2 selects one GPIO function: affected bits mask */
+#define BOARD_INITPINS_IOMUXC_GPR_GPR27_GPIO_MUX2_GPIO_SEL_MASK 0xC0031C0DU /*!< GPIO2 and GPIO7 share same IO MUX function, GPIO_MUX2 selects one GPIO function: affected bits mask */
 #define BOARD_INITPINS_IOMUXC_GPR_GPR29_GPIO_MUX4_GPIO_SEL_MASK 0x0170U /*!< GPIO4 and GPIO9 share same IO MUX function, GPIO_MUX4 selects one GPIO function: affected bits mask */
 
 /* GPIO_EMC_04 (coord F2), CAN2_SW */
@@ -250,6 +250,20 @@ void BOARD_InitBootPins(void);
 #define BOARD_INITPINS_CAN1_LED_PORT                                       GPIO1   /*!< PORT peripheral base pointer */
 #define BOARD_INITPINS_CAN1_LED_PIN                                          26U   /*!< PORT pin number */
 #define BOARD_INITPINS_CAN1_LED_PIN_MASK                             (1U << 26U)   /*!< PORT pin mask */
+
+/* GPIO_B0_03 (coord D8), TEENSY_LED */
+/* Routed pin properties */
+#define BOARD_INITPINS_TEENSY_LED_PERIPHERAL                               GPIO2   /*!< Peripheral name */
+#define BOARD_INITPINS_TEENSY_LED_SIGNAL                                 gpio_io   /*!< Signal name */
+#define BOARD_INITPINS_TEENSY_LED_CHANNEL                                     3U   /*!< Signal channel */
+
+/* Symbols to be used with GPIO driver */
+#define BOARD_INITPINS_TEENSY_LED_GPIO                                     GPIO2   /*!< GPIO peripheral base pointer */
+#define BOARD_INITPINS_TEENSY_LED_GPIO_PIN                                    3U   /*!< GPIO pin number */
+#define BOARD_INITPINS_TEENSY_LED_GPIO_PIN_MASK                       (1U << 3U)   /*!< GPIO pin mask */
+#define BOARD_INITPINS_TEENSY_LED_PORT                                     GPIO2   /*!< PORT peripheral base pointer */
+#define BOARD_INITPINS_TEENSY_LED_PIN                                         3U   /*!< PORT pin number */
+#define BOARD_INITPINS_TEENSY_LED_PIN_MASK                            (1U << 3U)   /*!< PORT pin mask */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.

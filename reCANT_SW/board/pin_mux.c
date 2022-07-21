@@ -28,6 +28,7 @@ pin_labels:
 - {pin_num: C10, pin_signal: GPIO_B0_12, label: CAN3_SW, identifier: CAN3_SW}
 - {pin_num: J13, pin_signal: GPIO_AD_B1_11, label: CAN1_SW, identifier: CAN1_SW}
 - {pin_num: L13, pin_signal: GPIO_AD_B1_10, label: CAN1_LED, identifier: CAN1_LED}
+- {pin_num: D8, pin_signal: GPIO_B0_03, label: TEENSY_LED, identifier: TEENSY_LED}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -78,6 +79,7 @@ BOARD_InitPins:
   - {pin_num: N12, peripheral: USB1, signal: usb_otg1_chd_b, pin_signal: USB_OTG1_CHD_B}
   - {pin_num: L8, peripheral: USB1, signal: usb_otg1_dp, pin_signal: USB_OTG1_DP}
   - {pin_num: N6, peripheral: USB1, signal: usb_otg1_vbus, pin_signal: USB_OTG1_VBUS}
+  - {pin_num: D8, peripheral: GPIO2, signal: 'gpio_io, 03', pin_signal: GPIO_B0_03, direction: OUTPUT, gpio_init_state: 'true'}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -129,6 +131,15 @@ void BOARD_InitPins(void) {
   GPIO_PinInit(GPIO2, 2U, &RUN_SW8_config);
   /* Enable GPIO pin interrupt on GPIO_B0_02 (pin E8) */
   GPIO_PortEnableInterrupts(GPIO2, 1U << 2U);
+
+  /* GPIO configuration of TEENSY_LED on GPIO_B0_03 (pin D8) */
+  gpio_pin_config_t TEENSY_LED_config = {
+      .direction = kGPIO_DigitalOutput,
+      .outputLogic = 1U,
+      .interruptMode = kGPIO_NoIntmode
+  };
+  /* Initialize GPIO functionality on GPIO_B0_03 (pin D8) */
+  GPIO_PinInit(GPIO2, 3U, &TEENSY_LED_config);
 
   /* GPIO configuration of RUN_SOCKETCAN on GPIO_B0_10 (pin D9) */
   gpio_pin_config_t RUN_SOCKETCAN_config = {
@@ -249,6 +260,7 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_00_GPIO2_IO00, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_02_GPIO2_IO02, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_B0_03_GPIO2_IO03, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_10_GPIO2_IO10, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_11_GPIO2_IO11, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_12_GPIO2_IO12, 0U); 

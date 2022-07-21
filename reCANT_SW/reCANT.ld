@@ -1,21 +1,30 @@
 /*
-*****************************************************************************
+** ###################################################################
+**     Processors:          MIMXRT1062CVJ5A
+**                          MIMXRT1062CVL5A
+**                          MIMXRT1062DVJ6A
+**                          MIMXRT1062DVL6A
+**                          MIMXRT1062DVN6B
+**                          MIMXRT1062XVN5B
 **
-
-**  File        : LinkerScript.ld
+**     Compiler:            GNU C Compiler
+**     Reference manual:    IMXRT1060RM Rev.3, 07/2021 | IMXRT106XSRM Rev.0
+**     Version:             rev. 0.2, 2022-03-25
+**     Build:               b220401
 **
-**  Abstract    : Linker script for MIMXRT1062DVJ6A Device with
-**                1024KByte FLASH, 1024KByte RAM
+**     Abstract:
+**         Linker file for the GNU C Compiler
 **
-**                Set heap size, stack size and stack location according
-**                to application requirements.
+**     Copyright 2016 Freescale Semiconductor, Inc.
+**     Copyright 2016-2022 NXP
+**     All rights reserved.
 **
-**                Set memory bank area and size if external memory is used.
+**     SPDX-License-Identifier: BSD-3-Clause
 **
-**  Target      : NXP RT1062DVJ6A
+**     http:                 www.nxp.com
+**     mail:                 support@nxp.com
 **
-**
-*****************************************************************************
+** ###################################################################
 */
 
 /* Entry Point */
@@ -157,6 +166,7 @@ SECTIONS
 
   _heap_bottom = .;
   _heap_top = ORIGIN(DTCM) + LENGTH(DTCM) - _stack_size;
+  __StackTop = ORIGIN(DTCM) + LENGTH(DTCM);
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
