@@ -28,14 +28,26 @@ extern "C" {
 #define CAN1_PERIPHERAL CAN1
 /* Definition of the clock source frequency */
 #define CAN1_CLOCK_SOURCE 80000000UL
+/* CAN1 interrupt vector ID (number). */
+#define CAN1_FLEXCAN_IRQN CAN1_IRQn
+/* CAN1 interrupt handler identifier. */
+#define CAN1_FLEXCAN_IRQHANDLER CAN1_IRQHandler
 /* Definition of peripheral ID */
 #define CAN2_PERIPHERAL CAN2
 /* Definition of the clock source frequency */
 #define CAN2_CLOCK_SOURCE 80000000UL
+/* CAN2 interrupt vector ID (number). */
+#define CAN2_FLEXCAN_IRQN CAN2_IRQn
+/* CAN2 interrupt handler identifier. */
+#define CAN2_FLEXCAN_IRQHANDLER CAN2_IRQHandler
 /* Definition of peripheral ID */
 #define CAN3_PERIPHERAL CAN3
 /* Definition of the clock source frequency */
 #define CAN3_CLOCK_SOURCE 80000000UL
+/* CAN3 interrupt vector ID (number). */
+#define CAN3_FLEXCAN_IRQN CAN3_IRQn
+/* CAN3 interrupt handler identifier. */
+#define CAN3_FLEXCAN_IRQHANDLER CAN3_IRQHandler
 /* GPIO2 interrupt vector ID (number). */
 #define GPIO2_GPIO_COMB_0_15_IRQN GPIO2_Combined_0_15_IRQn
 /* GPIO2 interrupt handler identifier. */

@@ -132,8 +132,8 @@ USB_DMA_NONINIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static usb_cdc_acm_info_t s_usbC
 /* Data buffer for receiving and sending*/
 USB_DMA_NONINIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_currRecvBuf[DATA_BUFF_SIZE];
 USB_DMA_NONINIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static uint8_t s_currSendBuf[DATA_BUFF_SIZE];
-USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static volatile uint32_t s_recvSize = 0;
-USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) static volatile uint32_t s_sendSize = 0;
+USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) volatile static uint32_t s_recvSize = 0;
+USB_DMA_INIT_DATA_ALIGN(USB_DATA_ALIGN_SIZE) volatile static uint32_t s_sendSize = 0;
 
 #if defined(FSL_FEATURE_USB_KHCI_KEEP_ALIVE_ENABLED) && (FSL_FEATURE_USB_KHCI_KEEP_ALIVE_ENABLED > 0U) && \
     defined(USB_DEVICE_CONFIG_KEEP_ALIVE_MODE) && (USB_DEVICE_CONFIG_KEEP_ALIVE_MODE > 0U) &&             \
@@ -160,7 +160,7 @@ void USB_DeviceInterface0CicVcomTask(void)
         /* User Code */
         if ((0 != s_recvSize) && (0xFFFFFFFFU != s_recvSize))
         {
-            uint32_t i;
+            int32_t i;
 
             /* Copy Buffer to Send Buff */
             for (i = 0; i < s_recvSize; i++)

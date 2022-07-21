@@ -375,16 +375,6 @@
                   <data type="Version">2.8.0</data>
                </feature>
             </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="igpio not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="Unsupported version of the igpio in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">2.0.1</data>
-               </feature>
-            </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="FLEXCAN Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
@@ -393,6 +383,16 @@
             <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="Unsupported version of the FLEXCAN Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
                <feature name="version" evaluation="equivalent">
                   <data type="Version">2.8.0</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="igpio not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="Unsupported version of the igpio in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.0.1</data>
                </feature>
             </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.lpuart" description="LPUART Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
@@ -534,6 +534,9 @@
                            <struct name="1"/>
                            <struct name="2"/>
                            <struct name="3"/>
+                           <struct name="4"/>
+                           <struct name="5"/>
+                           <struct name="6"/>
                         </array>
                         <array name="interrupts"/>
                      </config_set>
@@ -544,7 +547,7 @@
                      </config_set>
                   </instance>
                   <instance name="USB1" uuid="feead04d-5914-425e-8161-cb2c968e5f0a" type="usb" type_id="usb_cbf31fb9a3cef21890d93e737c3d2690" mode="device" peripheral="USB1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
-                     <config_set name="deviceSetting" quick_selection="QS_DEVICE_CDC_VCOM">
+                     <config_set name="deviceSetting">
                         <setting name="vendor_id" value="0x1FC9"/>
                         <setting name="product_id" value="0x0094"/>
                         <setting name="manufacturer_string" value="NXP"/>
@@ -636,7 +639,7 @@
                         <set name="interruptsEnable">
                            <selected/>
                         </set>
-                        <setting name="enable_irq" value="false"/>
+                        <setting name="enable_irq" value="true"/>
                         <struct name="interrupt_shared">
                            <setting name="IRQn" value="CAN1_IRQn"/>
                            <setting name="enable_interrrupt" value="enabled"/>
@@ -712,7 +715,7 @@
                         <set name="interruptsEnable">
                            <selected/>
                         </set>
-                        <setting name="enable_irq" value="false"/>
+                        <setting name="enable_irq" value="true"/>
                         <struct name="interrupt_shared">
                            <setting name="IRQn" value="CAN2_IRQn"/>
                            <setting name="enable_interrrupt" value="enabled"/>
@@ -788,7 +791,7 @@
                         <set name="interruptsEnable">
                            <selected/>
                         </set>
-                        <setting name="enable_irq" value="false"/>
+                        <setting name="enable_irq" value="true"/>
                         <struct name="interrupt_shared">
                            <setting name="IRQn" value="CAN3_IRQn"/>
                            <setting name="enable_interrrupt" value="enabled"/>

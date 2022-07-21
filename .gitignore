@@ -3,3 +3,4 @@ reCANT_SW/build/MIMXRT1062DVJ6A/*
 .ycm_extra_conf.py
 tags
 reCANT_Teensy_Shield/reCANT_Teensy_Shield-backups/*
+*.bak

@@ -95,6 +95,9 @@ instance:
       - 1: []
       - 2: []
       - 3: []
+      - 4: []
+      - 5: []
+      - 6: []
     - interrupts: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
@@ -121,7 +124,7 @@ instance:
     - messageBufferIrqs: '0'
     - messageBufferIrqs2: '0'
     - interruptsEnable: ''
-    - enable_irq: 'false'
+    - enable_irq: 'true'
     - interrupt_shared:
       - IRQn: 'CAN1_IRQn'
       - enable_interrrupt: 'enabled'
@@ -218,6 +221,8 @@ static void CAN1_init(void) {
   FLEXCAN_SetTxMbConfig(CAN1_PERIPHERAL, 2, true);
   /* Message buffer 1 initialization */
   FLEXCAN_SetRxMbConfig(CAN1_PERIPHERAL, 1, &CAN1_rx_mb_config_1, true);
+  /* Enable interrupt CAN1_IRQn request in the NVIC. */
+  EnableIRQ(CAN1_FLEXCAN_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -238,7 +243,7 @@ instance:
     - messageBufferIrqs: '0'
     - messageBufferIrqs2: '0'
     - interruptsEnable: ''
-    - enable_irq: 'false'
+    - enable_irq: 'true'
     - interrupt_shared:
       - IRQn: 'CAN2_IRQn'
       - enable_interrrupt: 'enabled'
@@ -335,6 +340,8 @@ static void CAN2_init(void) {
   FLEXCAN_SetTxMbConfig(CAN2_PERIPHERAL, 2, true);
   /* Message buffer 1 initialization */
   FLEXCAN_SetRxMbConfig(CAN2_PERIPHERAL, 1, &CAN2_rx_mb_config_1, true);
+  /* Enable interrupt CAN2_IRQn request in the NVIC. */
+  EnableIRQ(CAN2_FLEXCAN_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -355,7 +362,7 @@ instance:
     - messageBufferIrqs: '0'
     - messageBufferIrqs2: '0'
     - interruptsEnable: ''
-    - enable_irq: 'false'
+    - enable_irq: 'true'
     - interrupt_shared:
       - IRQn: 'CAN3_IRQn'
       - enable_interrrupt: 'enabled'
@@ -470,6 +477,8 @@ static void CAN3_init(void) {
   FLEXCAN_SetFDTxMbConfig(CAN3_PERIPHERAL, 2, true);
   /* Message buffer 1 initialization */
   FLEXCAN_SetFDRxMbConfig(CAN3_PERIPHERAL, 1, &CAN3_rx_mb_config_1, true);
+  /* Enable interrupt CAN3_IRQn request in the NVIC. */
+  EnableIRQ(CAN3_FLEXCAN_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -693,7 +702,6 @@ instance:
                   - bRefresh: '0'
                   - bSynchAddress: 'NoSynchronization'
           - quick_selection: 'QS_INTERFACE_DIC_VCOM'
-    - quick_selection: 'QS_DEVICE_CDC_VCOM'
   - commonSettings:
     - mpu_init:
       - mpu_init_component: 'MPU'
