@@ -14,7 +14,6 @@
 #include "fsl_clock.h"
 #include "fsl_gpio.h"
 #include "fsl_lpuart.h"
-#include "usb_device_composite.h"
 
 #if defined(__cplusplus)
 extern "C" {

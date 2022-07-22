@@ -75,10 +75,6 @@ BOARD_InitPins:
   - {pin_num: C10, peripheral: GPIO2, signal: 'gpio_io, 12', pin_signal: GPIO_B0_12, direction: OUTPUT, speed: MHZ_200, slew_rate: Fast}
   - {pin_num: J13, peripheral: GPIO1, signal: 'gpio_io, 27', pin_signal: GPIO_AD_B1_11, direction: OUTPUT, speed: MHZ_200, slew_rate: Fast}
   - {pin_num: L13, peripheral: GPIO1, signal: 'gpio_io, 26', pin_signal: GPIO_AD_B1_10, direction: OUTPUT}
-  - {pin_num: M8, peripheral: USB1, signal: usb_otg1_dn, pin_signal: USB_OTG1_DN}
-  - {pin_num: N12, peripheral: USB1, signal: usb_otg1_chd_b, pin_signal: USB_OTG1_CHD_B}
-  - {pin_num: L8, peripheral: USB1, signal: usb_otg1_dp, pin_signal: USB_OTG1_DP}
-  - {pin_num: N6, peripheral: USB1, signal: usb_otg1_vbus, pin_signal: USB_OTG1_VBUS}
   - {pin_num: D8, peripheral: GPIO2, signal: 'gpio_io, 03', pin_signal: GPIO_B0_03, direction: OUTPUT, gpio_init_state: 'true'}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
