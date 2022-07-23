@@ -22,19 +22,21 @@ int main(void)
     SystemCoreClockUpdate();
     BOARD_InitBootPins();
     BOARD_InitBootPeripherals();
-    uint32_t count = 0;
+
+    // Set 1ms system tick
+    SysTick_Config(SystemCoreClock / 1000);
 
     while (1)
     {
-        count++;
-
-        if(count == 200000000)
-            GPIO_PinWrite(BOARD_INITPINS_TEENSY_LED_PORT, BOARD_INITPINS_TEENSY_LED_PIN, 0);
-
-        if(count >= 400000000)
-        {
-            GPIO_PinWrite(BOARD_INITPINS_TEENSY_LED_PORT, BOARD_INITPINS_TEENSY_LED_PIN, 1);
-            count = 0;
-        }
     }
+}
+
+volatile uint32_t system_ticks = 0;
+void SysTick_Handler(void)
+{
+    if((system_ticks & 0x00000FFF) == 0x800)
+        GPIO_PinWrite(BOARD_INITPINS_TEENSY_LED_PORT, BOARD_INITPINS_TEENSY_LED_PIN, 1);
+    else if ((system_ticks & 0x00000FFF) == 0x000)
+        GPIO_PinWrite(BOARD_INITPINS_TEENSY_LED_PORT, BOARD_INITPINS_TEENSY_LED_PIN, 0);
+    system_ticks++;
 }

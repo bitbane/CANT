@@ -12,7 +12,7 @@ SRCS=source
 GEN_SRCS=source/generated
 BOARD_SRCS=board
 
-_OBJS=startup_MIMXRT1062.o clock_config.o dcd.o peripherals.o pin_mux.o main.o
+_OBJS=startup_MIMXRT1062.o clock_config.o dcd.o peripherals.o pin_mux.o main.o test.o
 _PERIPH_OBJS=fsl_common.o system_MIMXRT1062.o fsl_common_arm.o fsl_clock.o fsl_os_abstraction_bm.o fsl_flexcan.o fsl_gpio.o fsl_lpuart.o fsl_adapter_lpuart.o teensy41_flexspi_nor_config.o fsl_flexspi_nor_boot.o
 
 PERIPH_OBJS = $(patsubst %,$(PERIPH_ODIR)/%,$(_PERIPH_OBJS))
