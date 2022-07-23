@@ -1,0 +1,3 @@
+[submodule "reCANT_SW/tinyusb"]
+	path = reCANT_SW/tinyusb
+	url = https://github.com/hathach/tinyusb/
