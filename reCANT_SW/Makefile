@@ -52,6 +52,10 @@ reCANT: $(OBJS)
 
 .PHONY: clean
 
+flash: reCANT
+	@echo Press Reset Button on Teensy 4.1
+	teensy_loader_cli -w --mcu=TEENSY41 firmware/reCANT.hex
+
 clean:
 	rm -f $(ODIR)/reCANT.* $(ODIR)/$(PERIPH_ODIR)/*.o $(ODIR)/*.o *~ core $(INCDIR)/*~ firmware/* $(ODIR)/flash.map
 
