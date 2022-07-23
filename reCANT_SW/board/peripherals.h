@@ -10,10 +10,9 @@
  * Included files
  **********************************************************************************************************************/
 #include "fsl_common.h"
-#include "fsl_flexcan.h"
-#include "fsl_clock.h"
 #include "fsl_gpio.h"
 #include "fsl_lpuart.h"
+#include "fsl_clock.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -23,30 +22,6 @@ extern "C" {
  * Definitions
  **********************************************************************************************************************/
 /* Definitions for BOARD_InitPeripherals functional group */
-/* Definition of peripheral ID */
-#define CAN1_PERIPHERAL CAN1
-/* Definition of the clock source frequency */
-#define CAN1_CLOCK_SOURCE 80000000UL
-/* CAN1 interrupt vector ID (number). */
-#define CAN1_FLEXCAN_IRQN CAN1_IRQn
-/* CAN1 interrupt handler identifier. */
-#define CAN1_FLEXCAN_IRQHANDLER CAN1_IRQHandler
-/* Definition of peripheral ID */
-#define CAN2_PERIPHERAL CAN2
-/* Definition of the clock source frequency */
-#define CAN2_CLOCK_SOURCE 80000000UL
-/* CAN2 interrupt vector ID (number). */
-#define CAN2_FLEXCAN_IRQN CAN2_IRQn
-/* CAN2 interrupt handler identifier. */
-#define CAN2_FLEXCAN_IRQHANDLER CAN2_IRQHandler
-/* Definition of peripheral ID */
-#define CAN3_PERIPHERAL CAN3
-/* Definition of the clock source frequency */
-#define CAN3_CLOCK_SOURCE 80000000UL
-/* CAN3 interrupt vector ID (number). */
-#define CAN3_FLEXCAN_IRQN CAN3_IRQn
-/* CAN3 interrupt handler identifier. */
-#define CAN3_FLEXCAN_IRQHANDLER CAN3_IRQHandler
 /* GPIO2 interrupt vector ID (number). */
 #define GPIO2_GPIO_COMB_0_15_IRQN GPIO2_Combined_0_15_IRQn
 /* GPIO2 interrupt handler identifier. */
@@ -71,21 +46,6 @@ extern "C" {
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
-extern const flexcan_config_t CAN1_config;
-/* Message buffer 0 configuration structure */
-extern const flexcan_rx_mb_config_t CAN1_rx_mb_config_0;
-/* Message buffer 1 configuration structure */
-extern const flexcan_rx_mb_config_t CAN1_rx_mb_config_1;
-extern const flexcan_config_t CAN2_config;
-/* Message buffer 0 configuration structure */
-extern const flexcan_rx_mb_config_t CAN2_rx_mb_config_0;
-/* Message buffer 1 configuration structure */
-extern const flexcan_rx_mb_config_t CAN2_rx_mb_config_1;
-extern const flexcan_config_t CAN3_config;
-/* Message buffer 0 configuration structure */
-extern const flexcan_rx_mb_config_t CAN3_rx_mb_config_0;
-/* Message buffer 1 configuration structure */
-extern const flexcan_rx_mb_config_t CAN3_rx_mb_config_1;
 extern const lpuart_config_t LPUART7_config;
 
 /***********************************************************************************************************************

@@ -363,16 +363,6 @@
       </dcdx>
       <periphs name="Peripherals" version="11.0" enabled="true" update_project_code="true">
          <dependencies>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="FLEXCAN Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
-               <feature name="enabled" evaluation="equal">
-                  <data type="Boolean">true</data>
-               </feature>
-            </dependency>
-            <dependency resourceType="SWComponent" resourceId="platform.drivers.flexcan" description="Unsupported version of the FLEXCAN Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
-                  <data type="Version">2.8.0</data>
-               </feature>
-            </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.igpio" description="igpio not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
                   <data type="Boolean">true</data>
@@ -406,66 +396,6 @@
                <description></description>
                <options/>
                <dependencies>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN1.can_rxd" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN1.can_txd" description="Signal TX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN2.can_rxd" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN2.can_txd" description="Signal TX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN3.can_rxd" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="CAN3.can_txd" description="Signal TX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="routed" evaluation="equal">
-                        <data type="Boolean">true</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
-                  <dependency resourceType="ClockOutput" resourceId="CAN_CLK_ROOT" description="CAN_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
-                     <feature name="frequency" evaluation="greaterThan">
-                        <data type="Frequency" unit="Hz">0</data>
-                     </feature>
-                  </dependency>
                   <dependency resourceType="ClockOutput" resourceId="UART_CLK_ROOT" description="UART_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="frequency" evaluation="greaterThan">
                         <data type="Frequency" unit="Hz">0</data>
@@ -490,9 +420,6 @@
                            <struct name="1"/>
                            <struct name="2"/>
                            <struct name="3"/>
-                           <struct name="4"/>
-                           <struct name="5"/>
-                           <struct name="6"/>
                         </array>
                         <array name="interrupts"/>
                      </config_set>
@@ -588,7 +515,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CAN1" uuid="015fe160-2420-4869-a2a5-c72ea6fcf5a8" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="CAN1" uuid="015fe160-2420-4869-a2a5-c72ea6fcf5a8" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN1" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="interruptsCfg">
                         <setting name="messageBufferIrqs" value="0"/>
                         <setting name="messageBufferIrqs2" value="0"/>
@@ -664,7 +591,7 @@
                         </array>
                      </config_set>
                   </instance>
-                  <instance name="CAN2" uuid="34a0b85a-2709-4c8d-9c29-f8474e601035" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN2" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="CAN2" uuid="34a0b85a-2709-4c8d-9c29-f8474e601035" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN2" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="interruptsCfg">
                         <setting name="messageBufferIrqs" value="0"/>
                         <setting name="messageBufferIrqs2" value="0"/>
@@ -740,7 +667,7 @@
                         </array>
                      </config_set>
                   </instance>
-                  <instance name="CAN3" uuid="f6281678-fded-4294-94df-b4a9fae15003" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN3" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="CAN3" uuid="f6281678-fded-4294-94df-b4a9fae15003" type="flexcan" type_id="flexcan_a98f4e39f821600f664c89f66f55b020" mode="interrupts" peripheral="CAN3" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="interruptsCfg">
                         <setting name="messageBufferIrqs" value="0"/>
                         <setting name="messageBufferIrqs2" value="0"/>
