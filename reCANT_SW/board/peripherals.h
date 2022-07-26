@@ -42,6 +42,14 @@ extern "C" {
 #define LPUART7_PERIPHERAL LPUART7
 /* Definition of the clock source frequency */
 #define LPUART7_CLOCK_SOURCE 80000000UL
+/* GPIO1 interrupt vector ID (number). */
+#define GPIO1_GPIO_COMB_0_15_IRQN GPIO1_Combined_0_15_IRQn
+/* GPIO1 interrupt handler identifier. */
+#define GPIO1_GPIO_COMB_0_15_IRQHANDLER GPIO1_Combined_0_15_IRQHandler
+/* GPIO1 interrupt vector ID (number). */
+#define GPIO1_GPIO_COMB_16_31_IRQN GPIO1_Combined_16_31_IRQn
+/* GPIO1 interrupt handler identifier. */
+#define GPIO1_GPIO_COMB_16_31_IRQHANDLER GPIO1_Combined_16_31_IRQHandler
 
 /***********************************************************************************************************************
  * Global variables

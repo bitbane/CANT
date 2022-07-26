@@ -8,6 +8,7 @@
 
 #include "fsl_device_registers.h"
 #include "clock_config.h"
+#include "core_cm7.h"
 
 #include "peripherals.h"
 #include "pin_mux.h"
@@ -72,6 +73,11 @@ int main(void)
         strcpy(program, "SW7\r\n");
         num_flashes = 7;
     }
+    else if(GPIO_PinRead(BOARD_INITPINS_RUN_SW8_PORT, BOARD_INITPINS_RUN_SW8_PIN))
+    {
+        strcpy(program, "SW8\r\n");
+        num_flashes = 8;
+    }
     else
     {
         strcpy(program, "TEST\r\n");
@@ -79,10 +85,26 @@ int main(void)
         runTestProgram();
     }
 
+   // EnableIRQ(GPIO2_GPIO_COMB_16_31_IRQN);
+
     while (1)
     {
+#if 0
+        uint8_t prog_mask = GPIO_PinRead(BOARD_INITPINS_RUN_CANCAT_PORT, BOARD_INITPINS_RUN_CANCAT_PIN) |
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_CANT_PORT, BOARD_INITPINS_RUN_CANT_PIN) << 1) | 
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_SOCKETCAN_PORT, BOARD_INITPINS_RUN_SOCKETCAN_PIN) << 2) |
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_TRUCKDEVIL_PORT, BOARD_INITPINS_RUN_TRUCKDEVIL_PIN) << 3) |
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_SW5_PORT, BOARD_INITPINS_RUN_SW5_PIN) << 4) | 
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_SW6_PORT, BOARD_INITPINS_RUN_SW6_PIN) << 5) | 
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_SW7_PORT, BOARD_INITPINS_RUN_SW7_PIN) << 6) | 
+                            (GPIO_PinRead(BOARD_INITPINS_RUN_SW8_PORT, BOARD_INITPINS_RUN_SW8_PIN) << 7);
+        char msg[50];
+        sprintf(msg, "Prog Select: 0x%X\r\n", prog_mask);
+        write_string(msg);
+#endif
     }
 }
+
 
 /* Interrupts */
 volatile uint32_t system_ticks = 0;
@@ -104,4 +126,3 @@ void SysTick_Handler(void)
     usb_serial_task();
 }
 
- 

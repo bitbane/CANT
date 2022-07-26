@@ -12,14 +12,43 @@
 void runTestProgram()
 {
     // Reconfigure all pins as GPIO
-    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_02_GPIO1_IO02, 0U); //FLEXCAN2_TX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_03_GPIO1_IO03, 0U); //FLEXCAN2_RX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_08_GPIO1_IO24, 0U); //FLEXCAN1_TX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_09_GPIO1_IO25, 0U); //FLEXCAN1_RX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_36_GPIO3_IO22, 0U);   //FLEXCAN3_TX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_37_GPIO3_IO23, 0U);   //FLEXCAN3_RX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_31_GPIO4_IO31, 0U);   //UART7_TX
-    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_32_GPIO3_IO18, 0U);   //UART7_RX
+    // FLEXCAN1_TX AD_B1_08 H13
+    // FLEXCAN1_RX AD_B1_09 M13
+    // FLEXCAN2_TX AD_B0_02 M11
+    // FLEXCAN2_RX AD_B0_03 O11
+    // FLEXCAN3_TX EMC_36 C3
+    // FLEXCAN3_RX EMC_37 E4
+    // UART7_TX EMC_31 C5
+    // UART7_RX EMC_32 D5
+    //
+    
+    /* GPIO Output Configuration */
+    gpio_pin_config_t Output_config = {
+        .direction = kGPIO_DigitalOutput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_NoIntmode
+    };
+    /* Initialize GPIO functionality on GPIO_AD_B1_08 (pin H13) */
+    GPIO_PinInit(GPIO1, 24U, &Output_config);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_08_GPIO1_IO24, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_08_GPIO1_IO24, 0x30B0U); 
+
+    /* Initialize GPIO functionality on GPIO_AD_B0_02 (pin M11) */
+    GPIO_PinInit(GPIO1, 2U, &Output_config);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B0_02_GPIO1_IO02, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B0_02_GPIO1_IO02, 0x30B0U); 
+
+    /* Initialize GPIO functionality on GPIO_EMC_36 (pin C3) */
+    GPIO_PinInit(GPIO3, 22U, &Output_config);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_36_GPIO3_IO22, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_36_GPIO3_IO22, 0x30B0U); 
+
+    /* Initialize GPIO functionality on GPIO_EMC31 (pin C5) */
+    GPIO_PinInit(GPIO4, 31U, &Output_config);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_31_GPIO4_IO31, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_31_GPIO4_IO31, 0x30B0U); 
+
+
 
     while(! tud_cdc_connected() );
     write_string("Start Test? (Y/n)\r\n");
@@ -107,6 +136,14 @@ void runTestProgram()
     write_string("Testing CAN3 TX. CAN3+ should be approximately 2.5v and CAN3- should be approximately 2.5v. Press Enter to Continue\r\n");
     read_char();
 
-    write_string("\r\nTest Complete. TODO: CAN RX functionality and J1708 Functionality do not currently have tests.\r\n");
+    GPIO_PinWrite(GPIO4, 31, 1);
+    write_string("J1708 TX line is high. Should read TODO from J1708 connector. Press Enter to Contine\r\n");
+    read_char();
+    GPIO_PinWrite(GPIO4, 31, 0);
+    write_string("J1708 TX line is low. Should read TODO from J1708 connector. Press Enter to Contine\r\n");
+    read_char();
+    
+
+    write_string("\r\nTest Complete. TODO: CAN RX functionality and J1708 RX Functionality do not currently have tests.\r\n");
 }
 

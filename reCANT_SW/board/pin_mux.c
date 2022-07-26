@@ -23,12 +23,12 @@ pin_labels:
 - {pin_num: A10, pin_signal: GPIO_B0_11, label: RUN_SW6, identifier: RUN_SW6}
 - {pin_num: D7, pin_signal: GPIO_B0_00, label: RUN_SW7, identifier: RUN_SW7}
 - {pin_num: E8, pin_signal: GPIO_B0_02, label: RUN_SW8, identifier: RUN_SW8}
-- {pin_num: C14, pin_signal: GPIO_B1_14, label: PWR_LED, identifier: PWR_LED}
-- {pin_num: B14, pin_signal: GPIO_B1_15, label: CAN3_LED, identifier: CAN3_LED}
 - {pin_num: C10, pin_signal: GPIO_B0_12, label: CAN3_SW, identifier: CAN3_SW}
 - {pin_num: J13, pin_signal: GPIO_AD_B1_11, label: CAN1_SW, identifier: CAN1_SW}
 - {pin_num: L13, pin_signal: GPIO_AD_B1_10, label: CAN1_LED, identifier: CAN1_LED}
 - {pin_num: D8, pin_signal: GPIO_B0_03, label: TEENSY_LED, identifier: TEENSY_LED}
+- {pin_num: G12, pin_signal: GPIO_AD_B1_14, label: PWR_LED, identifier: PWR_LED}
+- {pin_num: J14, pin_signal: GPIO_AD_B1_15, label: CAN3_LED, identifier: CAN3_LED}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -58,24 +58,33 @@ BOARD_InitPins:
   - {pin_num: M11, peripheral: CAN2, signal: TX, pin_signal: GPIO_AD_B0_02}
   - {pin_num: E4, peripheral: CAN3, signal: RX, pin_signal: GPIO_EMC_37}
   - {pin_num: C3, peripheral: CAN3, signal: TX, pin_signal: GPIO_EMC_36}
-  - {pin_num: F2, peripheral: GPIO4, signal: 'gpio_io, 04', pin_signal: GPIO_EMC_04, direction: OUTPUT, gpio_init_state: 'false', speed: MHZ_200, slew_rate: Fast}
-  - {pin_num: G5, peripheral: GPIO4, signal: 'gpio_io, 05', pin_signal: GPIO_EMC_05, direction: OUTPUT, gpio_init_state: 'false', software_input_on: Disable}
-  - {pin_num: H5, peripheral: GPIO4, signal: 'gpio_io, 06', pin_signal: GPIO_EMC_06, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: H3, peripheral: GPIO4, signal: 'gpio_io, 08', pin_signal: GPIO_EMC_08, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: D9, peripheral: GPIO2, signal: 'gpio_io, 10', pin_signal: GPIO_B0_10, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: B11, peripheral: GPIO2, signal: 'gpio_io, 17', pin_signal: GPIO_B1_01, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: A11, peripheral: GPIO2, signal: 'gpio_io, 16', pin_signal: GPIO_B1_00, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: A10, peripheral: GPIO2, signal: 'gpio_io, 11', pin_signal: GPIO_B0_11, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: D7, peripheral: GPIO2, signal: 'gpio_io, 00', pin_signal: GPIO_B0_00, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: E8, peripheral: GPIO2, signal: 'gpio_io, 02', pin_signal: GPIO_B0_02, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge}
-  - {pin_num: C14, peripheral: GPIO2, signal: 'gpio_io, 30', pin_signal: GPIO_B1_14, direction: OUTPUT}
-  - {pin_num: B14, peripheral: GPIO2, signal: 'gpio_io, 31', pin_signal: GPIO_B1_15, direction: OUTPUT}
+  - {pin_num: F2, peripheral: GPIO4, signal: 'gpio_io, 04', pin_signal: GPIO_EMC_04, direction: OUTPUT, gpio_init_state: 'false', pull_keeper_select: Pull, speed: MHZ_200,
+    slew_rate: Fast}
+  - {pin_num: G5, peripheral: GPIO4, signal: 'gpio_io, 05', pin_signal: GPIO_EMC_05, direction: OUTPUT, gpio_init_state: 'false', software_input_on: Disable, pull_keeper_select: Pull}
+  - {pin_num: H5, peripheral: GPIO4, signal: 'gpio_io, 06', pin_signal: GPIO_EMC_06, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_up_down_config: Pull_Down_100K_Ohm, pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: H3, peripheral: GPIO4, signal: 'gpio_io, 08', pin_signal: GPIO_EMC_08, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: D9, peripheral: GPIO2, signal: 'gpio_io, 10', pin_signal: GPIO_B0_10, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: B11, peripheral: GPIO2, signal: 'gpio_io, 17', pin_signal: GPIO_B1_01, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: A11, peripheral: GPIO2, signal: 'gpio_io, 16', pin_signal: GPIO_B1_00, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: A10, peripheral: GPIO2, signal: 'gpio_io, 11', pin_signal: GPIO_B0_11, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: D7, peripheral: GPIO2, signal: 'gpio_io, 00', pin_signal: GPIO_B0_00, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
+  - {pin_num: E8, peripheral: GPIO2, signal: 'gpio_io, 02', pin_signal: GPIO_B0_02, direction: INPUT, gpio_interrupt: kGPIO_IntRisingEdge, hysteresis_enable: Enable,
+    pull_keeper_select: Pull, pull_keeper_enable: Enable}
   - {pin_num: D5, peripheral: LPUART7, signal: RX, pin_signal: GPIO_EMC_32}
   - {pin_num: C5, peripheral: LPUART7, signal: TX, pin_signal: GPIO_EMC_31}
-  - {pin_num: C10, peripheral: GPIO2, signal: 'gpio_io, 12', pin_signal: GPIO_B0_12, direction: OUTPUT, speed: MHZ_200, slew_rate: Fast}
-  - {pin_num: J13, peripheral: GPIO1, signal: 'gpio_io, 27', pin_signal: GPIO_AD_B1_11, direction: OUTPUT, speed: MHZ_200, slew_rate: Fast}
-  - {pin_num: L13, peripheral: GPIO1, signal: 'gpio_io, 26', pin_signal: GPIO_AD_B1_10, direction: OUTPUT}
-  - {pin_num: D8, peripheral: GPIO2, signal: 'gpio_io, 03', pin_signal: GPIO_B0_03, direction: OUTPUT, gpio_init_state: 'true'}
+  - {pin_num: C10, peripheral: GPIO2, signal: 'gpio_io, 12', pin_signal: GPIO_B0_12, direction: OUTPUT, pull_keeper_select: Pull, speed: MHZ_200, slew_rate: Fast}
+  - {pin_num: J13, peripheral: GPIO1, signal: 'gpio_io, 27', pin_signal: GPIO_AD_B1_11, direction: OUTPUT, pull_keeper_select: Pull, speed: MHZ_200, slew_rate: Fast}
+  - {pin_num: L13, peripheral: GPIO1, signal: 'gpio_io, 26', pin_signal: GPIO_AD_B1_10, direction: OUTPUT, pull_keeper_select: Pull}
+  - {pin_num: D8, peripheral: GPIO2, signal: 'gpio_io, 03', pin_signal: GPIO_B0_03, direction: OUTPUT, gpio_init_state: 'true', pull_keeper_select: Pull}
+  - {pin_num: J14, peripheral: GPIO1, signal: 'gpio_io, 31', pin_signal: GPIO_AD_B1_15, direction: OUTPUT, pull_keeper_select: Pull}
+  - {pin_num: G12, peripheral: GPIO1, signal: 'gpio_io, 30', pin_signal: GPIO_AD_B1_14, direction: OUTPUT, pull_keeper_select: Pull}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 
@@ -105,6 +114,24 @@ void BOARD_InitPins(void) {
   };
   /* Initialize GPIO functionality on GPIO_AD_B1_11 (pin J13) */
   GPIO_PinInit(GPIO1, 27U, &CAN1_SW_config);
+
+  /* GPIO configuration of PWR_LED on GPIO_AD_B1_14 (pin G12) */
+  gpio_pin_config_t PWR_LED_config = {
+      .direction = kGPIO_DigitalOutput,
+      .outputLogic = 0U,
+      .interruptMode = kGPIO_NoIntmode
+  };
+  /* Initialize GPIO functionality on GPIO_AD_B1_14 (pin G12) */
+  GPIO_PinInit(GPIO1, 30U, &PWR_LED_config);
+
+  /* GPIO configuration of CAN3_LED on GPIO_AD_B1_15 (pin J14) */
+  gpio_pin_config_t CAN3_LED_config = {
+      .direction = kGPIO_DigitalOutput,
+      .outputLogic = 0U,
+      .interruptMode = kGPIO_NoIntmode
+  };
+  /* Initialize GPIO functionality on GPIO_AD_B1_15 (pin J14) */
+  GPIO_PinInit(GPIO1, 31U, &CAN3_LED_config);
 
   /* GPIO configuration of RUN_SW7 on GPIO_B0_00 (pin D7) */
   gpio_pin_config_t RUN_SW7_config = {
@@ -190,24 +217,6 @@ void BOARD_InitPins(void) {
   /* Enable GPIO pin interrupt on GPIO_B1_01 (pin B11) */
   GPIO_PortEnableInterrupts(GPIO2, 1U << 17U);
 
-  /* GPIO configuration of PWR_LED on GPIO_B1_14 (pin C14) */
-  gpio_pin_config_t PWR_LED_config = {
-      .direction = kGPIO_DigitalOutput,
-      .outputLogic = 0U,
-      .interruptMode = kGPIO_NoIntmode
-  };
-  /* Initialize GPIO functionality on GPIO_B1_14 (pin C14) */
-  GPIO_PinInit(GPIO2, 30U, &PWR_LED_config);
-
-  /* GPIO configuration of CAN3_LED on GPIO_B1_15 (pin B14) */
-  gpio_pin_config_t CAN3_LED_config = {
-      .direction = kGPIO_DigitalOutput,
-      .outputLogic = 0U,
-      .interruptMode = kGPIO_NoIntmode
-  };
-  /* Initialize GPIO functionality on GPIO_B1_15 (pin B14) */
-  GPIO_PinInit(GPIO2, 31U, &CAN3_LED_config);
-
   /* GPIO configuration of CAN2_SW on GPIO_EMC_04 (pin F2) */
   gpio_pin_config_t CAN2_SW_config = {
       .direction = kGPIO_DigitalOutput,
@@ -254,6 +263,8 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_09_FLEXCAN1_RX, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_10_GPIO1_IO26, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_14_GPIO1_IO30, 0U); 
+  IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_15_GPIO1_IO31, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_00_GPIO2_IO00, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_02_GPIO2_IO02, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_03_GPIO2_IO03, 0U); 
@@ -262,8 +273,6 @@ void BOARD_InitPins(void) {
   IOMUXC_SetPinMux(IOMUXC_GPIO_B0_12_GPIO2_IO12, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B1_00_GPIO2_IO16, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_B1_01_GPIO2_IO17, 0U); 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_B1_14_GPIO2_IO30, 0U); 
-  IOMUXC_SetPinMux(IOMUXC_GPIO_B1_15_GPIO2_IO31, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_04_GPIO4_IO04, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_05_GPIO4_IO05, 0U); 
   IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_06_GPIO4_IO06, 0U); 
@@ -284,9 +293,22 @@ void BOARD_InitPins(void) {
     (~(BOARD_INITPINS_IOMUXC_GPR_GPR29_GPIO_MUX4_GPIO_SEL_MASK))) 
       | IOMUXC_GPR_GPR29_GPIO_MUX4_GPIO_SEL(0x00U) 
     );
-  IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0x10F1U); 
-  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_12_GPIO2_IO12, 0x10F1U); 
-  IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_04_GPIO4_IO04, 0x10F1U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_10_GPIO1_IO26, 0x30B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_11_GPIO1_IO27, 0x30F1U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_14_GPIO1_IO30, 0x30B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_15_GPIO1_IO31, 0x30B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_00_GPIO2_IO00, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_02_GPIO2_IO02, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_03_GPIO2_IO03, 0x30B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_10_GPIO2_IO10, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_11_GPIO2_IO11, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B0_12_GPIO2_IO12, 0x30F1U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_00_GPIO2_IO16, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_B1_01_GPIO2_IO17, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_04_GPIO4_IO04, 0x30F1U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_05_GPIO4_IO05, 0x30B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_06_GPIO4_IO06, 0x0130B0U); 
+  IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_08_GPIO4_IO08, 0x0130B0U); 
 }
 
 /***********************************************************************************************************************

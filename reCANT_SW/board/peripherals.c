@@ -95,6 +95,8 @@ instance:
       - 1: []
       - 2: []
       - 3: []
+      - 4: []
+      - 5: []
     - interrupts: []
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
@@ -121,14 +123,14 @@ instance:
     - enable_irq_comb_0_15: 'true'
     - gpio_interrupt_comb_0_15:
       - IRQn: 'GPIO2_Combined_0_15_IRQn'
-      - enable_interrrupt: 'enabled'
+      - enable_interrrupt: 'noInit'
       - enable_priority: 'false'
       - priority: '0'
       - enable_custom_name: 'false'
     - enable_irq_comb_16_31: 'true'
     - gpio_interrupt_comb_16_31:
       - IRQn: 'GPIO2_Combined_16_31_IRQn'
-      - enable_interrrupt: 'enabled'
+      - enable_interrrupt: 'noInit'
       - enable_priority: 'false'
       - priority: '0'
       - enable_custom_name: 'false'
@@ -137,10 +139,10 @@ instance:
 
 static void GPIO2_init(void) {
   /* Make sure, the clock gate for GPIO2 is enabled (e. g. in pin_mux.c) */
-  /* Enable interrupt GPIO2_Combined_0_15_IRQn request in the NVIC. */
-  EnableIRQ(GPIO2_GPIO_COMB_0_15_IRQN);
-  /* Enable interrupt GPIO2_Combined_16_31_IRQn request in the NVIC. */
-  EnableIRQ(GPIO2_GPIO_COMB_16_31_IRQN);
+  /* Interrupt GPIO2_Combined_0_15_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO2_GPIO_COMB_0_15_IRQN);  function call. */
+  /* Interrupt GPIO2_Combined_16_31_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO2_GPIO_COMB_16_31_IRQN);  function call. */
 }
 
 /***********************************************************************************************************************
@@ -161,14 +163,14 @@ instance:
     - enable_irq_comb_0_15: 'true'
     - gpio_interrupt_comb_0_15:
       - IRQn: 'GPIO4_Combined_0_15_IRQn'
-      - enable_interrrupt: 'enabled'
+      - enable_interrrupt: 'noInit'
       - enable_priority: 'false'
       - priority: '0'
       - enable_custom_name: 'false'
     - enable_irq_comb_16_31: 'true'
     - gpio_interrupt_comb_16_31:
       - IRQn: 'GPIO4_Combined_16_31_IRQn'
-      - enable_interrrupt: 'enabled'
+      - enable_interrrupt: 'noInit'
       - enable_priority: 'false'
       - priority: '0'
       - enable_custom_name: 'false'
@@ -177,10 +179,10 @@ instance:
 
 static void GPIO4_init(void) {
   /* Make sure, the clock gate for GPIO4 is enabled (e. g. in pin_mux.c) */
-  /* Enable interrupt GPIO4_Combined_0_15_IRQn request in the NVIC. */
-  EnableIRQ(GPIO4_GPIO_COMB_0_15_IRQN);
-  /* Enable interrupt GPIO4_Combined_16_31_IRQn request in the NVIC. */
-  EnableIRQ(GPIO4_GPIO_COMB_16_31_IRQN);
+  /* Interrupt GPIO4_Combined_0_15_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO4_GPIO_COMB_0_15_IRQN);  function call. */
+  /* Interrupt GPIO4_Combined_16_31_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO4_GPIO_COMB_16_31_IRQN);  function call. */
 }
 
 /***********************************************************************************************************************
@@ -245,6 +247,102 @@ static void LPUART7_init(void) {
 }
 
 /***********************************************************************************************************************
+ * GPIO1 initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'GPIO1'
+- type: 'igpio'
+- mode: 'GPIO'
+- custom_name_enabled: 'false'
+- type_id: 'igpio_b1c1fa279aa7069dca167502b8589cb7'
+- functional_group: 'BOARD_InitPeripherals'
+- peripheral: 'GPIO1'
+- config_sets:
+  - fsl_gpio:
+    - enable_irq_comb_0_15: 'true'
+    - gpio_interrupt_comb_0_15:
+      - IRQn: 'GPIO1_Combined_0_15_IRQn'
+      - enable_interrrupt: 'noInit'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_comb_16_31: 'true'
+    - gpio_interrupt_comb_16_31:
+      - IRQn: 'GPIO1_Combined_16_31_IRQn'
+      - enable_interrrupt: 'noInit'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int0: 'false'
+    - gpio_interrupt_int0:
+      - IRQn: 'GPIO1_INT0_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int1: 'false'
+    - gpio_interrupt_int1:
+      - IRQn: 'GPIO1_INT1_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int2: 'false'
+    - gpio_interrupt_int2:
+      - IRQn: 'GPIO1_INT2_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int3: 'false'
+    - gpio_interrupt_int3:
+      - IRQn: 'GPIO1_INT3_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int4: 'false'
+    - gpio_interrupt_int4:
+      - IRQn: 'GPIO1_INT4_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int5: 'false'
+    - gpio_interrupt_int5:
+      - IRQn: 'GPIO1_INT5_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int6: 'false'
+    - gpio_interrupt_int6:
+      - IRQn: 'GPIO1_INT6_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+    - enable_irq_int7: 'false'
+    - gpio_interrupt_int7:
+      - IRQn: 'GPIO1_INT7_IRQn'
+      - enable_interrrupt: 'enabled'
+      - enable_priority: 'false'
+      - priority: '0'
+      - enable_custom_name: 'false'
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+static void GPIO1_init(void) {
+  /* Make sure, the clock gate for GPIO1 is enabled (e. g. in pin_mux.c) */
+  /* Interrupt GPIO1_Combined_0_15_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO1_GPIO_COMB_0_15_IRQN);  function call. */
+  /* Interrupt GPIO1_Combined_16_31_IRQn request in the NVIC is not initialized (disabled by default). */
+  /* It can be enabled later by EnableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);  function call. */
+}
+
+/***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
 void BOARD_InitPeripherals(void)
@@ -256,6 +354,7 @@ void BOARD_InitPeripherals(void)
   GPIO2_init();
   GPIO4_init();
   LPUART7_init();
+  GPIO1_init();
 }
 
 /***********************************************************************************************************************

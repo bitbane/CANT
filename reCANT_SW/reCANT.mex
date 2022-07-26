@@ -35,12 +35,12 @@
                <pin_label pin_num="A10" pin_signal="GPIO_B0_11" label="RUN_SW6" identifier="RUN_SW6"/>
                <pin_label pin_num="D7" pin_signal="GPIO_B0_00" label="RUN_SW7" identifier="RUN_SW7"/>
                <pin_label pin_num="E8" pin_signal="GPIO_B0_02" label="RUN_SW8" identifier="RUN_SW8"/>
-               <pin_label pin_num="C14" pin_signal="GPIO_B1_14" label="PWR_LED" identifier="PWR_LED"/>
-               <pin_label pin_num="B14" pin_signal="GPIO_B1_15" label="CAN3_LED" identifier="CAN3_LED"/>
                <pin_label pin_num="C10" pin_signal="GPIO_B0_12" label="CAN3_SW" identifier="CAN3_SW"/>
                <pin_label pin_num="J13" pin_signal="GPIO_AD_B1_11" label="CAN1_SW" identifier="CAN1_SW"/>
                <pin_label pin_num="L13" pin_signal="GPIO_AD_B1_10" label="CAN1_LED" identifier="CAN1_LED"/>
                <pin_label pin_num="D8" pin_signal="GPIO_B0_03" label="TEENSY_LED" identifier="TEENSY_LED"/>
+               <pin_label pin_num="G12" pin_signal="GPIO_AD_B1_14" label="PWR_LED" identifier="PWR_LED"/>
+               <pin_label pin_num="J14" pin_signal="GPIO_AD_B1_15" label="CAN3_LED" identifier="CAN3_LED"/>
             </pin_labels>
             <external_user_signals>
                <properties/>
@@ -113,6 +113,7 @@
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
                         <pin_feature name="gpio_init_state" value="false"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                         <pin_feature name="speed" value="MHZ_200"/>
                         <pin_feature name="slew_rate" value="Fast"/>
                      </pin_features>
@@ -122,64 +123,80 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                         <pin_feature name="gpio_init_state" value="false"/>
                         <pin_feature name="software_input_on" value="Disable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO4" signal="gpio_io, 06" pin_num="H5" pin_signal="GPIO_EMC_06">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_up_down_config" value="Pull_Down_100K_Ohm"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO4" signal="gpio_io, 08" pin_num="H3" pin_signal="GPIO_EMC_08">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 10" pin_num="D9" pin_signal="GPIO_B0_10">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 17" pin_num="B11" pin_signal="GPIO_B1_01">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 16" pin_num="A11" pin_signal="GPIO_B1_00">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 11" pin_num="A10" pin_signal="GPIO_B0_11">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 00" pin_num="D7" pin_signal="GPIO_B0_00">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 02" pin_num="E8" pin_signal="GPIO_B0_02">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
                         <pin_feature name="gpio_interrupt" value="kGPIO_IntRisingEdge"/>
-                     </pin_features>
-                  </pin>
-                  <pin peripheral="GPIO2" signal="gpio_io, 30" pin_num="C14" pin_signal="GPIO_B1_14">
-                     <pin_features>
-                        <pin_feature name="direction" value="OUTPUT"/>
-                     </pin_features>
-                  </pin>
-                  <pin peripheral="GPIO2" signal="gpio_io, 31" pin_num="B14" pin_signal="GPIO_B1_15">
-                     <pin_features>
-                        <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="hysteresis_enable" value="Enable"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                        <pin_feature name="pull_keeper_enable" value="Enable"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="LPUART7" signal="RX" pin_num="D5" pin_signal="GPIO_EMC_32"/>
@@ -187,6 +204,7 @@
                   <pin peripheral="GPIO2" signal="gpio_io, 12" pin_num="C10" pin_signal="GPIO_B0_12">
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                         <pin_feature name="speed" value="MHZ_200"/>
                         <pin_feature name="slew_rate" value="Fast"/>
                      </pin_features>
@@ -194,6 +212,7 @@
                   <pin peripheral="GPIO1" signal="gpio_io, 27" pin_num="J13" pin_signal="GPIO_AD_B1_11">
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                         <pin_feature name="speed" value="MHZ_200"/>
                         <pin_feature name="slew_rate" value="Fast"/>
                      </pin_features>
@@ -201,12 +220,27 @@
                   <pin peripheral="GPIO1" signal="gpio_io, 26" pin_num="L13" pin_signal="GPIO_AD_B1_10">
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                      </pin_features>
                   </pin>
                   <pin peripheral="GPIO2" signal="gpio_io, 03" pin_num="D8" pin_signal="GPIO_B0_03">
                      <pin_features>
                         <pin_feature name="direction" value="OUTPUT"/>
                         <pin_feature name="gpio_init_state" value="true"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO1" signal="gpio_io, 31" pin_num="J14" pin_signal="GPIO_AD_B1_15">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="GPIO1" signal="gpio_io, 30" pin_num="G12" pin_signal="GPIO_AD_B1_14">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                        <pin_feature name="gpio_init_state" value="false"/>
+                        <pin_feature name="pull_keeper_select" value="Pull"/>
                      </pin_features>
                   </pin>
                </pins>
@@ -420,6 +454,8 @@
                            <struct name="1"/>
                            <struct name="2"/>
                            <struct name="3"/>
+                           <struct name="4"/>
+                           <struct name="5"/>
                         </array>
                         <array name="interrupts"/>
                      </config_set>
@@ -759,7 +795,7 @@
                         <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
                            <setting name="IRQn" value="GPIO2_Combined_0_15_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
@@ -767,7 +803,7 @@
                         <setting name="enable_irq_comb_16_31" value="true"/>
                         <struct name="gpio_interrupt_comb_16_31">
                            <setting name="IRQn" value="GPIO2_Combined_16_31_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
@@ -779,7 +815,7 @@
                         <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
                            <setting name="IRQn" value="GPIO4_Combined_0_15_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
@@ -787,7 +823,7 @@
                         <setting name="enable_irq_comb_16_31" value="true"/>
                         <struct name="gpio_interrupt_comb_16_31">
                            <setting name="IRQn" value="GPIO4_Combined_16_31_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
@@ -821,20 +857,20 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="GPIO1" uuid="b8fc0e8f-e20d-465d-8630-8449916a9984" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO1" enabled="false" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="GPIO1" uuid="b8fc0e8f-e20d-465d-8630-8449916a9984" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO1" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="fsl_gpio">
-                        <setting name="enable_irq_comb_0_15" value="false"/>
+                        <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
                            <setting name="IRQn" value="GPIO1_Combined_0_15_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
                         </struct>
-                        <setting name="enable_irq_comb_16_31" value="false"/>
+                        <setting name="enable_irq_comb_16_31" value="true"/>
                         <struct name="gpio_interrupt_comb_16_31">
                            <setting name="IRQn" value="GPIO1_Combined_16_31_IRQn"/>
-                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_interrrupt" value="noInit"/>
                            <setting name="enable_priority" value="false"/>
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
