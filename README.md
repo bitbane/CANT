@@ -5,6 +5,9 @@ CANT is designed to run on an ST Micro [Nucleo-H743ZI](http://www.st.com/en/eval
 (Update: The Nucleo-H743ZI has been discontinued. Its replacement the Nucleo-H743ZI2 works with CANT out of the box).
 development board. This board was chosen due to its speed (400MHz) and essentially infinite ram and flash.
 
+Note: If you have a MB1364C (and possibly D) revision of this board, the solder bridge at SB7 has to be soldered
+closed to enable the GPIO pin. On revisions B and E this is controlled by the jumper JP6 which is in place by default.
+
 ## Getting started with the Nucleo-STM32H7 development board
 
 The Nucleo-H743ZI board has an STLink V2.1 debugger built in, available via the Micro-USB port on the 
