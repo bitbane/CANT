@@ -48,6 +48,10 @@ void runTestProgram()
     IOMUXC_SetPinMux(IOMUXC_GPIO_EMC_31_GPIO4_IO31, 0U); 
     IOMUXC_SetPinConfig(IOMUXC_GPIO_EMC_31_GPIO4_IO31, 0x30B0U); 
 
+    // Set CAN lines low
+    GPIO_PinWrite(GPIO1, 24, 1);
+    GPIO_PinWrite(GPIO1, 2, 1);
+    GPIO_PinWrite(GPIO3, 22, 1);
 
 
     while(! tud_cdc_connected() );
@@ -115,24 +119,24 @@ void runTestProgram()
 
     write_string("Testing CAN TX functionality\r\n");
 
-    GPIO_PinWrite(GPIO1, 24, 1);
+    GPIO_PinWrite(GPIO1, 24, 0);
     write_string("Testing CAN1 TX. CAN1+ should be approximately 3.5v and CAN1- should be approximately 1.5v. Press Enter to Continue\r\n");
     read_char();
-    GPIO_PinWrite(GPIO1, 24, 0);
+    GPIO_PinWrite(GPIO1, 24, 1);
     write_string("Testing CAN1 TX. CAN1+ should be approximately 2.5v and CAN1- should be approximately 2.5v. Press Enter to Continue\r\n");
     read_char();
 
-    GPIO_PinWrite(GPIO1, 2, 1);
+    GPIO_PinWrite(GPIO1, 2, 0);
     write_string("Testing CAN2 TX. CAN2+ should be approximately 3.5v and CAN2- should be approximately 1.5v. Press Enter to Continue\r\n");
     read_char();
-    GPIO_PinWrite(GPIO1, 2, 0);
+    GPIO_PinWrite(GPIO1, 2, 1);
     write_string("Testing CAN2 TX. CAN2+ should be approximately 2.5v and CAN2- should be approximately 2.5v. Press Enter to Continue\r\n");
     read_char();
 
-    GPIO_PinWrite(GPIO3, 22, 1);
+    GPIO_PinWrite(GPIO3, 22, 0);
     write_string("Testing CAN3 TX. CAN3+ should be approximately 3.5v and CAN3- should be approximately 1.5v. Press Enter to Continue\r\n");
     read_char();
-    GPIO_PinWrite(GPIO3, 22, 0);
+    GPIO_PinWrite(GPIO3, 22, 1);
     write_string("Testing CAN3 TX. CAN3+ should be approximately 2.5v and CAN3- should be approximately 2.5v. Press Enter to Continue\r\n");
     read_char();
 

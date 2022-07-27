@@ -17,6 +17,9 @@
 #include "usb.h"
 #include "test.h"
 
+#include "menu.h"
+#include "can.h"
+
 uint32_t num_flashes = 1;
 
 /*!
@@ -47,6 +50,15 @@ int main(void)
     {
         strcpy(program, "CANT\r\n");
         num_flashes = 2;
+
+        can_init();
+        display_menu();
+        /* Infinite loop */
+        while (1)
+        {
+            process_menu();
+            can_poll();
+        }
     }
     else if(GPIO_PinRead(BOARD_INITPINS_RUN_SOCKETCAN_PORT, BOARD_INITPINS_RUN_SOCKETCAN_PIN))
     {
