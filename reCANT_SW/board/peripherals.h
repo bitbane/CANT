@@ -13,6 +13,7 @@
 #include "fsl_gpio.h"
 #include "fsl_lpuart.h"
 #include "fsl_clock.h"
+#include "fsl_pit.h"
 
 #if defined(__cplusplus)
 extern "C" {
@@ -50,11 +51,29 @@ extern "C" {
 #define GPIO1_GPIO_COMB_16_31_IRQN GPIO1_Combined_16_31_IRQn
 /* GPIO1 interrupt handler identifier. */
 #define GPIO1_GPIO_COMB_16_31_IRQHANDLER GPIO1_Combined_16_31_IRQHandler
+/* BOARD_InitPeripherals defines for PIT */
+/* Definition of peripheral ID. */
+#define PIT_PERIPHERAL PIT
+/* Definition of clock source frequency. */
+#define PIT_CLK_FREQ 75000000UL
+/* Definition of ticks count for channel 0 - deprecated. */
+#define PIT_0_TICKS 75000000U
+/* Definition of ticks count for channel 1 - deprecated. */
+#define PIT_1_TICKS 75000000U
+/* Definition of channel number for channel 0. */
+#define PIT_CHANNEL_0 kPIT_Chnl_0
+/* Definition of channel number for channel 1. */
+#define PIT_CHANNEL_1 kPIT_Chnl_1
+/* Definition of ticks count for channel 0. */
+#define PIT_CHANNEL_0_TICKS 75000000U
+/* Definition of ticks count for channel 1. */
+#define PIT_CHANNEL_1_TICKS 75000000U
 
 /***********************************************************************************************************************
  * Global variables
  **********************************************************************************************************************/
 extern const lpuart_config_t LPUART7_config;
+extern const pit_config_t PIT_config;
 
 /***********************************************************************************************************************
  * Initialization functions

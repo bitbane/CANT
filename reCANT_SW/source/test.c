@@ -116,7 +116,7 @@ void runTestProgram()
     GPIO_PinWrite(BOARD_INITPINS_CAN3_SW_PORT, BOARD_INITPINS_CAN3_SW_PIN, 0);
     write_string("Shorting switch off. Check resistance between CAN3+ and CAN3-. Resistance should be approcimately 120 ohms if the termination resistor jumper is on, and several megaOhms if the jumper is off. Press Enter to Contine\r\n");
     read_char();
-
+#if 0
     write_string("Testing CAN TX functionality\r\n");
 
     GPIO_PinWrite(GPIO1, 24, 0);
@@ -146,8 +146,8 @@ void runTestProgram()
     GPIO_PinWrite(GPIO4, 31, 0);
     write_string("J1708 TX line is low. Should read TODO from J1708 connector. Press Enter to Contine\r\n");
     read_char();
-    
+#endif
 
-    write_string("\r\nTest Complete. TODO: CAN RX functionality and J1708 RX Functionality do not currently have tests.\r\n");
+    write_string("\r\nTest Complete. TODO: CAN TX/RX functionality and J1708 TX/RX Functionality do not currently have tests.\r\n");
 }
 

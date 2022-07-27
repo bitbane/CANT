@@ -84,7 +84,7 @@ BOARD_InitPins:
   - {pin_num: L13, peripheral: GPIO1, signal: 'gpio_io, 26', pin_signal: GPIO_AD_B1_10, direction: OUTPUT, pull_keeper_select: Pull}
   - {pin_num: D8, peripheral: GPIO2, signal: 'gpio_io, 03', pin_signal: GPIO_B0_03, direction: OUTPUT, gpio_init_state: 'true', pull_keeper_select: Pull}
   - {pin_num: J14, peripheral: GPIO1, signal: 'gpio_io, 31', pin_signal: GPIO_AD_B1_15, direction: OUTPUT, pull_keeper_select: Pull}
-  - {pin_num: G12, peripheral: GPIO1, signal: 'gpio_io, 30', pin_signal: GPIO_AD_B1_14, direction: OUTPUT, pull_keeper_select: Pull}
+  - {pin_num: G12, peripheral: GPIO1, signal: 'gpio_io, 30', pin_signal: GPIO_AD_B1_14, direction: OUTPUT, gpio_init_state: 'false', pull_keeper_select: Pull}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 

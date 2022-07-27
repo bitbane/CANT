@@ -328,15 +328,15 @@
                   <clock_output id="FLEXIO2_CLK_ROOT.outFreq" value="30 MHz" locked="false" accuracy=""/>
                   <clock_output id="FLEXSPI2_CLK_ROOT.outFreq" value="12 MHz" locked="false" accuracy=""/>
                   <clock_output id="FLEXSPI_CLK_ROOT.outFreq" value="60 MHz" locked="false" accuracy=""/>
-                  <clock_output id="GPT1_ipg_clk_highfreq.outFreq" value="50/11 MHz" locked="false" accuracy=""/>
-                  <clock_output id="GPT2_ipg_clk_highfreq.outFreq" value="50/11 MHz" locked="false" accuracy=""/>
+                  <clock_output id="GPT1_ipg_clk_highfreq.outFreq" value="75 MHz" locked="false" accuracy=""/>
+                  <clock_output id="GPT2_ipg_clk_highfreq.outFreq" value="75 MHz" locked="false" accuracy=""/>
                   <clock_output id="IPG_CLK_ROOT.outFreq" value="150 MHz" locked="false" accuracy=""/>
                   <clock_output id="LCDIF_CLK_ROOT.outFreq" value="67.5 MHz" locked="false" accuracy=""/>
                   <clock_output id="LPI2C_CLK_ROOT.outFreq" value="60 MHz" locked="false" accuracy=""/>
                   <clock_output id="LPSPI_CLK_ROOT.outFreq" value="6 MHz" locked="false" accuracy=""/>
                   <clock_output id="LVDS1_CLK.outFreq" value="1.2 GHz" locked="false" accuracy=""/>
                   <clock_output id="MQS_MCLK.outFreq" value="1080/17 MHz" locked="false" accuracy=""/>
-                  <clock_output id="PERCLK_CLK_ROOT.outFreq" value="50/11 MHz" locked="false" accuracy=""/>
+                  <clock_output id="PERCLK_CLK_ROOT.outFreq" value="75 MHz" locked="false" accuracy=""/>
                   <clock_output id="PLL7_MAIN_CLK.outFreq" value="24 MHz" locked="false" accuracy=""/>
                   <clock_output id="SAI1_CLK_ROOT.outFreq" value="1080/17 MHz" locked="false" accuracy=""/>
                   <clock_output id="SAI1_MCLK1.outFreq" value="1080/17 MHz" locked="false" accuracy=""/>
@@ -358,7 +358,7 @@
                </clock_outputs>
                <clock_settings>
                   <setting id="CCM.CAN_CLK_PODF.scale" value="1" locked="true"/>
-                  <setting id="CCM.PERCLK_PODF.scale" value="33" locked="false"/>
+                  <setting id="CCM.PERCLK_PODF.scale" value="2" locked="true"/>
                   <setting id="CCM.SEMC_PODF.scale" value="5" locked="false"/>
                   <setting id="CCM_ANALOG.PLL1_BYPASS.sel" value="CCM_ANALOG.PLL1" locked="false"/>
                   <setting id="CCM_ANALOG.PLL1_PREDIV.scale" value="1" locked="true"/>
@@ -417,6 +417,16 @@
                   <data type="Version">2.5.1</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.pit" description="PIT Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.pit" description="Unsupported version of the PIT Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="compatible">
+                  <data type="Version">2.0.3</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/peripherals.c" update_enabled="true"/>
@@ -443,6 +453,11 @@
                   <dependency resourceType="PeripheralUnifiedSignal" resourceId="LPUART7.uart_rx" description="Signal RX is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="equal">
                         <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="PERCLK_CLK_ROOT" description="PERCLK_CLK_ROOT is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
                </dependencies>
@@ -939,6 +954,41 @@
                            <setting name="priority" value="0"/>
                            <setting name="enable_custom_name" value="false"/>
                         </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="PIT" uuid="4e43e8b4-1c12-49b5-98ab-324291ca18fb" type="pit" type_id="pit_ab54f91356454adb874dafbb69e655fd" mode="LPTMR_GENERAL" peripheral="PIT" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_pit">
+                        <setting name="enableRunInDebug" value="false"/>
+                        <setting name="enableSharedInterrupt" value="false"/>
+                        <struct name="sharedInterrupt">
+                           <setting name="IRQn" value="PIT_IRQn"/>
+                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
+                        </struct>
+                        <struct name="timingConfig">
+                           <setting name="clockSource" value="BusInterfaceClock"/>
+                           <setting name="clockSourceFreq" value="BOARD_BootClockRUN"/>
+                        </struct>
+                        <array name="channels">
+                           <struct name="0">
+                              <setting name="channel_id" value="CHANNEL_0"/>
+                              <setting name="channelNumber" value="0"/>
+                              <setting name="enableChain" value="false"/>
+                              <setting name="timerPeriod" value="1s"/>
+                              <setting name="startTimer" value="false"/>
+                              <setting name="enableInterrupt" value="false"/>
+                           </struct>
+                           <struct name="1">
+                              <setting name="channel_id" value="CHANNEL_1"/>
+                              <setting name="channelNumber" value="1"/>
+                              <setting name="enableChain" value="false"/>
+                              <setting name="timerPeriod" value="1s"/>
+                              <setting name="startTimer" value="false"/>
+                              <setting name="enableInterrupt" value="false"/>
+                           </struct>
+                        </array>
                      </config_set>
                   </instance>
                </instances>

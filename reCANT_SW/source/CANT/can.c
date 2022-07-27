@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "can.h"
 #include <stdbool.h>
+#include "fsl_pit.h"
+#include "peripherals.h"
+#include "fsl_iomuxc.h"
+#include "usb.h"
+#include "led.h"
 
-#define SHORT_ON GPIO1->DR |= 1 << 24
-#define SHORT_OFF GPIO1->DR &= ~(1 << 24)
+#define SHORT_ON BOARD_INITPINS_CAN1_SW_PORT->DR |= 1 << BOARD_INITPINS_CAN1_SW_PIN
+#define SHORT_OFF BOARD_INITPINS_CAN1_SW_PORT->DR |= ~(1 << BOARD_INITPINS_CAN1_SW_PIN)
 
-void (*timer4_callback_handler)(void) = NULL;
-void (*timer3_callback_handler)(void) = NULL;
+void (*timer1_callback_handler)(void) = NULL;
+void (*timer0_callback_handler)(void) = NULL;
 void (*end_of_frame_callback)(void) = NULL;
 static void sync_callback(void);
 static void arbid_killer(void);
@@ -17,7 +22,6 @@ static uint32_t can_initial_delay;
 static uint32_t can_edge_interrupt_delay;
 
 
-static struct pit_config_t tim_config;
 static volatile uint16_t bits_read = 0;
 static volatile uint8_t last_bit = 0;
 static volatile uint8_t same_bits_count = 0;
@@ -49,10 +53,10 @@ static volatile uint32_t overload_frame_first_recessive_bit = 0;
 inline static void short_on();
 inline static void short_off();
 static uint8_t nack_attack = 0;
+static const uint32_t CAN_TX_PIN = 24;
+static const uint32_t CAN_RX_PIN = 25;
 
 volatile uint8_t sniff_traffic = 0;
-
-const uint32_t TIMER_PERIOD_NS = 50;
 
 /**************************************
  * CAN bitstream creation functions
@@ -222,38 +226,42 @@ uint32_t stuff_data(uint8_t * in, uint8_t *out, uint8_t num_bits)
  */
 void can_init()
 {
-    /* Enable TIM4 and TIM3 clock */
-    __HAL_RCC_TIM4_CLK_ENABLE();
-    __HAL_RCC_TIM3_CLK_ENABLE();
 
-    /* Set up the TIM4 and TIM3 interrupt */
-    HAL_NVIC_SetPriority(TIM4_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(TIM4_IRQn);
-    HAL_NVIC_SetPriority(TIM3_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(TIM3_IRQn);
+    /* Enable interrupts from channel 0. */
+    PIT_EnableInterrupts(PIT_PERIPHERAL, PIT_CHANNEL_0, kPIT_TimerInterruptEnable);
+    /* Enable interrupts from channel 1. */
+    PIT_EnableInterrupts(PIT_PERIPHERAL, PIT_CHANNEL_1, kPIT_TimerInterruptEnable);
+    /* Enable interrupt PIT_IRQN request in the NVIC */
+    EnableIRQ(PIT_IRQn);
 
-    /* Set up the TIM4 peripheral */
-    tim_config.clockSource = kGPT_ClockSource_Periph;
-    tim_config.divider = 
     
+    /* Set timer1 callback handler */
+    timer1_callback_handler = NULL;
 
+    /* Reconfigure CAN1 pins to GPIO with an interrupt on RX */
+    gpio_pin_config_t Output_config = {
+        .direction = kGPIO_DigitalOutput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_NoIntmode
+    };
+    /* Initialize GPIO functionality on GPIO_AD_B1_08 (pin H13) CAN1_TX */
+    GPIO_PinInit(GPIO1, 24U, &Output_config);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_08_GPIO1_IO24, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_08_GPIO1_IO24, 0x30B0U); 
 
-    TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
-    TIM_InitStructure.Prescaler = 9; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
-    TIM_InitStructure.CounterMode = TIM_COUNTERMODE_UP;
-    TIM_InitStructure.Period = 2000 / TIMER_PERIOD_NS; /* Start with 2 microseconds, which equates to 500 KBPS */
-    TIM_Base_SetConfig(TIM4, &TIM_InitStructure);
-    timer4_callback_handler = NULL;
+    gpio_pin_config_t Input_config = {
+        .direction = kGPIO_DigitalInput,
+        .outputLogic = 0U,
+        .interruptMode = kGPIO_IntRisingOrFallingEdge
+    };
 
-    /* Set up the TIM3 peripheral */
-    TIM_InitStructure.ClockDivision = TIM_CLOCKDIVISION_DIV4;
-    TIM_InitStructure.Prescaler = 9; /* APB1 clock is at 100 MHz, and this timer counts at twice that speed. Count every 500 ns. Note: The prescale value used is the register value + 1 */
-    TIM_InitStructure.CounterMode = TIM_COUNTERMODE_UP;
-    TIM_InitStructure.Period = 2000 / TIMER_PERIOD_NS; /* Start with 2 microseconds, which equates to 500 KBPS */
-    TIM_Base_SetConfig(TIM3, &TIM_InitStructure);
+    /* Initialize GPIO functionality on GPIO_AD_B1_09 (pin M13) */
+    GPIO_PinInit(GPIO1, 25U, &Input_config);
+    /* Enable GPIO pin interrupt on GPIO_AD_B1_09 (pin M13) */
+    GPIO_PortEnableInterrupts(GPIO1, 1U << 25U);
 
-    /* Set up the EXTI interrupt */
-    HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+    IOMUXC_SetPinMux(IOMUXC_GPIO_AD_B1_09_GPIO1_IO25, 0U); 
+    IOMUXC_SetPinConfig(IOMUXC_GPIO_AD_B1_09_GPIO1_IO25, 0x0130B1U); 
 }
 
 /* Checks to see if we've received a message and prints it out */
@@ -277,11 +285,11 @@ void can_poll()
         /* After 128 frames, turn the LED on */
         if ((frames_seen & 0x000000FF) == 128)
         {
-            BSP_LED_On(LED2);
+            CAN1_LED_On;
         }
         else if((frames_seen & 0xFF) == 0)
         {
-            BSP_LED_Off(LED2);
+            CAN1_LED_Off;
         }
     }
 }
@@ -289,33 +297,27 @@ void can_poll()
 /* Synchronize to the CAN bus. Start sampling at 2x baud rate and make sure we see an end of frame */
 void can_sync()
 {
-    TIM4->ARR = can_ticks_per_cycle >> 1;
-    TIM4->CNT = 0;
-    timer4_callback_handler = sync_callback;
+    PIT_SetTimerPeriod(PIT_PERIPHERAL, PIT_CHANNEL_1, can_ticks_per_cycle >> 1);
+    timer1_callback_handler = sync_callback;
     synchronized = 0;
     same_bits_count = 0;
 
     // Enable timer and interrupt
-    TIM4->DIER |= TIM_IT_UPDATE;
-    TIM4->CR1 |= TIM_CR1_CEN;
+    PIT_StartTimer(PIT_PERIPHERAL, PIT_CHANNEL_1);
 
     write_string("Synchronizing CAN bus...");
     while(!synchronized);
     write_string("Done\r\n");
 
     // Enable the external interrupt on the RX pin
-    while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
-        __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-    while(NVIC_GetPendingIRQ(EXTI15_10_IRQn) == 1)
-        NVIC_ClearPendingIRQ(EXTI15_10_IRQn);
-    NVIC_EnableIRQ(EXTI15_10_IRQn);
+    EnableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);
 }
 
 /* Interrupt callback for synchronizing to the CAN bus */
 static void sync_callback(void)
 {
     /* Check to see if we are getting a 1 */
-    if((GPIOB->IDR & GPIO_PIN_12) > 0)
+    if((GPIO1->DR & CAN_RX_PIN) > 0)
         same_bits_count++;
     else
         same_bits_count = 0;
@@ -342,7 +344,7 @@ static void sync_callback(void)
 static void sample_callback(void)
 {
     uint16_t bit_read = 0;
-    if (GPIOB->IDR & GPIO_PIN_12)
+    if (GPIO1->DR & CAN_RX_PIN)
         bit_read = 1;
 
     /* Check to see if this is a stuff bit */
@@ -414,12 +416,12 @@ static void sample_callback(void)
             else if(bits_read == (35 + (8 * msg_len))) // This is the CRC Delimiter
             {
                 if(nack_attack > 0)
-                    timer3_callback_handler = short_on;
+                    timer0_callback_handler = short_on;
             }
             else if(bits_read == (36 + (8 * msg_len))) // This is the ACK slot
             {
                 if(nack_attack > 0)
-                    timer3_callback_handler = short_off;
+                    timer0_callback_handler = short_off;
             }
             // else if(bits_read == (37 + (8 * msg_len))) // This is the ACK Delimiter
             // else if((bits_read >= (38 + (8 * msg_len))) && (bits_read < (45 + (8 * msg_len)))) // End Of Frame bits
@@ -460,12 +462,12 @@ static void sample_callback(void)
             else if(bits_read == (55 + (8 * msg_len))) // This is the CRC Delimiter
             {
                 if(nack_attack > 0)
-                    timer3_callback_handler = short_on;
+                    timer0_callback_handler = short_on;
             }
             else if(bits_read == (56 + (8 * msg_len))) // This is the ACK slot
             {
                 if(nack_attack > 0)
-                    timer3_callback_handler = short_off;
+                    timer0_callback_handler = short_off;
             }
             // else if(bits_read == (57 + (8 * msg_len))) // This is the ACK Delimiter
             // else if((bits_read >= (58 + (8 * msg_len))) && (bits_read < (65 + (8 * msg_len)))) // End Of Frame bits
@@ -485,93 +487,80 @@ static void sample_callback(void)
         last_bit = 0;
  
         // Enable the external interrupt on the RX pin
-        while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
-            __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-        while((NVIC->ISPR[EXTI15_10_IRQn >> 5u] & (1UL << (EXTI15_10_IRQn & 0x1FUL))) != 0UL)
-            NVIC->ICPR[EXTI15_10_IRQn >> 5u] = (1UL << (EXTI15_10_IRQn & 0x1FUL));
-        HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+        EnableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);
 
         if(end_of_frame_callback != NULL)
             end_of_frame_callback();
     }
 }
 
-/* Stops the timer4 timer */
+/* Stops the timer1 timer */
 void can_timer_stop()
 {
     /* Disable the overflow interrupt and timer */
-    TIM4->DIER &= ~TIM_IT_UPDATE;
-    TIM4->CR1 &= ~TIM_CR1_CEN;
+    PIT_StopTimer(PIT_PERIPHERAL, PIT_CHANNEL_1);
 
     /* Disable the callback */
-    timer4_callback_handler = NULL;
+    timer1_callback_handler = NULL;
 }
 
-void TIM3_IRQHandler(void)
+/* PIT_IRQn interrupt handler */
+void PIT_IRQHANDLER(void) 
 {
-    TIM3->SR = ~TIM_IT_UPDATE;
-    TIM3->ARR = can_ticks_per_cycle;
-    if(timer3_callback_handler != NULL)
-        timer3_callback_handler();
-}
-
-void TIM4_IRQHandler(void)
-{
-    TIM4->SR = ~TIM_IT_UPDATE;
-    TIM4->ARR = can_ticks_per_cycle;
-    if(timer4_callback_handler != NULL)
+    if(PIT_GetStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_0) == kPIT_TimerFlag)
     {
-        timer4_callback_handler();
+        if(timer0_callback_handler != NULL)
+            timer0_callback_handler();
+        PIT_ClearStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_0, kPIT_TimerFlag);
+    }
+
+    if(PIT_GetStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_1) == kPIT_TimerFlag)
+    {
+        if(timer1_callback_handler != NULL)
+            timer1_callback_handler();
+        PIT_ClearStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_1, kPIT_TimerFlag);
     }
 }
 
-void EXTI15_10_IRQHandler(void)
-{
-    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
+/* GPIO1_Combined_16_31_IRQn interrupt handler */
+void GPIO1_GPIO_COMB_16_31_IRQHANDLER(void) {
+    /* Get pins flags */ 
+    uint32_t pins_flags = GPIO_GetPinsInterruptFlags(GPIO1); 
 
-    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
     /* Start the timer to start sampling the incoming CAN message */
-    TIM4->ARR = can_ticks_per_cycle + can_initial_delay;
-    TIM4->CNT = 0;
-
-    timer4_callback_handler = sample_callback;
+    PIT_SetTimerPeriod(PIT_PERIPHERAL, PIT_CHANNEL_1, can_ticks_per_cycle + can_initial_delay);
+    timer1_callback_handler = sample_callback;
     arbid = 0;
     can_rx_crc = 0;
     msg_byte = 0;
     extended_arbid = 0;
     msg_len = 0;
     tx_bit_count = 0;
-
-    TIM4->DIER |= TIM_IT_UPDATE;
-    TIM4->CR1 |= TIM_CR1_CEN;
+    PIT_StartTimer(PIT_PERIPHERAL, PIT_CHANNEL_1);
 
     /* Restarts the timer that fires on each CAN edge */
-    TIM3->CR1 &= ~TIM_CR1_CEN;
-    TIM3->SR = ~TIM_IT_UPDATE;
-    TIM3->DIER &= ~TIM_IT_UPDATE;
-    NVIC_ClearPendingIRQ(TIM3_IRQn);
-    TIM3->ARR = can_ticks_per_cycle - can_edge_interrupt_delay;
-    TIM3->CNT = 0;
-    TIM3->DIER |= TIM_IT_UPDATE;
-    TIM3->CR1 |= TIM_CR1_CEN;
+    PIT_StopTimer(PIT_PERIPHERAL, PIT_CHANNEL_0);
+    PIT_SetTimerPeriod(PIT_PERIPHERAL, PIT_CHANNEL_0, can_ticks_per_cycle - can_edge_interrupt_delay);
+    PIT_StartTimer(PIT_PERIPHERAL, PIT_CHANNEL_0);
 
-    /* Set the ARR back to the correct value */
+    /* Clear int flags */ 
+    GPIO_ClearPinsInterruptFlags(GPIO1, pins_flags); 
 }
+
 
 void setCanBaudrate(long int baud)
 {
-    __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+    DisableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);
     can_baud = baud;
-    can_ticks_per_cycle = ((1000000000 / can_baud) / TIMER_PERIOD_NS) - 1;
+    can_ticks_per_cycle = (PIT_CLK_FREQ / can_baud);
 
     /* Calculate the 1/2 cycle delay so that the sampling interrupt happens in the middle of the bit.
-     * It takes appx 500ns to set up the initial interrupt, so we have that delay already */
-    can_initial_delay = (can_ticks_per_cycle >> 1) - (500 / TIMER_PERIOD_NS);
+     * It takes appx 300ns to set up the initial interrupt, so we have that delay already */
+    can_initial_delay = (can_ticks_per_cycle >> 1) - (300 / (1000000000 / PIT_CLK_FREQ));
 
     /* Edge timer interrupt correction calculation. This compensates for the time the EXTI interrupt takes to fire
-     * for timer 3 that interrupts on each CAN edge, which is about 450 ns */
-    can_edge_interrupt_delay = 450 / TIMER_PERIOD_NS;
+     * for timer 0 that interrupts on each CAN edge, which is about 300 ns */
+    can_edge_interrupt_delay = 300 / (1000000000 / PIT_CLK_FREQ);
 }
 
 /**
@@ -583,61 +572,61 @@ void setCanBaudrate(long int baud)
 static void arbid_killer()
 {
     if(tx_bit_count <= 3) // First 4 zeros of arbid
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 4) // First stuff bit
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 9) // Next 5 zeros of arbid
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 10) // Stuff bit
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 15) // Last two zeros of arbid, no RTR, 11 bit id, and 0 reserved bit
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 16) // Stuff bit
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 19) // First 3 bits of length
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 20) // Sending one byte
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count == 21) // First data bit
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 22) // Second data bit
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 26) // 3-6 data bit
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count <= 28) // 7th and 8th data bit
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count == 29) // CRC is 0x3cd1
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count <= 33)
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 35) 
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count <= 37)
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count == 38) 
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 39)
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count <= 42) 
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count <= 44)
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
     else if(tx_bit_count == 45) 
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     else if(tx_bit_count == 46)
-        GPIOB->ODR |= GPIO_PIN_13;
+        GPIO1->DR |= CAN_TX_PIN;
 
     tx_bit_count++;
 }
 
 void install_arbid_killer()
 {
-    timer3_callback_handler = arbid_killer;
+    timer0_callback_handler = arbid_killer;
 }
 
 void uninstall_arbid_killer()
 {
-    timer3_callback_handler = NULL;
+    timer0_callback_handler = NULL;
 }
 
 static void data_replacer()
@@ -689,17 +678,17 @@ static void data_replacer()
         /* Set the calculated level */
         if(bit == 1)
         {
-            GPIOB->ODR |= GPIO_PIN_13;
+            GPIO1->DR |= CAN_TX_PIN;
             SHORT_OFF;
         }
         else if(bit == 2)
         {
-            GPIOB->ODR |= GPIO_PIN_13;
+            GPIO1->DR |= CAN_TX_PIN;
             SHORT_ON;
         }
         else
         {
-            GPIOB->ODR &= ~GPIO_PIN_13;
+            GPIO1->DR &= ~CAN_TX_PIN;
             SHORT_OFF;
         }
     }
@@ -749,7 +738,7 @@ void install_data_replacer()
     if(data_replacer_force_recessive > 0)
         write_string("Recessive Bits will be forced through bus shorting\r\n");
  
-    timer3_callback_handler = data_replacer;
+    timer0_callback_handler = data_replacer;
 }
 
 void uninstall_data_replacer()
@@ -765,7 +754,7 @@ void uninstall_data_replacer()
     data_replacer_force_recessive = 0;
     data_replacer_crc = 0;
 
-    timer3_callback_handler = NULL;
+    timer0_callback_handler = NULL;
 }
 
 void overload_frame()
@@ -775,13 +764,13 @@ void overload_frame()
     /* Wait for the end of frame bits, then send six dominant bits */
     if (overload_frame_bit_counter > 8 && overload_frame_bit_counter < 15)
     {
-        GPIOB->ODR &= ~GPIO_PIN_13;
+        GPIO1->DR &= ~CAN_TX_PIN;
     }
     /* Wait for the first recessive bit we see */
     else if (overload_frame_bit_counter >= 15 && overload_frame_first_recessive_bit == 0)
     {
-        GPIOB->ODR |= GPIO_PIN_13; // Transmit a recessive ourselves
-        if (GPIOB->IDR & GPIO_PIN_12)
+        GPIO1->DR |= CAN_TX_PIN; // Transmit a recessive ourselves
+        if (GPIO1->DR & CAN_RX_PIN)
             overload_frame_first_recessive_bit = overload_frame_bit_counter;
     }
     /* Wait for 8 recessive bits to be transmitted */
@@ -799,13 +788,8 @@ void overload_frame()
         else
         {
             // Enable the external interrupt on the RX pin
-            while(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_12) > 0)
-                __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_12); // Clear any pending interrupt
-            while((NVIC->ISPR[EXTI15_10_IRQn >> 5u] & (1UL << (EXTI15_10_IRQn & 0x1FUL))) != 0UL)
-                NVIC->ICPR[EXTI15_10_IRQn >> 5u] = (1UL << (EXTI15_10_IRQn & 0x1FUL));
-            HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
-            timer3_callback_handler = NULL;
+            EnableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);
+            timer0_callback_handler = NULL;
         }
     }
 }
@@ -813,12 +797,12 @@ void overload_frame()
 void overload_frame_eof()
 {
     // Disable the external interrupt on the RX pin
-    HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
+    DisableIRQ(GPIO1_GPIO_COMB_16_31_IRQN);
 
     overload_frame_bit_counter = 0;
     overload_frames_sent = 0;
     overload_frame_first_recessive_bit = 0;
-    timer3_callback_handler = overload_frame;
+    timer0_callback_handler = overload_frame;
 }
 
 void install_overload_frame()
