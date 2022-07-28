@@ -272,17 +272,14 @@ void can_poll()
         frame_done = 0;
         if(sniff_traffic)
         {
-            char msg[50];
-            sprintf(msg, "Arbid: %lx\r\n", arbid);
-            write_string(msg);
+            printf("Arbid: %lx\r\n", arbid);
             write_string("Msg: ");
             for(int i = 0; i < msg_len; i++)
             {
                 write_int(message[i]);
                 write_string(" ");
             }
-            sprintf(msg, "\r\nCRC: %lx\r\n", can_rx_crc);
-            write_string(msg);
+            printf("\r\nCRC: %lx\r\n", can_rx_crc);
         }
 
         /* After 128 frames, turn the LED on */
