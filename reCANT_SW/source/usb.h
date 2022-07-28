@@ -10,11 +10,14 @@ void USB_Init();
 void usb_serial_task();
 
 int __io_putchar(int ch);
+int __sfputc_r(int ch);
 void write_string(char *s);
 void write_int(uint32_t n);
 long read_int();
 long read_hex();
 char read_char();
+char read_char_nb();
+int _write(int file, char *ptr, int len);
 
 
 #endif

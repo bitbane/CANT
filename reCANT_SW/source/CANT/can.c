@@ -98,7 +98,7 @@ uint16_t can_crc(uint32_t arbid, uint8_t extended_arbid, uint8_t cntrl, uint8_t 
     }
     else
     {
-        printf("Extended Arbitration ID not yet supported");
+        write_string("Extended Arbitration ID not yet supported");
     }
 
     return crc_rg & 0x7FFF;
@@ -145,7 +145,7 @@ void create_can_bitstream(uint32_t arbid, uint8_t extended_arbid, uint8_t cntrl,
     }
     else
     {
-        printf("Extended Arbitration ID not yet supported");
+        write_string("Extended Arbitration ID not yet supported");
     }
 }
 
@@ -272,14 +272,17 @@ void can_poll()
         frame_done = 0;
         if(sniff_traffic)
         {
-            printf("Arbid: %lx\r\n", arbid);
+            char msg[50];
+            sprintf(msg, "Arbid: %lx\r\n", arbid);
+            write_string(msg);
             write_string("Msg: ");
             for(int i = 0; i < msg_len; i++)
             {
                 write_int(message[i]);
                 write_string(" ");
             }
-            printf("\r\nCRC: %lx\r\n", can_rx_crc);
+            sprintf(msg, "\r\nCRC: %lx\r\n", can_rx_crc);
+            write_string(msg);
         }
 
         /* After 128 frames, turn the LED on */

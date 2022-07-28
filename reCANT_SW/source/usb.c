@@ -87,6 +87,15 @@ int __io_putchar(int ch)
     return ch;
 }
 
+int __sfputc_r(int ch)
+{
+    /* write a character to USB */
+    tud_cdc_write_char(ch);
+    tud_cdc_write_flush();
+
+    return ch;
+}
+
 void write_string(char *s)
 {
     int len = strlen(s);
@@ -167,6 +176,36 @@ char read_char()
 
     return c;
 }
+
+/* Non-blocking character read. Returns null if no data available */
+char read_char_nb()
+{
+    char c;
+
+    /* Return if no data is received or the user hasn't pressed enter yet */
+    if((rx_counter == 0) || (rx_buffer[rx_counter - 1] != '\r'))
+        return '\0';
+
+    rx_buffer[rx_counter - 1] = '\0';
+
+    /* Return the first character entered, ignore the rest */
+    c = rx_buffer[0];
+
+    /* Reset the rx_counter */
+    rx_counter = 0;
+
+    return c;
+}
+
+int _write(int file, char *ptr, int len) {
+    int i;
+ 
+    for (i = 0; i < len; i++) {
+        __sfputc_r(*ptr++);
+    }
+    return len;
+}
+
 
 
 void USB_OTG1_IRQHandler(void)

@@ -33,10 +33,12 @@ static void chooseAttack();
 
 void display_menu()
 {
+    char msg[100];
     write_string("\r\n? - Help\r\n");
     for(int i = 1; i < MENU_NUM_ITEMS; i++)
     {
-        printf("%d - %s\r\n", i, Menu_Commands_Text[i]);
+        sprintf(msg, "%d - %s\r\n", i, Menu_Commands_Text[i]);
+        write_string(msg);
     }
     write_string("\r\nCANT>");
 }
@@ -61,7 +63,7 @@ static void handle_command()
 {
     char *endptr;
     long int command_num = strtol((char *)rx_buffer, &endptr, 0);
-
+    rx_counter = 0;
     switch(command_num)
     {
         case MENU_UNUSED:
@@ -103,9 +105,11 @@ static void handle_command()
  */
 static void setArbids(void)
 {
+    char msg[100];
     write_string("Enter arbid: 0x");
     attack_arbid = read_hex();
-    printf("Attacking 0x%lx\r\n", attack_arbid);
+    sprintf(msg, "Attacking 0x%lx\r\n", attack_arbid);
+    write_string(msg);
 }
 
 /**
@@ -113,7 +117,9 @@ static void setArbids(void)
  */
 static void showArbids(void)
 {
-    printf("Currently attacking 0x%lx\r\n", attack_arbid);
+    char msg[100];
+    sprintf(msg, "Currently attacking 0x%lx\r\n", attack_arbid);
+    write_string(msg);
 }
 
 /**
@@ -122,13 +128,15 @@ static void showArbids(void)
 static void setBaudrate(void)
 {
     long int baud;
+    char msg[100];
 
     write_string("Enter baudrate in BPS: ");
     baud = read_int();
 
     /* Start the CAN sync */
     setCanBaudrate(baud);
-    printf("Baud rate: %ld BPS\r\n", baud);
+    sprintf(msg, "Baud rate: %ld BPS\r\n", baud);
+    write_string(msg);
     can_sync();
 }
 
@@ -138,10 +146,12 @@ static void setBaudrate(void)
 static void chooseAttack(void)
 {
     long int command_num;
+    char msg[100];
     remove_attack();
     for(int i = 1; i < ATTACK_NUM_ITEMS; i++)
     {
-        printf("%d - %s\r\n", i, Attack_Commands_Text[i]);
+        sprintf(msg, "%d - %s\r\n", i, Attack_Commands_Text[i]);
+        write_string(msg);
     }
     write_string("\r\nCANT ATTACK>");
 
