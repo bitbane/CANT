@@ -5,6 +5,7 @@
 #include "menu.h"
 #include "can.h"
 #include "usb.h"
+#include "led.h"
 
 char* Menu_Commands_Text[MENU_NUM_ITEMS] = {
     "", // strtol interprets the empty string as a 0

@@ -226,7 +226,6 @@ uint32_t stuff_data(uint8_t * in, uint8_t *out, uint8_t num_bits)
  */
 void can_init()
 {
-
     /* Enable interrupts from channel 0. */
     PIT_EnableInterrupts(PIT_PERIPHERAL, PIT_CHANNEL_0, kPIT_TimerInterruptEnable);
     /* Enable interrupts from channel 1. */
@@ -255,7 +254,7 @@ void can_init()
         .interruptMode = kGPIO_IntRisingOrFallingEdge
     };
 
-    /* Initialize GPIO functionality on GPIO_AD_B1_09 (pin M13) */
+    /* Initialize GPIO functionality on GPIO_AD_B1_09 (pin M13) CAN1_RX */
     GPIO_PinInit(GPIO1, 25U, &Input_config);
     /* Enable GPIO pin interrupt on GPIO_AD_B1_09 (pin M13) */
     GPIO_PortEnableInterrupts(GPIO1, 1U << 25U);
@@ -318,9 +317,13 @@ static void sync_callback(void)
 {
     /* Check to see if we are getting a 1 */
     if((GPIO1->DR & CAN_RX_PIN) > 0)
+    {
         same_bits_count++;
+    }
     else
+    {
         same_bits_count = 0;
+    }
 
     if(same_bits_count >= 14)
     {
@@ -505,8 +508,10 @@ void can_timer_stop()
 }
 
 /* PIT_IRQn interrupt handler */
-void PIT_IRQHANDLER(void) 
+void PIT_IRQHandler(void) 
 {
+    CAN3_LED_On;
+#if 0
     if(PIT_GetStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_0) == kPIT_TimerFlag)
     {
         if(timer0_callback_handler != NULL)
@@ -520,6 +525,8 @@ void PIT_IRQHANDLER(void)
             timer1_callback_handler();
         PIT_ClearStatusFlags(PIT_PERIPHERAL, PIT_CHANNEL_1, kPIT_TimerFlag);
     }
+#endif
+    CAN3_LED_Off;
 }
 
 /* GPIO1_Combined_16_31_IRQn interrupt handler */

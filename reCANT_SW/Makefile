@@ -12,7 +12,7 @@ SRCS=source
 BOARD_SRCS=board
 USB_SRCS=tinyusb/src
 
-_OBJS=startup_MIMXRT1062.o clock_config.o dcd.o peripherals.o pin_mux.o main.o test.o usb_descriptors.o usb.o CANT/menu.o CANT/can.o
+_OBJS=startup_MIMXRT1062.o clock_config.o dcd.o peripherals.o pin_mux.o main.o test.o usb_descriptors.o usb.o led.o CANT/menu.o CANT/can.o
 _USB_OBJS=tusb.o device/usbd.o device/usbd_control.o portable/chipidea/ci_hs/dcd_ci_hs.o common/tusb_fifo.o class/cdc/cdc_device.o
 _PERIPH_OBJS=fsl_common.o system_MIMXRT1062.o fsl_common_arm.o fsl_clock.o fsl_os_abstraction_bm.o fsl_flexcan.o fsl_gpio.o fsl_lpuart.o fsl_adapter_lpuart.o teensy41_flexspi_nor_config.o fsl_flexspi_nor_boot.o fsl_pit.o
 
